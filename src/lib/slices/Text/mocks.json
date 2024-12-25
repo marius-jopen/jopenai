@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"headline": {
+				"__TYPE__": "FieldContent",
+				"value": "needed",
+				"type": "Text"
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Sunt ipsum tempor voluptate esse do aliquip enim tempor ex ut nulla aute."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]
