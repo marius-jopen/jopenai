@@ -1,9 +1,14 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
-
+	import { PrismicText } from '@prismicio/svelte';
 	export let slice: Content.TextSlice;
 </script>
 
-<section data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
-	Placeholder component for {slice.slice_type} (variation: {slice.variation}) Slices
+<section class="pb-28 box">
+	<div class="px-8" data-aos="fade-up">
+		<div class="mx-auto max-w-2xl leading-relaxed">
+			<PrismicText field={slice.primary.text} />
+		</div>
+	</div>
 </section>
+

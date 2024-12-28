@@ -1,3 +1,23 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body, p {
+    @apply text-base;
+}
+
+.h0 {
+    @apply text-4xl md:text-[4rem] lg:text-[5rem] leading-[100%] font-normal pb-8;
+}
+
+h1 {
+    @apply text-4xl font-normal pb-8;
+}
+
+h2 {
+    @apply text-3xl font-normal pb-6;
+}
+
+.box {
+    @apply mx-3 lg:mx-[15vw];
+}

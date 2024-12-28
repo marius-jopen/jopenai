@@ -12,28 +12,35 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "image_left": {
-          "type": "Image",
+        "items": {
+          "type": "Group",
           "config": {
-            "label": "Image Left",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "image_middle": {
-          "type": "Image",
-          "config": {
-            "label": "Image Middle",
-            "constraint": {},
-            "thumbnails": []
-          }
-        },
-        "image_right": {
-          "type": "Image",
-          "config": {
-            "label": "Image Right",
-            "constraint": {},
-            "thumbnails": []
+            "label": "Items",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "video": {
+                "type": "Text",
+                "config": {
+                  "label": "Video",
+                  "placeholder": ""
+                }
+              },
+              "text": {
+                "type": "Text",
+                "config": {
+                  "label": "Text",
+                  "placeholder": ""
+                }
+              }
+            }
           }
         }
       },

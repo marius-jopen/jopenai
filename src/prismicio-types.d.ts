@@ -67,6 +67,7 @@ export type HeaderDocument<Lang extends string = string> = prismic.PrismicDocume
 >;
 
 type PageDocumentDataSlicesSlice =
+	| LeftRightSlice
 	| AccordeonSlice
 	| HeroSlice
 	| LogosSlice
@@ -431,38 +432,53 @@ type HeadlineSliceVariation = HeadlineSliceDefault;
 export type HeadlineSlice = prismic.SharedSlice<'headline', HeadlineSliceVariation>;
 
 /**
+ * Item in *Hero → Default → Primary → Items*
+ */
+export interface HeroSliceDefaultPrimaryItemsItem {
+	/**
+	 * Image field in *Hero → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video field in *Hero → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero.default.primary.items[].video
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video: prismic.KeyTextField;
+
+	/**
+	 * Text field in *Hero → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text: prismic.KeyTextField;
+}
+
+/**
  * Primary content in *Hero → Default → Primary*
  */
 export interface HeroSliceDefaultPrimary {
 	/**
-	 * Image Left field in *Hero → Default → Primary*
+	 * Items field in *Hero → Default → Primary*
 	 *
-	 * - **Field Type**: Image
+	 * - **Field Type**: Group
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero.default.primary.image_left
-	 * - **Documentation**: https://prismic.io/docs/field#image
+	 * - **API ID Path**: hero.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
-	image_left: prismic.ImageField<never>;
-
-	/**
-	 * Image Middle field in *Hero → Default → Primary*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero.default.primary.image_middle
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	image_middle: prismic.ImageField<never>;
-
-	/**
-	 * Image Right field in *Hero → Default → Primary*
-	 *
-	 * - **Field Type**: Image
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: hero.default.primary.image_right
-	 * - **Documentation**: https://prismic.io/docs/field#image
-	 */
-	image_right: prismic.ImageField<never>;
+	items: prismic.GroupField<Simplify<HeroSliceDefaultPrimaryItemsItem>>;
 }
 
 /**
@@ -568,6 +584,79 @@ type HighlightsSliceVariation = HighlightsSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type HighlightsSlice = prismic.SharedSlice<'highlights', HighlightsSliceVariation>;
+
+/**
+ * Primary content in *LeftRight → Default → Primary*
+ */
+export interface LeftRightSliceDefaultPrimary {
+	/**
+	 * Switched field in *LeftRight → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: left_right.default.primary.switched
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	switched: prismic.BooleanField;
+
+	/**
+	 * Image field in *LeftRight → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Headline field in *LeftRight → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Text field in *LeftRight → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for LeftRight Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LeftRightSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<LeftRightSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *LeftRight*
+ */
+type LeftRightSliceVariation = LeftRightSliceDefault;
+
+/**
+ * LeftRight Shared Slice
+ *
+ * - **API ID**: `left_right`
+ * - **Description**: LeftRight
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LeftRightSlice = prismic.SharedSlice<'left_right', LeftRightSliceVariation>;
 
 /**
  * Item in *Logos → Default → Primary → Items*
@@ -813,6 +902,7 @@ declare module '@prismicio/client' {
 			HeadlineSliceVariation,
 			HeadlineSliceDefault,
 			HeroSlice,
+			HeroSliceDefaultPrimaryItemsItem,
 			HeroSliceDefaultPrimary,
 			HeroSliceVariation,
 			HeroSliceDefault,
@@ -821,6 +911,10 @@ declare module '@prismicio/client' {
 			HighlightsSliceDefaultPrimary,
 			HighlightsSliceVariation,
 			HighlightsSliceDefault,
+			LeftRightSlice,
+			LeftRightSliceDefaultPrimary,
+			LeftRightSliceVariation,
+			LeftRightSliceDefault,
 			LogosSlice,
 			LogosSliceDefaultPrimaryItemsItem,
 			LogosSliceDefaultPrimary,

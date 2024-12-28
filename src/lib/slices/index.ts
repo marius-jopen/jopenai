@@ -6,6 +6,7 @@ import Cta from './Cta/index.svelte';
 import Headline from './Headline/index.svelte';
 import Hero from './Hero/index.svelte';
 import Highlights from './Highlights/index.svelte';
+import LeftRight from './LeftRight/index.svelte';
 import Logos from './Logos/index.svelte';
 import SlidingCards from './SlidingCards/index.svelte';
 import Text from './Text/index.svelte';
@@ -17,6 +18,7 @@ export const components = {
 	headline: Headline,
 	hero: Hero,
 	highlights: Highlights,
+	left_right: LeftRight,
 	logos: Logos,
 	sliding_cards: SlidingCards,
 	text: Text

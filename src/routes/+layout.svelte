@@ -3,6 +3,18 @@
 	import { PrismicPreview } from '@prismicio/svelte/kit';
 	import { page } from '$app/stores';
 	import { repositoryName } from '$lib/prismicio';
+	import Header from '$lib/components/Header.svelte';
+	import AOS from 'aos';
+	import 'aos/dist/aos.css';
+	import { onMount } from 'svelte';
+
+	onMount(() => {
+		AOS.init({
+			duration: 2000,
+			once: false,
+			offset: 50
+		});
+	});
 </script>
 
 <svelte:head>
@@ -18,7 +30,12 @@
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 </svelte:head>
+
 <main>
-	<slot />
+	<div class="bg-neutral-100 dark:bg-black text-black dark:text-white">
+		<Header />
+		<slot />
+	</div>
 </main>
+
 <PrismicPreview {repositoryName} />
