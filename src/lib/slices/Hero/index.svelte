@@ -22,7 +22,7 @@
 			<div class="w-[90vw] md:w-[95vw] relative" style={calculateStyles(index, items.length)}>
 				<div>
 					{#if item.video}
-						<video src={item.video} poster={item.image.url} class="rounded-lg object-cover w-full aspect-[3/4] lg:aspect-[16/8]" autoplay muted loop />
+						<video src={item.video} poster={item.image.url} class="rounded-lg object-cover w-full aspect-[3/4] lg:aspect-[16/8]" playsinline autoplay muted loop />
 					{:else}
 						<PrismicImage class="rounded-lg object-cover w-full aspect-[3/4] lg:aspect-[16/8]" field={item.image} />
 					{/if}

@@ -19,7 +19,7 @@
 	
 			<div class="flex flex-col md:flex-row w-full md:w-1/2">
 				{#if slice.primary.video}
-					<video src={slice.primary.video} poster={slice.primary.image.url} class="w-full aspect-[16/12] md:aspect-[12/9] object-cover" autoplay muted loop />
+					<video src={slice.primary.video} poster={slice.primary.image.url} class="w-full aspect-[16/12] md:aspect-[12/9] object-cover" playsinline autoplay muted loop />
 				{:else}
 					<PrismicImage class="w-full aspect-[16/12] md:aspect-[12/9] object-cover" field={slice.primary.image} />
 				{/if}
