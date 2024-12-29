@@ -45,5 +45,8 @@
 		"@splidejs/splide": "^4.1.4",
 		"@splidejs/svelte-splide": "^0.2.9",
 		"aos": "^2.3.4"
+	},
+	"engines": {
+		"node": ">=18 <21"
 	}
 }
