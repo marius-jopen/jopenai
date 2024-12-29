@@ -27,12 +27,12 @@
 	<div data-aos="fade-up">
 		<Slider>
 			{#each items as item, index}
-				<div data-aos="fade-zoom-in" data-aos-delay={200 + index * 500} class="item flex flex-col lg:flex-row" style={calculateStyles(index, items.length)}>
+				<div data-aos="fade-zoom-in" data-aos-delay={200 + index * 500} class="item lg:flex flex-col lg:flex-row" style={calculateStyles(index, items.length)}>
 					<div class="w-full lg:w-1/2" >
 						{#if item.video}
-							<video src={item.video} poster={item.image.url} class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" autoplay muted loop playsinline />
+							<video src={item.video} poster={item.image.url} class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" autoplay muted loop playsinline />
 						{:else}
-							<PrismicImage class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" field={item.image} />
+							<PrismicImage class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" field={item.image} />
 						{/if}
 					</div>
 				
