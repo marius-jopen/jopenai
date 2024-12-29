@@ -7,10 +7,10 @@
     </div>
 
     <div class="flex gap-8 text-sm pt-1">
-        <a href="/" class="text-black hover:underline">Home</a>
+        <!-- <a href="/" class="text-black hover:underline">Home</a>
         <a href="/about" class="text-black hover:underline">About</a>
         <a href="/services" class="text-black hover:underline">Services</a>
-        <a href="/contact" class="text-black hover:underline">Contact</a>
+        <a href="/contact" class="text-black hover:underline">Contact</a> -->
     </div>
 
     <div class="flex gap-6">  
