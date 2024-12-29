@@ -11,7 +11,7 @@
 			<PrismicText field={slice.primary.headline} />
 		</h1>
 
-		<div class="mx-auto max-w-2xl text-center text-sm text-neutral-600" data-aos="fade" data-aos-delay={1000}>
+		<div class="mx-auto max-w-2xl text-center text-sm text-neutral-500" data-aos="fade" data-aos-delay={1000}>
 			<PrismicText field={slice.primary.text} />
 		</div>
 	</div>

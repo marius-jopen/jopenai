@@ -56,7 +56,7 @@
 						{/if}
 					</div>
 
-					<h2 class="flex flex-col justify-center">
+					<h2 class="flex flex-col justify-center cursor-pointer" on:click={() => toggle(index)}>
 						{openIndex === index ? '–' : '+'}
 					</h2>
 				</div>

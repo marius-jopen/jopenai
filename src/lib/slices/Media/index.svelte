@@ -9,7 +9,7 @@
 	<div class="md:px-8" data-aos="fade-up">
 		<PrismicImage class="w-full rounded-lg" field={slice.primary.image} />	
 
-		<div class="mx-auto text-neutral-600 pt-3 text-sm text-center mx-auto md:w-8/12">
+		<div class="mx-auto text-neutral-500 pt-3 text-sm text-center mx-auto md:w-8/12">
 			<PrismicText field={slice.primary.text} />
 		</div>
 	</div>
