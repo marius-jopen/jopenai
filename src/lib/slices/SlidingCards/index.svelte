@@ -53,13 +53,13 @@
 
 
 <style>
-	.flex.flex-col.lg\:flex-row:first-child {
+	.item:first-child {
 		@media (max-width: 1024px) {	
 			margin-left: 13px !important;
 		}
 	}
 
-	.flex.flex-col.lg\:flex-row:last-child {
+	.item:last-child {
 		@media (max-width: 1024px) {	
 			margin-right: 13px !important;
 		}
