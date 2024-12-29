@@ -45,6 +45,11 @@
 						}
 					}
 				]
+			},
+			"video": {
+				"__TYPE__": "FieldContent",
+				"value": "light",
+				"type": "Text"
 			}
 		},
 		"items": []

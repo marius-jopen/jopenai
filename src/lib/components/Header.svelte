@@ -7,18 +7,21 @@
     </div>
 
     <div class="flex gap-8 text-sm pt-1">
-        nav
+        <a href="/" class="text-black hover:underline">Home</a>
+        <a href="/about" class="text-black hover:underline">About</a>
+        <a href="/services" class="text-black hover:underline">Services</a>
+        <a href="/contact" class="text-black hover:underline">Contact</a>
     </div>
 
     <div class="flex gap-6">  
         <div class="text-sm pt-1 flex gap-2">
-            <div class="text-neutral-400">
+            <a href="/de" class="text-black">
                 DE
-            </div>
+            </a>
 
-            <div class="text-black">
+            <a href="/" class="text-black">
                 EN
-            </div>
+            </a>
         </div>
       
         <div class="-mt-0.5 bg-black text-sm font-medium text-white px-6 py-1.5 rounded-full">

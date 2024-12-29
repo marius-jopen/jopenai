@@ -2,8 +2,12 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+    @apply w-full overflow-x-hidden;
+}
+
 body, p {
-    @apply text-base;
+    @apply text-sm  md:text-base;
 }
 
 .h0 {
@@ -11,11 +15,11 @@ body, p {
 }
 
 h1 {
-    @apply text-4xl font-normal pb-8;
+    @apply text-3xl md:text-4xl font-normal pb-8;
 }
 
 h2 {
-    @apply text-3xl font-normal pb-6;
+    @apply text-xl md:text-3xl font-normal pb-6;
 }
 
 .box {

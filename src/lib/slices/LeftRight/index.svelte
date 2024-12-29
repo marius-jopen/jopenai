@@ -7,7 +7,7 @@
 <section class="pb-28">
 	<div class="box" data-aos="fade-up">
 		<div class="rounded-lg overflow-hidden flex flex-col-reverse {slice.primary.switched ? 'md:flex-row-reverse' : 'md:flex-row'} w-full">
-			<div class="w-full md:w-1/2 bg-white px-10 flex flex-col justify-center py-12">
+			<div class="w-full md:w-1/2 bg-white px-10 flex flex-col justify-center py-10 md:py-12">
 				<h1 data-aos="fade" data-aos-delay={100}>
 					{slice.primary.headline}
 				</h1>
@@ -18,7 +18,11 @@
 			</div>
 	
 			<div class="flex flex-col md:flex-row w-full md:w-1/2">
-				<PrismicImage class="w-full aspect-[16/9] md:aspect-[12/9] object-cover" field={slice.primary.image} />
+				{#if slice.primary.video}
+					<video src={slice.primary.video} poster={slice.primary.image.url} class="w-full aspect-[16/12] md:aspect-[12/9] object-cover" autoplay muted loop />
+				{:else}
+					<PrismicImage class="w-full aspect-[16/12] md:aspect-[12/9] object-cover" field={slice.primary.image} />
+				{/if}
 			</div>
 		</div>
 	</div>

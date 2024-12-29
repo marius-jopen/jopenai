@@ -61,6 +61,14 @@
 										}
 									]
 								}
+							],
+							[
+								"video",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "stock",
+									"type": "Text"
+								}
 							]
 						]
 					}

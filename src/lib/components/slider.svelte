@@ -6,47 +6,52 @@
 		const CONTENT_SELECTOR = '.ss-carousel__content';
 
 		const components = document.querySelectorAll(COMPONENT_SELECTOR);
+		let maxScrollWidth;
+
+		const toggleArrows = (content, nextButton, prevButton) => {
+			if (content.scrollLeft >= maxScrollWidth) {
+				nextButton.classList.add('disabled');
+			} else {
+				nextButton.classList.remove('disabled');
+			}
+			if (content.scrollLeft <= 0) {
+				prevButton.classList.add('disabled');
+			} else {
+				prevButton.classList.remove('disabled');
+			}
+		};
+
+		const scrollHandlers = [];
 
 		for (const component of components) {
 			const content = component.querySelector(CONTENT_SELECTOR);
 			let x = 0;
-			const maxScrollWidth = content.scrollWidth - content.clientWidth - 1;
+			maxScrollWidth = content.scrollWidth - content.clientWidth - 1;
 
 			const nextButton = component.querySelector('.arrow-next');
 			const prevButton = component.querySelector('.arrow-prev');
 
 			const scrollHandler = () => {
 				console.log('Scroll position:', content.scrollLeft);
-				toggleArrows();
+				toggleArrows(content, nextButton, prevButton);
 			};
 
-			const toggleArrows = () => {
-				if (content.scrollLeft >= maxScrollWidth) {
-					nextButton.classList.add('disabled');
-				} else {
-					nextButton.classList.remove('disabled');
-				}
-				if (content.scrollLeft <= 0) {
-					prevButton.classList.add('disabled');
-				} else {
-					prevButton.classList.remove('disabled');
-				}
-			};
+			scrollHandlers.push(scrollHandler);
 
 			const itemWidth = content.querySelector('.ss-carousel__content > *').clientWidth;
 
 			if (nextButton) {
-				nextButton.addEventListener('click', (event) => {
-					event.preventDefault();
-					console.log('Next button clicked');
-					if (!nextButton.classList.contains('disabled')) {
-						x = content.scrollLeft + itemWidth;
-						content.scroll({
-							left: x,
-							behavior: 'smooth',
-						});
-					}
-				});
+					nextButton.addEventListener('click', (event) => {
+						event.preventDefault();
+						console.log('Next button clicked');
+						if (!nextButton.classList.contains('disabled')) {
+							x = content.scrollLeft + itemWidth;
+							content.scroll({
+								left: x,
+								behavior: 'smooth',
+							});
+						}
+					});
 			}
 
 			if (prevButton) {
@@ -66,11 +71,18 @@
 			content.addEventListener('scroll', scrollHandler);
 		}
 
+		// Call toggleArrows initially to set the correct state
+		for (const component of components) {
+			const content = component.querySelector(CONTENT_SELECTOR);
+			toggleArrows(content, component.querySelector('.arrow-next'), component.querySelector('.arrow-prev'));
+		}
+
 		// Cleanup function to remove event listeners
 		return () => {
-			for (const component of components) {
+			for (let i = 0; i < components.length; i++) {
+				const component = components[i];
 				const content = component.querySelector(CONTENT_SELECTOR);
-				content.removeEventListener('scroll', scrollHandler);
+				content.removeEventListener('scroll', scrollHandlers[i]);
 			}
 		};
 	});
@@ -153,7 +165,7 @@
                 <slot />
 			</div>
 
-			<div class="flex justify-center w-full pt-6" data-aos="fade-up" data-aos-delay={500}>
+			<div class="hidden md:flex justify-center w-full pt-6" data-aos="fade-up" data-aos-delay={500}>
 				<div class="ss-carousel__header">
 					<div class="ss-carousel__controls">
 						<button class="ss-carousel__arrow disabled arrow-prev" aria-label="Previous"></button>

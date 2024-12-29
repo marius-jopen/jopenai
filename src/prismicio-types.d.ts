@@ -611,6 +611,16 @@ export interface LeftRightSliceDefaultPrimary {
 	image: prismic.ImageField<never>;
 
 	/**
+	 * Video field in *LeftRight → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right.default.primary.video
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video: prismic.KeyTextField;
+
+	/**
 	 * Headline field in *LeftRight → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -728,6 +738,16 @@ export interface SlidingCardsSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	image: prismic.ImageField<never>;
+
+	/**
+	 * Video field in *SlidingCards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: sliding_cards.default.primary.items[].video
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video: prismic.KeyTextField;
 
 	/**
 	 * Headline field in *SlidingCards → Default → Primary → Items*

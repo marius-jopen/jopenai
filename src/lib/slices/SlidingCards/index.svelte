@@ -29,7 +29,11 @@
 			{#each items as item, index}
 				<div data-aos="fade-zoom-in" data-aos-delay={500 + index * 500} class="item flex flex-col lg:flex-row" style={calculateStyles(index, items.length)}>
 					<div class="w-full lg:w-1/2" >
+						{#if item.video}
+							<video src={item.video} poster={item.image.url} class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" autoplay muted loop />
+						{:else}
 						<PrismicImage class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" field={item.image} />
+						{/if}
 					</div>
 				
 					<div class="rounded-b-lg lg:rounded-b-none lg:!rounded-r-lg bg-white px-8 pt-10 pb-12 w-full lg:w-1/2 flex flex-col lg:justify-center lg:aspect-[4/3] h-full lg:h-auto">

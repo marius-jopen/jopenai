@@ -33,6 +33,13 @@
                   "thumbnails": []
                 }
               },
+              "video": {
+                "type": "Text",
+                "config": {
+                  "label": "Video",
+                  "placeholder": ""
+                }
+              },
               "headline": {
                 "type": "Text",
                 "config": {

@@ -5,7 +5,7 @@
 	export let slice: Content.HeadlineSlice;
 </script>
 
-<section class="pb-28">
+<section class="pb-28 px-8 md:px-0">
 	<div class="box">
 		<h1 class="mx-auto max-w-2xl text-center" data-aos="fade-up">
 			<PrismicText field={slice.primary.headline} />
