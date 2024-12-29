@@ -19,7 +19,7 @@
 <section class="pb-28" data-id={slice.primary.hash}>
 	<Slider>
 		{#each items as item, index}
-			<div class="w-[90vw] md:w-[95vw] relative" style={calculateStyles(index, items.length)}>
+			<div class="w-[90vw] md:w-[95vw] relative rounded-lg overflow-hidden" style={calculateStyles(index, items.length)}>
 				<div>
 					{#if item.video}
 						<video src={item.video} poster={item.image.url} class="rounded-lg object-cover w-full aspect-[3/4] lg:aspect-[16/8]" playsinline autoplay muted loop />
