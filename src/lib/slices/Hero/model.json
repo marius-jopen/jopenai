@@ -12,6 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "hash": {
+          "type": "Text",
+          "config": {
+            "label": "hash",
+            "placeholder": ""
+          }
+        },
         "items": {
           "type": "Group",
           "config": {

@@ -53,10 +53,23 @@
 										}
 									]
 								}
+							],
+							[
+								"video",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "reason",
+									"type": "Text"
+								}
 							]
 						]
 					}
 				]
+			},
+			"hash": {
+				"__TYPE__": "FieldContent",
+				"value": "plus",
+				"type": "Text"
 			}
 		},
 		"items": []

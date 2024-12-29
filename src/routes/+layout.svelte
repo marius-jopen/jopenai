@@ -3,7 +3,6 @@
 	import { PrismicPreview } from '@prismicio/svelte/kit';
 	import { page } from '$app/stores';
 	import { repositoryName } from '$lib/prismicio';
-	import Header from '$lib/components/Header.svelte';
 	import AOS from 'aos';
 	import 'aos/dist/aos.css';
 	import { onMount } from 'svelte';
@@ -32,8 +31,7 @@
 </svelte:head>
 
 <main>
-	<div class="bg-neutral-100 dark:bg-black text-black dark:text-white">
-		<Header />
+	<div class="bg-neutral-100 text-black">
 		<slot />
 	</div>
 </main>

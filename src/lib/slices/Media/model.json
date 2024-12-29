@@ -1,8 +1,8 @@
 {
-  "id": "left_right",
+  "id": "media",
   "type": "SharedSlice",
-  "name": "LeftRight",
-  "description": "LeftRight",
+  "name": "Media",
+  "description": "Media",
   "variations": [
     {
       "id": "default",
@@ -15,17 +15,8 @@
         "hash": {
           "type": "Text",
           "config": {
-            "label": "hash",
+            "label": "Hash",
             "placeholder": ""
-          }
-        },
-        "switched": {
-          "type": "Boolean",
-          "config": {
-            "label": "Switched",
-            "placeholder_false": "false",
-            "placeholder_true": "true",
-            "default_value": false
           }
         },
         "image": {
@@ -40,13 +31,6 @@
           "type": "Text",
           "config": {
             "label": "Video",
-            "placeholder": ""
-          }
-        },
-        "headline": {
-          "type": "Text",
-          "config": {
-            "label": "Headline",
             "placeholder": ""
           }
         },

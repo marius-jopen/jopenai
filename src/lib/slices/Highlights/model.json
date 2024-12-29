@@ -12,6 +12,13 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "hash": {
+          "type": "Text",
+          "config": {
+            "label": "hash",
+            "placeholder": ""
+          }
+        },
         "headline": {
           "type": "Text",
           "config": {
@@ -31,6 +38,13 @@
                   "label": "Image",
                   "constraint": {},
                   "thumbnails": []
+                }
+              },
+              "video": {
+                "type": "Text",
+                "config": {
+                  "label": "Video",
+                  "placeholder": ""
                 }
               },
               "text": {

@@ -49,6 +49,17 @@ interface HeaderDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
 	links: prismic.Repeatable<prismic.LinkField>;
+
+	/**
+	 * Button field in *Header*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: header.button
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	button: prismic.LinkField;
 }
 
 /**
@@ -67,6 +78,7 @@ export type HeaderDocument<Lang extends string = string> = prismic.PrismicDocume
 >;
 
 type PageDocumentDataSlicesSlice =
+	| MediaSlice
 	| LeftRightSlice
 	| AccordeonSlice
 	| HeroSlice
@@ -168,6 +180,16 @@ export interface AccordeonSliceDefaultPrimaryItemsItem {
 	image: prismic.ImageField<never>;
 
 	/**
+	 * Video field in *Accordeon → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: accordeon.default.primary.items[].video
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video: prismic.KeyTextField;
+
+	/**
 	 * Headline field in *Accordeon → Default → Primary → Items*
 	 *
 	 * - **Field Type**: Text
@@ -192,6 +214,16 @@ export interface AccordeonSliceDefaultPrimaryItemsItem {
  * Primary content in *Accordeon → Default → Primary*
  */
 export interface AccordeonSliceDefaultPrimary {
+	/**
+	 * hash field in *Accordeon → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: accordeon.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
 	/**
 	 * Headline field in *Accordeon → Default → Primary*
 	 *
@@ -270,6 +302,16 @@ export interface CardsSliceDefaultPrimaryItemsItem {
  */
 export interface CardsSliceDefaultPrimary {
 	/**
+	 * hash field in *Cards → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cards.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
+	/**
 	 * Headline field in *Cards → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -322,6 +364,16 @@ export type CardsSlice = prismic.SharedSlice<'cards', CardsSliceVariation>;
  */
 export interface CtaSliceDefaultPrimary {
 	/**
+	 * hash field in *Cta → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cta.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
+	/**
 	 * Headline field in *Cta → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -342,14 +394,14 @@ export interface CtaSliceDefaultPrimary {
 	text: prismic.RichTextField;
 
 	/**
-	 * Link field in *Cta → Default → Primary*
+	 * Button field in *Cta → Default → Primary*
 	 *
 	 * - **Field Type**: Link
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: cta.default.primary.link
+	 * - **API ID Path**: cta.default.primary.button
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
-	link: prismic.LinkField;
+	button: prismic.LinkField;
 }
 
 /**
@@ -383,6 +435,16 @@ export type CtaSlice = prismic.SharedSlice<'cta', CtaSliceVariation>;
  * Primary content in *Headline → Default → Primary*
  */
 export interface HeadlineSliceDefaultPrimary {
+	/**
+	 * hash field in *Headline → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: headline.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
 	/**
 	 * Headline field in *Headline → Default → Primary*
 	 *
@@ -471,6 +533,16 @@ export interface HeroSliceDefaultPrimaryItemsItem {
  */
 export interface HeroSliceDefaultPrimary {
 	/**
+	 * hash field in *Hero → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
+	/**
 	 * Items field in *Hero → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -523,6 +595,16 @@ export interface HighlightsSliceDefaultPrimaryItemsItem {
 	image: prismic.ImageField<never>;
 
 	/**
+	 * Video field in *Highlights → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: highlights.default.primary.items[].video
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video: prismic.KeyTextField;
+
+	/**
 	 * Text field in *Highlights → Default → Primary → Items*
 	 *
 	 * - **Field Type**: Rich Text
@@ -537,6 +619,16 @@ export interface HighlightsSliceDefaultPrimaryItemsItem {
  * Primary content in *Highlights → Default → Primary*
  */
 export interface HighlightsSliceDefaultPrimary {
+	/**
+	 * hash field in *Highlights → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: highlights.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
 	/**
 	 * Headline field in *Highlights → Default → Primary*
 	 *
@@ -589,6 +681,16 @@ export type HighlightsSlice = prismic.SharedSlice<'highlights', HighlightsSliceV
  * Primary content in *LeftRight → Default → Primary*
  */
 export interface LeftRightSliceDefaultPrimary {
+	/**
+	 * hash field in *LeftRight → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
 	/**
 	 * Switched field in *LeftRight → Default → Primary*
 	 *
@@ -688,6 +790,26 @@ export interface LogosSliceDefaultPrimaryItemsItem {
  */
 export interface LogosSliceDefaultPrimary {
 	/**
+	 * hash field in *Logos → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: logos.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
+	/**
+	 * Headline field in *Logos → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: logos.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
 	 * Items field in *Logos → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -724,6 +846,78 @@ type LogosSliceVariation = LogosSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type LogosSlice = prismic.SharedSlice<'logos', LogosSliceVariation>;
+
+/**
+ * Primary content in *Media → Default → Primary*
+ */
+export interface MediaSliceDefaultPrimary {
+	/**
+	 * Hash field in *Media → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
+	/**
+	 * Image field in *Media → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video field in *Media → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media.default.primary.video
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video: prismic.KeyTextField;
+
+	/**
+	 * Text field in *Media → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Media Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MediaSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<MediaSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Media*
+ */
+type MediaSliceVariation = MediaSliceDefault;
+
+/**
+ * Media Shared Slice
+ *
+ * - **API ID**: `media`
+ * - **Description**: Media
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type MediaSlice = prismic.SharedSlice<'media', MediaSliceVariation>;
 
 /**
  * Item in *SlidingCards → Default → Primary → Items*
@@ -774,6 +968,16 @@ export interface SlidingCardsSliceDefaultPrimaryItemsItem {
  * Primary content in *SlidingCards → Default → Primary*
  */
 export interface SlidingCardsSliceDefaultPrimary {
+	/**
+	 * hash field in *SlidingCards → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: sliding_cards.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
 	/**
 	 * Headline field in *SlidingCards → Default → Primary*
 	 *
@@ -826,6 +1030,16 @@ export type SlidingCardsSlice = prismic.SharedSlice<'sliding_cards', SlidingCard
  * Primary content in *Text → Default → Primary*
  */
 export interface TextSliceDefaultPrimary {
+	/**
+	 * hash field in *Text → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: text.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
 	/**
 	 * Headline field in *Text → Default → Primary*
 	 *
@@ -940,6 +1154,10 @@ declare module '@prismicio/client' {
 			LogosSliceDefaultPrimary,
 			LogosSliceVariation,
 			LogosSliceDefault,
+			MediaSlice,
+			MediaSliceDefaultPrimary,
+			MediaSliceVariation,
+			MediaSliceDefault,
 			SlidingCardsSlice,
 			SlidingCardsSliceDefaultPrimaryItemsItem,
 			SlidingCardsSliceDefaultPrimary,

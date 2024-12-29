@@ -50,6 +50,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "light",
 				"type": "Text"
+			},
+			"hash": {
+				"__TYPE__": "FieldContent",
+				"value": "present",
+				"type": "Text"
 			}
 		},
 		"items": []

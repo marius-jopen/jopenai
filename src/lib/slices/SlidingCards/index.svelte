@@ -17,7 +17,7 @@
 	};
 </script>
 
-<section class="pb-28">
+<section class="pb-28" data-id={slice.primary.hash}>
 	<div class="box text-center pb-4" data-aos="fade-up">
 		<h1>
 			{slice.primary.headline}

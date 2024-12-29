@@ -16,6 +16,17 @@
 					"allowText": true,
 					"repeat": true
 				}
+			},
+			"button": {
+				"type": "Link",
+				"config": {
+					"label": "Button",
+					"placeholder": "",
+					"select": null,
+					"allowTargetBlank": true,
+					"allowText": true,
+					"repeat": false
+				}
 			}
 		}
 	}

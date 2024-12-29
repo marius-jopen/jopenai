@@ -39,6 +39,11 @@
 						]
 					}
 				]
+			},
+			"hash": {
+				"__TYPE__": "FieldContent",
+				"value": "jack",
+				"type": "Text"
 			}
 		},
 		"items": []

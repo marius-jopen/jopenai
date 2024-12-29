@@ -8,6 +8,7 @@ import Hero from './Hero/index.svelte';
 import Highlights from './Highlights/index.svelte';
 import LeftRight from './LeftRight/index.svelte';
 import Logos from './Logos/index.svelte';
+import Media from './Media/index.svelte';
 import SlidingCards from './SlidingCards/index.svelte';
 import Text from './Text/index.svelte';
 
@@ -20,6 +21,7 @@ export const components = {
 	highlights: Highlights,
 	left_right: LeftRight,
 	logos: Logos,
+	media: Media,
 	sliding_cards: SlidingCards,
 	text: Text
 };

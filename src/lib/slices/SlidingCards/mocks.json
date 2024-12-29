@@ -73,6 +73,11 @@
 						]
 					}
 				]
+			},
+			"hash": {
+				"__TYPE__": "FieldContent",
+				"value": "storm",
+				"type": "Text"
 			}
 		},
 		"items": []

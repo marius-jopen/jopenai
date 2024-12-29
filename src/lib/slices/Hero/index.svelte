@@ -16,7 +16,7 @@
 	};
 </script>
 
-<section class="pb-28">
+<section class="pb-28" data-id={slice.primary.hash}>
 	<Slider>
 		{#each items as item, index}
 			<div class="w-[90vw] md:w-[95vw] relative" style={calculateStyles(index, items.length)}>

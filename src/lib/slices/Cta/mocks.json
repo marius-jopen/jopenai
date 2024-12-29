@@ -19,13 +19,18 @@
 					}
 				]
 			},
-			"link": {
+			"hash": {
+				"__TYPE__": "FieldContent",
+				"value": "replace",
+				"type": "Text"
+			},
+			"button": {
+				"key": "8b5c634c-e622-4d47-9b26-37fca9c6a3c0",
 				"__TYPE__": "LinkContent",
-				"key": "6ed6d4f8-6e9c-4a1a-9fcd-635810f2cbb3",
 				"value": {
 					"__TYPE__": "ExternalLink",
-					"url": "https://slicemachine.dev",
-					"text": "wheel"
+					"url": "http://google.com",
+					"text": "pick"
 				}
 			}
 		},

@@ -56,6 +56,14 @@
 										}
 									]
 								}
+							],
+							[
+								"video",
+								{
+									"__TYPE__": "FieldContent",
+									"value": "rice",
+									"type": "Text"
+								}
 							]
 						]
 					}
@@ -64,6 +72,11 @@
 			"headline": {
 				"__TYPE__": "FieldContent",
 				"value": "properly",
+				"type": "Text"
+			},
+			"hash": {
+				"__TYPE__": "FieldContent",
+				"value": "active",
 				"type": "Text"
 			}
 		},

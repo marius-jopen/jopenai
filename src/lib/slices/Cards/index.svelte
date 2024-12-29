@@ -5,7 +5,7 @@
 	export let slice: Content.CardsSlice;
 </script>
 
-<section class="box pb-28">
+<section class="box pb-28" data-id={slice.primary.hash}>
 	<div class="text-center pb-4" data-aos="fade-up">
 		<h1>
 			{slice.primary.headline}

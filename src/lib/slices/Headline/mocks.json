@@ -24,6 +24,11 @@
 						}
 					}
 				]
+			},
+			"hash": {
+				"__TYPE__": "FieldContent",
+				"value": "couple",
+				"type": "Text"
 			}
 		},
 		"items": []
