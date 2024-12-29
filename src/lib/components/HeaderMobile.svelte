@@ -12,10 +12,10 @@
             const currentScroll = window.scrollY;
 
             // Check if scrolling down or up
-            if (currentScroll > lastScrollY) {
+            if (currentScroll > lastScrollY && currentScroll > 0) {
                 isVisible = false; // Scrolling down
-            } else {
-                isVisible = true; // Scrolling up
+            } else if (currentScroll < lastScrollY && currentScroll > 0) {
+                isVisible = true; // Scrolling up, but not at the top
             }
 
             lastScrollY = currentScroll; // Update last scroll position
