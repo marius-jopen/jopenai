@@ -9,6 +9,13 @@ export async function handle({ event, resolve }) {
     const acceptLanguage = event.request.headers.get('accept-language');
     console.log('Accept-Language:', acceptLanguage); // Log the Accept-Language header
 
+    // Check if the Accept-Language header is null
+    if (!acceptLanguage) {
+        console.log('No Accept-Language header found. Defaulting to English.');
+        // Default to English if no header is found
+        return await resolve(event);
+    }
+
     // Parse the Accept-Language header
     const languages = acceptLanguage.split(',').map(lang => {
         const [code, qValue] = lang.split(';');
