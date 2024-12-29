@@ -7,7 +7,22 @@ export async function handle({ event, resolve }) {
 
     // Fetch location data based on the IP address
     const response = await fetch(`https://ipapi.co/${ip}/json/`);
-    const locationData = await response.json();
+
+    // Check if the response is OK
+    if (!response.ok) {
+        console.error('Error fetching location data:', response.status, await response.text());
+        // Handle the error appropriately, e.g., redirect to a default page or return an error response
+        return await resolve(event); // or handle the error as needed
+    }
+
+    let locationData;
+    try {
+        locationData = await response.json();
+    } catch (error) {
+        console.error('Error parsing JSON:', error);
+        // Handle JSON parsing error
+        return await resolve(event); // or handle the error as needed
+    }
 
     // Check if the user is from Germany
     if (locationData.country === 'DE' && event.url.pathname !== '/de') {
