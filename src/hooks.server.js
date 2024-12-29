@@ -24,10 +24,14 @@ export async function handle({ event, resolve }) {
         return await resolve(event); // or handle the error as needed
     }
 
-    // Check if the user is from Germany
-    if (locationData.country === 'DE' && event.url.pathname !== '/de') {
+    // Check the Accept-Language header
+    const acceptLanguage = event.request.headers.get('accept-language');
+    const isGermanUser = locationData.country === 'DE' || acceptLanguage?.includes('de');
+
+    // Redirect based on language detection
+    if (isGermanUser && event.url.pathname !== '/de') {
         throw redirect(302, '/de'); // Redirect to the German version
-    } else if (locationData.country !== 'DE' && event.url.pathname !== '/') {
+    } else if (!isGermanUser && event.url.pathname !== '/') {
         throw redirect(302, '/'); // Redirect to the English version
     }
 
