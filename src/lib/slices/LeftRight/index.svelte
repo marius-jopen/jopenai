@@ -12,7 +12,7 @@
 					{slice.primary.headline}
 				</h1>
 	
-				<div class="text-neutral-600" data-aos="fade" data-aos-delay={1000}>
+				<div class="text-neutral-600" data-aos="fade" data-aos-delay={500}>
 					<PrismicText field={slice.primary.text} />
 				</div>
 			</div>
