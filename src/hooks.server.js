@@ -12,6 +12,8 @@ export async function handle({ event, resolve }) {
     // Check if the user is from Germany
     if (locationData.country === 'DE' && event.url.pathname !== '/de') {
         throw redirect(302, '/de'); // Redirect to the German version
+    } else if (locationData.country !== 'DE' && event.url.pathname !== '/') {
+        throw redirect(302, '/'); // Redirect to the English version
     }
 
     // Continue to the requested page
