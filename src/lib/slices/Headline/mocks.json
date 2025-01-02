@@ -7,9 +7,9 @@
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
-						"type": "heading1",
+						"type": "paragraph",
 						"content": {
-							"text": "Mouth"
+							"text": "Sunt velit deserunt reprehenderit veniam aute veniam. Commodo cupidatat pariatur consectetur."
 						}
 					}
 				]
@@ -29,6 +29,10 @@
 				"__TYPE__": "FieldContent",
 				"value": "couple",
 				"type": "Text"
+			},
+			"big": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			}
 		},
 		"items": []

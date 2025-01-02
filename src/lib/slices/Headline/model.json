@@ -25,7 +25,7 @@
             "label": "Headline",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "heading1,heading2,heading3"
+            "multi": "em"
           }
         },
         "text": {
@@ -35,6 +35,15 @@
             "placeholder": "",
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
+          }
+        },
+        "big": {
+          "type": "Boolean",
+          "config": {
+            "label": "Big",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
           }
         }
       },

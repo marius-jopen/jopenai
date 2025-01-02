@@ -61,6 +61,17 @@
 									"value": "reason",
 									"type": "Text"
 								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "cb16d92b-e7c8-48c5-a476-82602b266891",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://google.com"
+									}
+								}
 							]
 						]
 					}

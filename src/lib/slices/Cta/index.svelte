@@ -8,9 +8,9 @@
 <section class="box pb-28" data-id={slice.primary.hash}>
 	<div class="bg-white rounded-lg px-8 pt-16 pb-16 text-center">
 		<div class="mx-auto w-9/12">
-			<h1 data-aos="fade">
+			<h2 data-aos="fade">
 				{slice.primary.headline}
-			</h1>
+			</h2>
 	
 			<div class="text-neutral-600 pb-8" data-aos="fade" >
 				<PrismicText field={slice.primary.text} />

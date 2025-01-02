@@ -44,9 +44,9 @@
 				<div class="pt-4 flex">
 					<div class="w-full">
 						<button class="w-full" on:click={() => toggle(index)}>
-							<h2 class="text-left w-full">
+							<h3 class="text-left w-full">
 								{item.headline}
-							</h2>
+							</h3>
 						</button>
 	
 						{#if openIndex === index}
@@ -56,9 +56,9 @@
 						{/if}
 					</div>
 
-					<h2 class="flex flex-col justify-center cursor-pointer" on:click={() => toggle(index)}>
+					<h3 class="flex flex-col justify-center cursor-pointer" on:click={() => toggle(index)}>
 						{openIndex === index ? '–' : '+'}
-					</h2>
+					</h3>
 				</div>
 			{/each}
 		</div>

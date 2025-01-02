@@ -58,6 +58,17 @@
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
           }
+        },
+        "link": {
+          "type": "Link",
+          "config": {
+            "label": "Link",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": false,
+            "repeat": false
+          }
         }
       },
       "items": {}

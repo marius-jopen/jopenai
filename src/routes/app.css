@@ -10,15 +10,15 @@ body, p {
     @apply text-sm  md:text-base;
 }
 
-.h0 {
+h1 {
     @apply text-4xl md:text-[4rem] lg:text-[5rem] leading-[100%] font-normal pb-8;
 }
 
-h1 {
+h2 {
     @apply text-3xl md:text-4xl font-normal pb-8;
 }
 
-h2 {
+h3 {
     @apply text-xl md:text-3xl font-normal pb-6;
 }
 

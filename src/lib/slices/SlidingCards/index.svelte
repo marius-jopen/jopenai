@@ -19,9 +19,9 @@
 
 <section class="pb-28" data-id={slice.primary.hash}>
 	<div class="box text-center pb-4" data-aos="fade-up">
-		<h1>
+		<h2>
 			{slice.primary.headline}
-		</h1>
+		</h2>
 	</div>
 
 	<div data-aos="fade-up">

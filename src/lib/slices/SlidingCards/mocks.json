@@ -69,6 +69,17 @@
 									"value": "stock",
 									"type": "Text"
 								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "3f25edce-3266-4f9d-ba42-0193c9e55842",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "https://slicemachine.dev"
+									}
+								}
 							]
 						]
 					}

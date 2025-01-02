@@ -50,6 +50,17 @@
 									"value": "courage",
 									"type": "Text"
 								}
+							],
+							[
+								"link",
+								{
+									"__TYPE__": "LinkContent",
+									"key": "11c9a7e2-e71a-44c7-9c1a-6168643da003",
+									"value": {
+										"__TYPE__": "ExternalLink",
+										"url": "http://google.com"
+									}
+								}
 							]
 						]
 					}

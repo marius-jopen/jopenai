@@ -55,6 +55,14 @@
 				"__TYPE__": "FieldContent",
 				"value": "present",
 				"type": "Text"
+			},
+			"link": {
+				"__TYPE__": "LinkContent",
+				"key": "268cecef-7e44-41c0-a19b-4ab6f77b2cdc",
+				"value": {
+					"__TYPE__": "ExternalLink",
+					"url": "https://slicemachine.dev"
+				}
 			}
 		},
 		"items": []

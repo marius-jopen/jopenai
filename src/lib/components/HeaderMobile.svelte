@@ -1,6 +1,5 @@
 <script>
     import { onMount } from 'svelte';
-    import LanguageSwitcher from './LanguageSwitcher.svelte';
 
     export let data;
 
@@ -33,10 +32,6 @@
     <div class="box py-4 flex justify-between">
         <div class="text-xl font-bold z-20 text-center w-full">
             JopenAI
-        </div>
-
-        <div class="z-20 absolute top-[13px] right-3">  
-            <LanguageSwitcher minimal={true} />
         </div>
     </div>
 </div>

@@ -1,7 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-    import ScrollLinks from './ScrollLinks.svelte';
-    import LanguageSwitcher from './LanguageSwitcher.svelte';
+    import Navigation from './Navigation.svelte';
 	import Button from './Button.svelte';
 
     export let data;
@@ -33,20 +32,15 @@
 
 <div class="hidden md:block fixed top-0 left-0 w-full z-20 transition-transform duration-300 bg-neutral-100 bg-opacity-80 backdrop-blur" style="transform: translateY({isVisible ? '0' : '-100%'})">
     <div class="box py-4 flex justify-between">
-        <div class="text-xl font-bold z-20">
+        <a href="/" class="text-xl font-bold z-20">
             JopenAI
-        </div>
+        </a>
     
         <div class="flex gap-8 text-sm pt-0.5 absolute top-[16px] left-0 w-full justify-center">
-            <ScrollLinks {data} />
-            <!-- {#each data.header[0].data.links as link (link.key)}
-                <PrismicLink field={link} />
-            {/each} -->
+            <Navigation {data} />
         </div>
     
-        <div class="flex gap-6 z-20 -mt-0.5">  
-            <LanguageSwitcher />
-          
+        <div class="flex gap-6 z-20 -mt-0.5">            
             <div class="">
                 <Button data={data.header[0].data.button} />
             </div>

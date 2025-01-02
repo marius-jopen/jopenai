@@ -464,6 +464,17 @@ export interface HeadlineSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
+
+	/**
+	 * Big field in *Headline → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: headline.default.primary.big
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	big: prismic.BooleanField;
 }
 
 /**
@@ -526,6 +537,16 @@ export interface HeroSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	text: prismic.KeyTextField;
+
+	/**
+	 * Link field in *Hero → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: hero.default.primary.items[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
 }
 
 /**
@@ -613,6 +634,16 @@ export interface HighlightsSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
+
+	/**
+	 * Link field in *Highlights → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: highlights.default.primary.items[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
 }
 
 /**
@@ -741,6 +772,16 @@ export interface LeftRightSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
+
+	/**
+	 * Link field in *LeftRight → Default → Primary*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right.default.primary.link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
 }
 
 /**
@@ -962,6 +1003,16 @@ export interface SlidingCardsSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
+
+	/**
+	 * Link field in *SlidingCards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: sliding_cards.default.primary.items[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
 }
 
 /**
