@@ -37,9 +37,9 @@
 					</div>
 				
 					<div class="rounded-b-lg lg:rounded-b-none lg:!rounded-r-lg bg-white px-8 pt-10 pb-12 w-full lg:w-1/2 flex flex-col lg:justify-center lg:aspect-[4/3] h-full lg:h-auto">
-						<h2 data-aos="fade" data-aos-delay={100 + index * 500}>
+						<h3 data-aos="fade" data-aos-delay={100 + index * 500}>
 							{item.headline}
-						</h2>
+						</h3>
 				
 						<div class="text-sm text-neutral-600" data-aos="fade" data-aos-delay={500 + index * 500}>
 							<PrismicText field={item.text} />

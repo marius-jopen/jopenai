@@ -15,9 +15,9 @@
 	<div class="grid grid-cols-1 md:grid-cols-3 gap-3" data-aos="fade-up">
 		{#each slice.primary.items as item, index}
 			<div data-aos="fade-zoom-in" data-aos-delay={200 + index * 500} class="card bg-white rounded-lg px-8 pt-12 pb-14">
-				<h2 data-aos="fade" data-aos-delay={100 + index * 500}>
+				<h3 data-aos="fade" data-aos-delay={100 + index * 500}>
 					{item.headline}
-				</h2>
+				</h3>
 
 				<div class="text-sm text-neutral-600" data-aos="fade" data-aos-delay={500 + index * 500}>
 					<PrismicText field={item.text} />
