@@ -1,6 +1,6 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
-	import { PrismicImage, PrismicText } from '@prismicio/svelte';
+	import { PrismicImage, PrismicRichText } from '@prismicio/svelte';
 	export let slice: Content.LeftRightSlice;
 </script>
 
@@ -12,8 +12,8 @@
 					{slice.primary.headline}
 				</h2>
 	
-				<div class="text-neutral-600" data-aos="fade" data-aos-delay={500}>
-					<PrismicText field={slice.primary.text} />
+				<div class="text-neutral-600 text-box" data-aos="fade" data-aos-delay={250}>
+					<PrismicRichText field={slice.primary.text} />
 				</div>
 			</div>
 	

@@ -78,6 +78,7 @@ export type HeaderDocument<Lang extends string = string> = prismic.PrismicDocume
 >;
 
 type PageDocumentDataSlicesSlice =
+	| BlankSlice
 	| HeroFadeSlice
 	| MediaSlice
 	| LeftRightSlice
@@ -272,6 +273,48 @@ type AccordeonSliceVariation = AccordeonSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type AccordeonSlice = prismic.SharedSlice<'accordeon', AccordeonSliceVariation>;
+
+/**
+ * Primary content in *Blank → Default → Primary*
+ */
+export interface BlankSliceDefaultPrimary {
+	/**
+	 * Selector field in *Blank → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: blank.default.primary.selector
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	selector: prismic.SelectField<'xxl' | 'xl' | 'l' | 'm' | 's'>;
+}
+
+/**
+ * Default variation for Blank Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlankSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<BlankSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Blank*
+ */
+type BlankSliceVariation = BlankSliceDefault;
+
+/**
+ * Blank Shared Slice
+ *
+ * - **API ID**: `blank`
+ * - **Description**: Blank
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type BlankSlice = prismic.SharedSlice<'blank', BlankSliceVariation>;
 
 /**
  * Item in *Cards → Default → Primary → Items*
@@ -1271,6 +1314,10 @@ declare module '@prismicio/client' {
 			AccordeonSliceDefaultPrimary,
 			AccordeonSliceVariation,
 			AccordeonSliceDefault,
+			BlankSlice,
+			BlankSliceDefaultPrimary,
+			BlankSliceVariation,
+			BlankSliceDefault,
 			CardsSlice,
 			CardsSliceDefaultPrimaryItemsItem,
 			CardsSliceDefaultPrimary,

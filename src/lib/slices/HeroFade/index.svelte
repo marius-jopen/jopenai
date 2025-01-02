@@ -66,10 +66,10 @@
 		{/each}
 	</Splide>
 
-	<div class="flex justify-center mt-4 ss-carousel__controls pt-2" data-aos="fade-up" data-aos-delay={500}>
+	<!-- <div class="flex justify-center mt-4 ss-carousel__controls pt-2" data-aos="fade-up" data-aos-delay={500}>
 		<button on:click={goToPrev} class="ss-carousel__arrow disabled arrow-prev" aria-label="Previous"></button>
 		<button on:click={goToNext} class="ss-carousel__arrow arrow-next" aria-label="Next"></button>
-	</div>
+	</div> -->
 </section>
 
 

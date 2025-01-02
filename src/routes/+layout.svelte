@@ -9,7 +9,7 @@
 
 	onMount(() => {
 		AOS.init({
-			duration: 2000,
+			duration: 1500,
 			once: false,
 			offset: 50
 		});
@@ -17,7 +17,7 @@
 </script>
 
 <svelte:head>
-	<title>{$page.data.meta_title}</title>
+	<title>JopenAI - {$page.data.meta_title}</title>
 	{#if $page.data.meta_description}
 		<meta name="description" content={$page.data.meta_description} />
 	{/if}

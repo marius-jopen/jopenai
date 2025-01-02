@@ -17,7 +17,7 @@
 	};
 </script>
 
-<section class="pb-28" data-id={slice.primary.hash}>
+<section class="pb-24" data-id={slice.primary.hash}>
 	<div class="box text-center pb-4" data-aos="fade-up">
 		<h2>
 			{slice.primary.headline}
@@ -27,7 +27,7 @@
 	<div data-aos="fade-up">
 		<Slider>
 			{#each items as item, index}
-				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 500} style={calculateStyles(index, items.length)} class="item">
+				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 250} style={calculateStyles(index, items.length)} class="item">
 					<div class="w-full rounded-lg overflow-hidden" >
 						{#if item.video}
 							<video src={item.video} poster={item.image.url} class="h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[5/3]" autoplay muted loop playsinline />

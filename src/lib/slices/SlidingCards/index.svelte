@@ -27,7 +27,7 @@
 	<div data-aos="fade-up">
 		<Slider>
 			{#each items as item, index}
-				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 500} class="item lg:flex flex-col lg:flex-row rounded-lg overflow-hidden" style={calculateStyles(index, items.length)}>
+				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 250} class="item lg:flex flex-col lg:flex-row rounded-lg overflow-hidden" style={calculateStyles(index, items.length)}>
 					<div class="w-full lg:w-1/2" >
 						{#if item.video}
 							<video src={item.video} poster={item.image.url} class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" autoplay muted loop playsinline />
@@ -37,11 +37,11 @@
 					</div>
 				
 					<div class="rounded-b-lg lg:rounded-b-none lg:!rounded-r-lg bg-white px-8 pt-10 pb-12 w-full lg:w-1/2 flex flex-col lg:justify-center lg:aspect-[4/3] h-full lg:h-auto">
-						<h3 data-aos="fade" data-aos-delay={100 + index * 500}>
+						<h3 data-aos="fade" data-aos-delay={100 + index * 250}>
 							{item.headline}
 						</h3>
 				
-						<div class="text-sm text-neutral-600" data-aos="fade" data-aos-delay={500 + index * 500}>
+						<div class="text-sm text-neutral-600" data-aos="fade" data-aos-delay={250 + index * 250}>
 							<PrismicText field={item.text} />
 						</div>
 					</div>

@@ -20,9 +20,9 @@
 <section class="box pb-28" data-id={slice.primary.hash}>
 	{#if slice.primary.headline}
 		<div class="text-center pb-4" data-aos="fade-up">
-			<h1>
+			<h2>
 				{slice.primary.headline}
-			</h1>
+			</h2>
 		</div>
 	{/if}
 

@@ -19,9 +19,13 @@ h2 {
 }
 
 h3 {
-    @apply text-xl md:text-2xl font-normal pb-6;
+    @apply text-xl md:text-3xl font-normal pb-6;
 }
 
 .box {
     @apply mx-3 lg:mx-[15vw];
+}
+
+.text-box  p{
+    @apply pb-2;
 }

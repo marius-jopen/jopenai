@@ -1,0 +1,33 @@
+{
+  "id": "blank",
+  "type": "SharedSlice",
+  "name": "Blank",
+  "description": "Blank",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "selector": {
+          "type": "Select",
+          "config": {
+            "label": "Selector",
+            "placeholder": "",
+            "options": [
+              "xxl",
+              "xl",
+              "l",
+              "m",
+              "s"
+            ]
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}
