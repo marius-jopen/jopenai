@@ -6,7 +6,7 @@
 
 <section class="pb-28" data-id={slice.primary.hash}>
 	<div class="box" data-aos="fade-up">
-		<div class="rounded-lg overflow-hidden flex flex-col-reverse {slice.primary.switched ? 'md:flex-row-reverse' : 'md:flex-row'} w-full">
+		<a href="{slice.primary.link && slice.primary.link.url}" class="rounded-lg overflow-hidden flex flex-col-reverse {slice.primary.switched ? 'md:flex-row-reverse' : 'md:flex-row'} w-full">
 			<div class="w-full md:w-1/2 bg-white px-10 flex flex-col justify-center py-10 md:py-12">
 				<h2 data-aos="fade" data-aos-delay={100}>
 					{slice.primary.headline}
@@ -24,6 +24,6 @@
 					<PrismicImage class="w-full aspect-[16/12] md:aspect-[12/9] object-cover" field={slice.primary.image} />
 				{/if}
 			</div>
-		</div>
+		</a>
 	</div>
 </section>

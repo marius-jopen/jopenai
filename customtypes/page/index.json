@@ -27,6 +27,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"hero_fade": {
+							"type": "SharedSlice"
+						},
 						"media": {
 							"type": "SharedSlice"
 						},

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import Slider from '$lib/components/slider.svelte';
-	import { PrismicImage, PrismicRichText } from '@prismicio/svelte';
+	import { PrismicImage, PrismicRichText, PrismicLink } from '@prismicio/svelte';
 
 	export let slice: Content.HighlightsSlice;
 
@@ -27,7 +27,7 @@
 	<div data-aos="fade-up">
 		<Slider>
 			{#each items as item, index}
-				<div data-aos="fade-zoom-in" data-aos-delay={200 + index * 500} style={calculateStyles(index, items.length)} class="item">
+				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 500} style={calculateStyles(index, items.length)} class="item">
 					<div class="w-full rounded-lg overflow-hidden" >
 						{#if item.video}
 							<video src={item.video} poster={item.image.url} class="h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[5/3]" autoplay muted loop playsinline />
@@ -39,7 +39,7 @@
 					<div class="text-center text-neutral-600 pt-3 pb-4">
 						<PrismicRichText field={item.text} />
 					</div>
-				</div>
+				</a>
 			{/each}
 		</Slider>
 	</div>

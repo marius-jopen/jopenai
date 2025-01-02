@@ -5,6 +5,7 @@ import Cards from './Cards/index.svelte';
 import Cta from './Cta/index.svelte';
 import Headline from './Headline/index.svelte';
 import Hero from './Hero/index.svelte';
+import HeroFade from './HeroFade/index.svelte';
 import Highlights from './Highlights/index.svelte';
 import LeftRight from './LeftRight/index.svelte';
 import Logos from './Logos/index.svelte';
@@ -18,6 +19,7 @@ export const components = {
 	cta: Cta,
 	headline: Headline,
 	hero: Hero,
+	hero_fade: HeroFade,
 	highlights: Highlights,
 	left_right: LeftRight,
 	logos: Logos,

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import Slider from '$lib/components/slider.svelte';
-	import { PrismicText, PrismicImage } from '@prismicio/svelte';
+	import { PrismicImage } from '@prismicio/svelte';
 
 	export let slice: Content.HeroSlice;
 
@@ -19,7 +19,7 @@
 <section class="pb-28" data-id={slice.primary.hash}>
 	<Slider>
 		{#each items as item, index}
-			<div class="w-[90vw] md:w-[95vw] relative rounded-lg overflow-hidden" style={calculateStyles(index, items.length)}>
+			<a href="{item.link && item.link.url}" class="w-[90vw] md:w-[95vw] relative rounded-lg overflow-hidden" style={calculateStyles(index, items.length)}>
 				<div>
 					{#if item.video}
 						<video src={item.video} poster={item.image.url} class="rounded-lg object-cover w-full aspect-[3/4] lg:aspect-[16/8]" playsinline autoplay muted loop />
@@ -31,7 +31,7 @@
 						{item.text}
 					</h1>
 				</div>
-			</div>
+			</a>
 		{/each}
 	</Slider>
 </section>
