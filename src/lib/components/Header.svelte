@@ -48,4 +48,4 @@
     </div>
 </div>
 
-<div class="h-[65px] w-full bg-neutral-100 hidden md:block" />
+<div class="h-[60px] w-full bg-neutral-100 hidden md:block" />

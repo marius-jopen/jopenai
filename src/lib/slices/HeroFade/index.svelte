@@ -3,29 +3,28 @@
 	import { PrismicImage } from '@prismicio/svelte';
 	import { Splide, SplideSlide } from '@splidejs/svelte-splide';
 	import '@splidejs/svelte-splide/css';
-	import { onMount } from 'svelte';
 
 	export let slice: Content.HeroFadeSlice;
 
 	const items = slice.primary.items;
+
 	let splide; // Reference to the Splide instance
+	let innerWidth; // This will be bound to the window's inner width
 	let isMobile = false;
 
-	onMount(() => {
-		const updateMedia = () => {
-			isMobile = window.innerWidth < 1024; // Adjust the breakpoint as needed
-			console.log('Window resized. Is mobile:', isMobile); // Added log for resize
-		};
+	let splideOptions = {
+		type: 'fade',
+		heightRatio: 1 / 2, // Default value, will be updated
+		rewind: true,
+		pagination: false,
+		autoplay: true,
+		interval: 3000,
+		arrows: false // Disable default arrows
+	};
 
-		updateMedia();
-		window.addEventListener('resize', updateMedia);
-		return () => window.removeEventListener('resize', updateMedia);
-	});
-
-	function goToPrev() {
-		if (splide) {
-			splide.go('-1'); // Go to the previous slide
-		}
+	$: {
+		isMobile = innerWidth < 1024; // Determine if the view is mobile based on innerWidth
+		splideOptions.heightRatio = isMobile ? 4 / 3 : 1 / 2;
 	}
 
 	function goToNext() {
@@ -35,18 +34,12 @@
 	}
 </script>
 
+<svelte:window bind:innerWidth />
+
 <section class="pb-28" data-id={slice.primary.hash}>
 	<Splide 
 		bind:this={splide} 
-		options={{ 
-			type: 'fade', 
-			heightRatio: isMobile ? 4 / 3 : 0.5,
-			rewind: true,
-			pagination: false,
-			// autoplay: true,
-			interval: 3000,
-			arrows: false // Disable default arrows
-		}} 
+		options={splideOptions}
 		aria-label="Hero Fade Carousel"
 	>
 		{#each items as item, index}
@@ -65,13 +58,7 @@
 			</SplideSlide>
 		{/each}
 	</Splide>
-
-	<!-- <div class="flex justify-center mt-4 ss-carousel__controls pt-2" data-aos="fade-up" data-aos-delay={500}>
-		<button on:click={goToPrev} class="ss-carousel__arrow disabled arrow-prev" aria-label="Previous"></button>
-		<button on:click={goToNext} class="ss-carousel__arrow arrow-next" aria-label="Next"></button>
-	</div> -->
 </section>
-
 
 <style lang="postcss">
 	.ss-carousel__controls {

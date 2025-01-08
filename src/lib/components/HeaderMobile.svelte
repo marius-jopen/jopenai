@@ -1,6 +1,5 @@
 <script>
     import { onMount } from 'svelte';
-    import Navigation from './Navigation.svelte';
     import { fade } from 'svelte/transition';
 
     export let data;
@@ -62,14 +61,14 @@
                 </a>
             </div>
         
-            <div on:click={closeNav} class="cursor-pointer fixed top-[18px] right-4 z-20">
+            <div on:click={closeNav} class="cursor-pointer fixed top-[18px] right-4 z-20 ">
                 Close
             </div>
         </div>
 
         <div class="flex flex-col justify-center h-full text-center -mt-12">
-            {#each data.header[0].data.links as link}
-                <a on:click={closeNav} class="text-xl text-neutral-500 hover:text-black transition-all duration-300 py-1" href={link.url} >
+            {#each data.header[0].data.links as link, index}
+                <a data-aos="fade-zoom-in" data-aos-delay={200 + index * 50} on:click={closeNav} class="text-xl text-white hover:text-neutral-500 transition-all duration-300 py-1" href={link.url} >
                     {link.text} 
                 </a>
             {/each}
