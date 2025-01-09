@@ -19,12 +19,13 @@
     }
 </script>
 
-<div class="language-switcher">
+<div class="flex gap-2">
     {#each languages as langCode}
         <a
             href={getDomain(langCode)}
             class:active={lang === langCode}
             aria-label={`Switch to ${getDisplayText(langCode)}`}
+            class="text-neutral-500 hover:text-black transition-colors duration-300"
         >
             {getDisplayText(langCode)}
         </a>
@@ -32,12 +33,7 @@
 </div>
 
 <style>
-    .language-switcher {
-        display: flex;
-        gap: 0.5rem;
-    }
-    
     .active {
-        font-weight: bold;
+        @apply text-black;
     }
 </style>
