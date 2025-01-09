@@ -1,11 +1,18 @@
 /** @type {import('@sveltejs/kit').HandleServerError} */
 export function handleError({ error, event }) {
-	// Log the error
-	console.error('Server Error:', error);
+	// Add structured error logging
+	const errorDetails = {
+		message: error.message,
+		code: error?.code ?? 'UNKNOWN',
+		stack: error.stack,
+		path: event.url.pathname
+	};
+	
+	console.error('Server Error:', errorDetails);
 
 	return {
 		message: 'Internal Server Error',
-		code: error?.code ?? 'UNKNOWN'
+		code: errorDetails.code
 	};
 }
 

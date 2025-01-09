@@ -1,37 +1,30 @@
-<script>
+<script lang="ts">
     import { currentLang } from '$lib/stores/lang';
     
-    const languages = ['en-us', 'de-de'];
+    type LanguageCode = 'en-us' | 'de-de';
+    const languages: LanguageCode[] = ['en-us', 'de-de'];
     $: lang = $currentLang || 'en-us';
 
-    function getDisplayText(langCode) {
-        switch(langCode) {
-            case 'en-us':
-                return 'EN';
-            case 'de-de':
-                return 'DE';
-            default:
-                return langCode;
-        }
+    const domainMap: Record<LanguageCode, string> = {
+        'en-us': 'https://jopen.ai',
+        'de-de': 'https://de.jopen.ai'
+    };
+
+    function getDisplayText(langCode: LanguageCode): string {
+        return langCode === 'en-us' ? 'EN' : 'DE';
     }
 
-    function getDomain(langCode) {
-        switch(langCode) {
-            case 'en-us':
-                return 'https://jopen.ai';
-            case 'de-de':
-                return 'https://de.jopen.ai';
-            default:
-                return 'https://jopen.ai';
-        }
+    function getDomain(langCode: LanguageCode): string {
+        return domainMap[langCode];
     }
 </script>
 
 <div class="language-switcher">
     {#each languages as langCode}
-        <a 
+        <a
             href={getDomain(langCode)}
             class:active={lang === langCode}
+            aria-label={`Switch to ${getDisplayText(langCode)}`}
         >
             {getDisplayText(langCode)}
         </a>
