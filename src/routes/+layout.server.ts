@@ -1,1 +1,2 @@
-export const prerender = 'auto';
+// Disable prerendering for the entire app
+export const prerender = false;

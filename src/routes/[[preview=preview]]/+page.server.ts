@@ -1,6 +1,5 @@
 import { asText } from '@prismicio/client';
 import { LANGUAGE } from '$env/static/private';
-
 import { createClient } from '$lib/prismicio';
 
 export async function load({ fetch, cookies }) {
