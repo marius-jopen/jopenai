@@ -6,7 +6,7 @@
 	import FloatingButton from '$lib/components/FloatingButton.svelte';
 	import { components } from '$lib/slices';
 	import { currentLang } from '$lib/stores/lang';
-
+	import FloatingLanguage from '$lib/components/FloatingLanguage.svelte';
 	export let data;
 	
 	$currentLang = data.lang;
@@ -17,3 +17,4 @@
 <SliceZone slices={data.page.data.slices} {components} />
 <Footer {data} />
 <FloatingButton {data} />
+<FloatingLanguage {data} />

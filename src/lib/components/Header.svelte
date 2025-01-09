@@ -2,7 +2,7 @@
     import { onMount } from 'svelte';
     import Navigation from './Navigation.svelte';
 	import Button from './Button.svelte';
-    import LanguageSwitch from './LanguageSwitch.svelte';
+    // import LanguageSwitch from './LanguageSwitch.svelte';
     export let data;
 
     let isVisible = true;
@@ -38,13 +38,11 @@
     
         <div class="flex gap-8 text-sm pt-0.5 absolute top-[16px] left-0 w-full justify-center">
             <Navigation {data} />
-            <LanguageSwitch />
         </div>
     
         <div class="flex gap-6 z-20 -mt-0.5">            
-            <div class="">
-                <Button data={data.header[0].data.button} />
-            </div>
+            <!-- <LanguageSwitch /> -->
+            <Button data={data.header[0].data.button} />
         </div>
     </div>
 </div>

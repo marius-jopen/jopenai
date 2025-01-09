@@ -2,7 +2,7 @@
     import Button from './Button.svelte';
     import { onMount, onDestroy } from 'svelte';
     import { fade } from 'svelte/transition';
-
+    // import LanguageSwitch from './LanguageSwitch.svelte';
     export let data;
     let isVisible = true;
 
@@ -27,9 +27,10 @@
 
 {#if isVisible}
     <div 
-        class="fixed bottom-0 left-0 mb-6 mr-4 z-20 flex justify-center w-full md:hidden" 
+        class="fixed bottom-0 left-0 mb-6 mr-4 z-20 flex md:hidden justify-center w-full" 
         transition:fade={{ duration: 300 }}
     >
         <Button big={true} data={data.header[0].data.button} />
+        <!-- <LanguageSwitch /> -->
     </div>
 {/if}

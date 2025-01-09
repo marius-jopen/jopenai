@@ -73,8 +73,10 @@
                     {link.text} 
                 </a>
             {/each}
-
-            <LanguageSwitch />
+            
+            <div data-aos="fade-zoom-in" data-aos-delay={200 + data.header[0].data.links.length * 50} class="flex justify-center pt-8">
+                <LanguageSwitch />
+            </div>
         </div>
     </div>
 {/if}
