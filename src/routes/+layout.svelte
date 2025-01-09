@@ -17,13 +17,18 @@
 </script>
 
 <svelte:head>
-	<title>JopenAI - {$page.data.meta_title}</title>
+	<title>
+		JopenAI - {$page.data.meta_title}
+	</title>
+	
 	{#if $page.data.meta_description}
 		<meta name="description" content={$page.data.meta_description} />
 	{/if}
+
 	{#if $page.data.meta_title}
 		<meta name="og:title" content={$page.data.meta_title} />
 	{/if}
+
 	{#if $page.data.meta_image}
 		<meta name="og:image" content={$page.data.meta_image} />
 		<meta name="twitter:card" content="summary_large_image" />
