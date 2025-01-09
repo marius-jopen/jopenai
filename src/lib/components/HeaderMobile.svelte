@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { fade } from 'svelte/transition';
+    import LanguageSwitch from './LanguageSwitch.svelte';
 
     export let data;
 
@@ -72,6 +73,8 @@
                     {link.text} 
                 </a>
             {/each}
+
+            <LanguageSwitch />
         </div>
     </div>
 {/if}

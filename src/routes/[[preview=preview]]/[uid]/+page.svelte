@@ -5,8 +5,11 @@
 	import Footer from '$lib/components/Footer.svelte';
 	import FloatingButton from '$lib/components/FloatingButton.svelte';
 	import { components } from '$lib/slices';
+	import { currentLang } from '$lib/stores/lang';
 
 	export let data;
+	
+	$currentLang = data.lang;
 </script>
 
 <Header {data} />
