@@ -4,7 +4,7 @@ import { createClient } from '$lib/prismicio';
 
 export async function load({ params, fetch, cookies }) {
 	const client = createClient({ fetch, cookies });
-	const lang = LANGUAGE || 'en-en';
+	const lang = LANGUAGE || 'en-us';
 	const page = await client.getByUID('page', params.uid, { lang });
 	const header = await client.getAllByType('header', { lang });
 	const footer = await client.getAllByType('footer', { lang });
