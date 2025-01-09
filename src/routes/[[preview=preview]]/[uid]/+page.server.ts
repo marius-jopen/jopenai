@@ -1,13 +1,13 @@
 import { asText } from '@prismicio/client';
-
+import { LANGUAGE } from '$env/static/private';
 import { createClient } from '$lib/prismicio';
 
 export async function load({ params, fetch, cookies }) {
 	const client = createClient({ fetch, cookies });
-
-	const page = await client.getByUID('page', params.uid);
-	const header = await client.getAllByType("header");
-	const footer = await client.getAllByType("footer");
+	const lang = LANGUAGE || 'en-en';
+	const page = await client.getByUID('page', params.uid, { lang });
+	const header = await client.getAllByType('header', { lang });
+	const footer = await client.getAllByType('footer', { lang });
 
 	return {
 		page,
