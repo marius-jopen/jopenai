@@ -44,14 +44,14 @@
 	>
 		{#each items as item, index}
 			<SplideSlide>
-				<div on:click={goToNext} class="w-full relative cursor-pointer h-full">
+				<div on:click={goToNext} class="px-3 md:px-8 w-full relative cursor-pointer h-full">
 					{#if item.video}
-						<video src={item.video} poster={item.image.url} class="object-cover w-full aspect-auto h-full lg:aspect-[16/8]" playsinline autoplay muted loop />
+						<video src={item.video} poster={item.image.url} class="rounded-lg overflow-hidden border border-neutral-200 object-cover w-full aspect-auto h-full lg:aspect-[16/8]" playsinline autoplay muted loop />
 					{:else}
-						<PrismicImage class="object-cover w-full aspect-auto h-full lg:aspect-[16/8]" field={item.image} />
+						<PrismicImage class="rounded-lg overflow-hidden  object-cover w-full aspect-auto h-full lg:aspect-[16/8]" field={item.image} />
 					{/if}
 
-					<h1 data-aos="fade" class="text-white px-6 pb-7 absolute bottom-0 left-0 w-full lg:w-3/4 h-full flex items-end">
+					<h1 data-aos="fade" class="text-white px-6 pb-7 text-center absolute top-0 left-0 w-full h-full flex items-end">
 						{item.text}
 					</h1>
 				</div>

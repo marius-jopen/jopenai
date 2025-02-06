@@ -6,7 +6,7 @@
 </script>
 
 <section class="box pb-28" data-id={slice.primary.hash}>
-	<div class="bg-white rounded-lg px-8 pt-16 pb-16 text-center">
+	<div class="bg-white border border-neutral-200 rounded-lg px-8 pt-16 pb-16 text-center">
 		<div class="mx-auto w-9/12">
 			<h2 data-aos="fade">
 				{slice.primary.headline}
@@ -17,9 +17,8 @@
 			</div>
 
 			<div class="flex justify-center" data-aos="fade" >
-				<Button onwhite data={slice.primary.button} />
+				<Button onwhite big data={slice.primary.button} />
 			</div>
 		</div>
 	</div>
 </section>
-

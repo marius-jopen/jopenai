@@ -17,7 +17,7 @@
 	<div class="grid grid-cols-2 md:grid-cols-6 gap-3" data-aos="fade-up">
 		{#each slice.primary.items as item, index}
 			<div data-aos="fade-zoom-in" data-aos-delay={200 + index * 250}>
-				<div class="bg-white rounded-lg px-2 py-2">
+				<div class="bg-white rounded-lg border border-neutral-200 overflow-hidden px-3 py-2">
 					<PrismicImage field={item.image} />
 				</div>
 			</div>

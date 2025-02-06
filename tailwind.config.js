@@ -5,8 +5,12 @@ export default {
     theme: {
       extend: {
         fontSize: {
+          '4xl': '50px',
           base: '18px',
-          sm: '15px',
+          sm: '14px',
+        },
+        borderRadius: {
+          'lg': '50px',
         },
       }
     },

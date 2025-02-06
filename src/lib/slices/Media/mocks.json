@@ -46,6 +46,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "doctor",
 				"type": "Text"
+			},
+			"style": {
+				"__TYPE__": "FieldContent",
+				"value": "big",
+				"type": "Select"
 			}
 		},
 		"items": []

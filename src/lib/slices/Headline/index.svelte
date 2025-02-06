@@ -12,12 +12,12 @@
 				<PrismicText field={slice.primary.headline} />
 			</h1>
 		{:else}
-			<h2 class="mx-auto max-w-2xl text-center" data-aos="fade-up">
+			<h2 class="mx-auto max-w-3xl text-center" data-aos="fade-up">
 				<PrismicText field={slice.primary.headline} />
 			</h2>
 		{/if}
 
-		<div class="mx-auto max-w-2xl text-center {slice.primary.big ? 'text-base' : 'text-sm'} text-neutral-500" data-aos="fade" data-aos-delay={1000}>
+		<div class="mx-auto max-w-2xl text-center {slice.primary.big ? 'text-base' : 'text-sm'} text-black" data-aos="fade" data-aos-delay={1000}>
 			<PrismicText field={slice.primary.text} />
 		</div>
 	</div>

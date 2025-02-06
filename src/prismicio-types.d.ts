@@ -1072,6 +1072,16 @@ export interface MediaSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
+
+	/**
+	 * Style field in *Media → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media.default.primary.style
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	style: prismic.SelectField<'inline' | 'big' | 'full' | 'logo'>;
 }
 
 /**

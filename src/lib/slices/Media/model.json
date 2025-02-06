@@ -42,6 +42,19 @@
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
           }
+        },
+        "style": {
+          "type": "Select",
+          "config": {
+            "label": "Style",
+            "placeholder": "",
+            "options": [
+              "inline",
+              "big",
+              "full",
+              "logo"
+            ]
+          }
         }
       },
       "items": {}
