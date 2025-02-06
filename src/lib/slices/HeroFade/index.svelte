@@ -36,7 +36,7 @@
 
 <svelte:window bind:innerWidth />
 
-<section class="pb-28" data-id={slice.primary.hash}>
+<section class="pb-28 pt-0" data-id={slice.primary.hash}>
 	<Splide 
 		bind:this={splide} 
 		options={splideOptions}
@@ -51,7 +51,7 @@
 						<PrismicImage class="rounded-lg overflow-hidden  object-cover w-full aspect-auto h-full lg:aspect-[16/8]" field={item.image} />
 					{/if}
 
-					<h1 data-aos="fade" class="text-white px-6 pb-7 text-center absolute top-0 left-0 w-full h-full flex items-end">
+					<h1 data-aos="fade" class="text-white px-6 pb-7 text-center absolute top-0 left-0 w-full h-full flex items-center mt-8">
 						{item.text}
 					</h1>
 				</div>

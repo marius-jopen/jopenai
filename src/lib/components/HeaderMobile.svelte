@@ -40,7 +40,7 @@
 </script>
 
 <div class="md:hidden fixed top-0 left-0 w-full z-20 transition-transform duration-300 bg-neutral-100 bg-opacity-80 backdrop-blur" style="transform: translateY({isVisible ? '0' : '-100%'})">
-    <div class="box py-4 flex justify-between">
+    <div class="box py-3.5 flex justify-between">
         <a href="/" class="text-xl font-bold z-20 text-center w-full">
             JopenAI
         </a>
@@ -56,7 +56,7 @@
 {#if navVisible}
     <div transition:fade={{duration: 300 }} class="bg-black text-white fixed top-[40px] left-0 z-40 h-screen w-full">
         <div class="top-0 left-0 fixed w-full fixed bg-black text-white">        
-            <div class="box py-4 flex justify-between">
+            <div class="box py-3.5 flex justify-between">
                 <a on:click={closeNav} href="/" class="text-xl font-bold z-20 text-center w-full">
                     JopenAI
                 </a>

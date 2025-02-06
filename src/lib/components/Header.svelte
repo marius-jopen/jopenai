@@ -36,15 +36,14 @@
             JopenAI
         </a>
     
-        <div class="flex gap-8 text-sm pt-[3px] absolute top-[16px] left-0 w-full justify-center">
+        <div class="flex gap-8 text-base pt-[0px] absolute top-[16px] left-0 w-full justify-center">
             <Navigation {data} />
         </div>
     
         <div class="flex gap-6 z-20 -mt-0.5">            
-            <!-- <LanguageSwitch /> -->
             <Button data={data.header[0].data.button} />
         </div>
     </div>
 </div>
 
-<div class="h-[60px] w-full bg-neutral-100 hidden md:block" />
+<div class="h-[65px] w-full bg-neutral-100 hidden md:block" />
