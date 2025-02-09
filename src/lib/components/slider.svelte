@@ -106,7 +106,7 @@
 		-webkit-overflow-scrolling: touch;
 		padding: 0;
 		margin: 0;
-		grid-gap: 13px;
+		grid-gap: 20px;
 		grid-auto-flow: column;
 		list-style: none;
 	}

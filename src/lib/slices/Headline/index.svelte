@@ -17,7 +17,7 @@
 			</h2>
 		{/if}
 
-		<div class="mx-auto max-w-2xl text-center {slice.primary.big ? 'text-base' : 'text-sm'} text-black" data-aos="fade" data-aos-delay={1000}>
+		<div class="mx-auto max-w-2xl text-center {slice.primary.big ? 'text-base' : 'text-base'} text-black" data-aos="fade" data-aos-delay={500}>
 			<PrismicText field={slice.primary.text} />
 		</div>
 	</div>

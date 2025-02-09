@@ -12,14 +12,14 @@
 		</h2>
 	</div>
 
-	<div class="grid grid-cols-1 md:grid-cols-3 gap-3" data-aos="fade-up">
+	<div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up">
 		{#each slice.primary.items as item, index}
-			<div data-aos="fade-zoom-in" data-aos-delay={200 + index * 250} class="card bg-white border border-neutral-200 rounded-lg px-8 pt-12 pb-14">
+			<div data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="card bg-white rounded-lg px-8 pt-10 pb-14">
 				<h3 data-aos="fade" data-aos-delay={index * 250}>
 					{item.headline}
 				</h3>
 
-				<div class="text-base text-neutral-600" data-aos="fade" data-aos-delay={500 + index * 250}>
+				<div class="text-base text-neutral-600" data-aos="fade" data-aos-delay={400 + index * 150}>
 					<PrismicText field={item.text} />
 				</div>
 			</div>

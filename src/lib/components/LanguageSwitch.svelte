@@ -19,7 +19,7 @@
     }
 </script>
 
-<div class="flex gap-2.5 border border-neutral-200 rounded-full px-4 py-1 bg-neutral-800 md:bg-white">
+<div class="flex gap-2.5 rounded-full px-4 py-1 bg-neutral-800 md:bg-white">
     {#each languages as langCode}
         <a
             href={getDomain(langCode)}

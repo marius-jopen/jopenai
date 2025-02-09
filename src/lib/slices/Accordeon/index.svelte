@@ -26,10 +26,10 @@
 		</div>
 	{/if}
 
-	<div class="bg-white border border-neutral-200 rounded-lg flex flex-col md:flex-row overflow-hidden" data-aos="fade-up">
+	<div class="bg-white  rounded-lg flex flex-col md:flex-row overflow-hidden" data-aos="fade-up">
 		<div class="w-full md:w-1/2 relative mr-8 aspect-square md:aspect-auto">
 			{#each slice.primary.items as item, index}
-				<div class="absolute w-full h-full border-r border-neutral-200" style:opacity={openIndex === index ? 1 : 0} transition:opacity={{ duration: 300 }}>
+				<div class="absolute w-full h-full " style:opacity={openIndex === index ? 1 : 0} transition:opacity={{ duration: 300 }}>
 					{#if item.video}
 						<video src={item.video} poster={item.image.url} class="h-full w-full object-cover aspect-square md:aspect-auto" autoplay muted loop playsinline />
 					{:else}
@@ -43,22 +43,22 @@
 			{#each slice.primary.items as item, index}
 				<div class="pt-4 flex">
 					<div class="w-full">
-						<button class="w-full" on:click={() => toggle(index)}>
+						<button class="w-full" on:mouseenter={() => toggle(index)}>
 							<h3 class="text-left w-full">
 								{item.headline}
 							</h3>
 						</button>
 	
 						{#if openIndex === index}
-							<div class="text-base text-neutral-600 -mt-1 pb-6 w-9/12" transition:slide={{ duration: 300 }}>
+							<div class="text-base text-neutral-600 -mt-1 pb-6 " transition:slide={{ duration: 300 }}>
 								<PrismicText field={item.text} />
 							</div>
 						{/if}
 					</div>
 
-					<h3 class="flex flex-col justify-center cursor-pointer" on:click={() => toggle(index)}>
+					<!-- <h3 class="flex flex-col justify-center cursor-pointer" on:mouseenter={() => toggle(index)}>
 						{openIndex === index ? '–' : '+'}
-					</h3>
+					</h3> -->
 				</div>
 			{/each}
 		</div>

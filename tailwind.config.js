@@ -10,7 +10,7 @@ export default {
           sm: '14px',
         },
         borderRadius: {
-          'lg': '50px',
+          'lg': '40px',
         },
       }
     },

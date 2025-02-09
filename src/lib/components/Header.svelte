@@ -30,7 +30,7 @@
     });
 </script>
 
-<div class="hidden md:block fixed top-0 left-0 w-full z-20 transition-transform duration-300 bg-neutral-100 bg-opacity-80 backdrop-blur" style="transform: translateY({isVisible ? '0' : '-100%'})">
+<div class="hidden md:block fixed top-0 left-0 w-full z-20 transition-transform duration-300 bg-[#ffefef] bg-opacity-80 backdrop-blur" style="transform: translateY({isVisible ? '0' : '-100%'})">
     <div class="box py-4 flex justify-between">
         <a href="/" class="text-xl font-bold z-20">
             JopenAI
@@ -46,4 +46,4 @@
     </div>
 </div>
 
-<div class="h-[65px] w-full bg-neutral-100 hidden md:block" />
+<div class="h-[65px] w-full bg-[#ffefef] hidden md:block" />

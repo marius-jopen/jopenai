@@ -36,7 +36,7 @@
 
 <svelte:window bind:innerWidth />
 
-<section class="pb-28 pt-0" data-id={slice.primary.hash}>
+<section data-aos="fade-up" class="pb-28 pt-0" data-id={slice.primary.hash}>
 	<Splide 
 		bind:this={splide} 
 		options={splideOptions}
@@ -46,7 +46,7 @@
 			<SplideSlide>
 				<div on:click={goToNext} class="px-3 md:px-8 w-full relative cursor-pointer h-full">
 					{#if item.video}
-						<video src={item.video} poster={item.image.url} class="rounded-lg overflow-hidden border border-neutral-200 object-cover w-full aspect-auto h-full lg:aspect-[16/8]" playsinline autoplay muted loop />
+						<video src={item.video} poster={item.image.url} class="rounded-lg overflow-hidden object-cover w-full aspect-auto h-full lg:aspect-[16/8]" playsinline autoplay muted loop />
 					{:else}
 						<PrismicImage class="rounded-lg overflow-hidden  object-cover w-full aspect-auto h-full lg:aspect-[16/8]" field={item.image} />
 					{/if}

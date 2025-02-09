@@ -6,21 +6,19 @@
 </script>
 
 <section class="box pb-28" data-id={slice.primary.hash}>
-	<!-- {#if slice.primary.headline}
-		<div class="text-center pb-4" data-aos="fade-up">
-			<h2>
-				{slice.primary.headline}
-			</h2>
-		</div>
-	{/if} -->
-
 	<div class="grid grid-cols-2 md:grid-cols-6 gap-3" data-aos="fade-up">
 		{#each slice.primary.items as item, index}
-			<div data-aos="fade-zoom-in" data-aos-delay={200 + index * 250}>
-				<div class="bg-white rounded-lg border border-neutral-200 overflow-hidden px-3 py-2">
+			<div data-aos="fade-zoom-in" data-aos-delay={100 + index * 150}>
+				<div class="px-8 py-1">
 					<PrismicImage field={item.image} />
 				</div>
 			</div>
 		{/each}
 	</div>
+
+	{#if slice.primary.headline}
+		<div class="text-center pt-8 text-neutral-600" data-aos="fade" data-aos-delay={300 + slice.primary.items.length * 150}>
+			{slice.primary.headline}
+		</div>
+	{/if}
 </section>

@@ -9,7 +9,7 @@
 
 	onMount(() => {
 		AOS.init({
-			duration: 1500,
+			duration: 900,
 			once: false,
 			offset: 50
 		});
@@ -36,7 +36,7 @@
 </svelte:head>
 
 <main>
-	<div class="bg-neutral-100 text-black">
+	<div class="bg-[#ffefef] text-black">
 		<slot />
 	</div>
 </main>
