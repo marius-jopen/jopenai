@@ -51,7 +51,7 @@
 						<PrismicImage class="rounded-lg overflow-hidden  object-cover w-full aspect-auto h-full lg:aspect-[16/8]" field={item.image} />
 					{/if}
 
-					<h1 data-aos="fade" class="text-[var(--text-tertiary-color)] px-6 pb-7 text-center absolute top-0 left-0 w-full h-full flex items-center mt-8">
+					<h1 data-aos="fade" class="text-[var(--text-tertiary-color)] px-12 md:px-20 pb-7 text-center absolute top-0 left-0 w-full h-full flex items-center mt-8">
 						{item.text}
 					</h1>
 				</div>

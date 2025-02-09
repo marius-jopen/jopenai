@@ -3,11 +3,18 @@ export default {
     darkMode: ['class'],
     content: ['./src/**/*.{html,js,svelte,ts}'],
     theme: {
+      fontFamily: {
+        sans: ['Pressura'],
+        display: ['Inter'],
+        // display: ['Gravity']
+        // sans: ['GT Pressura'],
+        // display: ['GT Pressura Mono'],
+      },
       extend: {
         fontSize: {
-          '4xl': '50px',
-          base: '18px',
-          sm: '14px',
+          '4xl': '45px',
+          base: '19px',
+          sm: '15px',
         },
         borderRadius: {
           'lg': '40px',

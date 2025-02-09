@@ -32,7 +32,7 @@
 
 <div class="hidden md:block fixed top-0 left-0 w-full z-20 transition-transform duration-300  bg-[var(--primary-color)] bg-opacity-80 backdrop-blur" style="transform: translateY({isVisible ? '0' : '-100%'})">
     <div class="box py-4 flex justify-between">
-        <a href="/" class="text-xl font-bold z-20">
+        <a href="/" class="font-display text-xl font-bold z-20">
             JopenAI
         </a>
     
