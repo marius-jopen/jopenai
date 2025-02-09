@@ -36,12 +36,12 @@
 						{/if}
 					</div>
 				
-					<div class="rounded-b-lg lg:rounded-b-none lg:!rounded-r-lg bg-white px-8 pt-10 pb-12 w-full lg:w-1/2 flex flex-col lg:justify-center lg:aspect-[4/3] h-full lg:h-auto">
+					<div class="rounded-b-lg lg:rounded-b-none lg:!rounded-r-lg bg-[var(--secondary-color)] px-8 pt-10 pb-12 w-full lg:w-1/2 flex flex-col lg:justify-center lg:aspect-[4/3] h-full lg:h-auto">
 						<h3 data-aos="fade" data-aos-delay={100 + index * 150}>
 							{item.headline}
 						</h3>
 				
-						<div class="text-sm text-neutral-600" data-aos="fade" data-aos-delay={150 + index * 150}>
+						<div class="text-sm text-[var(--text-secondary-color)]" data-aos="fade" data-aos-delay={150 + index * 150}>
 							<PrismicText field={item.text} />
 						</div>
 					</div>

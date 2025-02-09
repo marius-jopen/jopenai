@@ -36,7 +36,7 @@
 </svelte:head>
 
 <main>
-	<div class="bg-[#ffefef] text-black">
+	<div class="bg-[var(--primary-color)] text-[var(--text-primary-color)]">
 		<slot />
 	</div>
 </main>

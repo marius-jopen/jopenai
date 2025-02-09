@@ -41,7 +41,7 @@
 			</div>
 		</div>
 	{:else}
-		<div class="px-8 mb-12 w-full relative">
+		<div class="px-3 md:px-8 md:mb-12 w-full relative">
 			<div 
 				class="w-full aspect-[1686/912]"
 				style="

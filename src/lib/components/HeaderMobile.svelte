@@ -39,7 +39,7 @@
     });
 </script>
 
-<div class="md:hidden fixed top-0 left-0 w-full z-20 transition-transform duration-300 bg-neutral-100 bg-opacity-80 backdrop-blur" style="transform: translateY({isVisible ? '0' : '-100%'})">
+<div class="md:hidden fixed top-0 left-0 w-full z-20 transition-transform duration-300  bg-[var(--primary-color)] bg-opacity-80 backdrop-blur" style="transform: translateY({isVisible ? '0' : '-100%'})">
     <div class="box py-3.5 flex justify-between">
         <a href="/" class="text-xl font-bold z-20 text-center w-full">
             JopenAI
@@ -51,11 +51,11 @@
     </div>
 </div>
 
-<div class="h-[62px] w-full bg-neutral-100 md:hidden" />
+<div class="h-[62px] w-full  bg-[var(--primary-color)] md:hidden" />
 
 {#if navVisible}
-    <div transition:fade={{duration: 300 }} class="bg-black text-white fixed top-[40px] left-0 z-40 h-screen w-full">
-        <div class="top-0 left-0 fixed w-full fixed bg-black text-white">        
+    <div transition:fade={{duration: 300 }} class="bg-[var(--quaternary-color)] text-[var(--text-primary-color)] fixed top-[40px] left-0 z-40 h-screen w-full">
+        <div class="top-0 left-0 fixed w-full fixed bg-[var(--quaternary-color)] text-[var(--text-tertiary-color)]">        
             <div class="box py-3.5 flex justify-between">
                 <a on:click={closeNav} href="/" class="text-xl font-bold z-20 text-center w-full">
                     JopenAI
@@ -69,7 +69,7 @@
 
         <div class="flex flex-col justify-center h-full text-center -mt-12">
             {#each data.header[0].data.links as link, index}
-                <a data-aos="fade-zoom-in" data-aos-delay={200 + index * 50} on:click={closeNav} class="text-xl text-white hover:text-neutral-500 transition-all duration-300 py-1" href={link.url} >
+                <a data-aos="fade-zoom-in" data-aos-delay={200 + index * 50} on:click={closeNav} class="text-xl text-[var(--text-tertiary-color)] hover:text-[var(--text-secondary-color)] transition-all duration-300 py-1" href={link.url} >
                     {link.text} 
                 </a>
             {/each}

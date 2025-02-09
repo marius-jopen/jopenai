@@ -36,7 +36,7 @@
 						{/if}
 					</div>
 
-					<div class="text-center text-neutral-600 pt-3 pb-4">
+					<div class="text-center text-[var(--text-secondary-color)] pt-3 pb-4">
 						<PrismicRichText field={item.text} />
 					</div>
 				</a>

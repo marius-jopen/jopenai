@@ -19,13 +19,13 @@
     }
 </script>
 
-<div class="flex gap-2.5 rounded-full px-4 py-1 bg-neutral-800 md:bg-white">
+<div class="flex gap-2.5 rounded-full px-4 py-1 bg-[var(--primary-color)] md:bg-[var(--secondary-color)]">
     {#each languages as langCode}
         <a
             href={getDomain(langCode)}
             class:active={lang === langCode}
             aria-label={`Switch to ${getDisplayText(langCode)}`}
-            class="text-neutral-500 hover:text-black transition-colors duration-300 text-base md:text-base"
+            class="text-[var(--text-secondary-color)] hover:text-[var(--text-primary-color)] transition-colors duration-300 text-base md:text-base"
         >
             {getDisplayText(langCode)}
         </a>
@@ -34,6 +34,6 @@
 
 <style>
     .active {
-        @apply text-white md:text-black;
+        @apply text-[var(--text-primary-color)] md:text-[var(--text-primary-color)];
     }
 </style>

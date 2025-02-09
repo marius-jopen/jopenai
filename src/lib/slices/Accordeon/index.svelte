@@ -26,7 +26,7 @@
 		</div>
 	{/if}
 
-	<div class="bg-white  rounded-lg flex flex-col md:flex-row overflow-hidden" data-aos="fade-up">
+	<div class="bg-[var(--secondary-color)]  rounded-lg flex flex-col md:flex-row overflow-hidden" data-aos="fade-up">
 		<div class="w-full md:w-1/2 relative mr-8 aspect-square md:aspect-auto">
 			{#each slice.primary.items as item, index}
 				<div class="absolute w-full h-full " style:opacity={openIndex === index ? 1 : 0} transition:opacity={{ duration: 300 }}>
@@ -39,18 +39,18 @@
 			{/each}
 		</div>
 
-		<div class="w-full md:w-1/2 py-4 md:py-10 divide-y divide-neutral-300 pr-8 pl-8 md:pl-0">
+		<div class="w-full md:w-1/2 py-4 md:py-10 divide-y divide-[var(--text-quaternary-color)] pr-8 pl-8 md:pl-0">
 			{#each slice.primary.items as item, index}
 				<div class="pt-4 flex">
 					<div class="w-full">
-						<button class="w-full" on:mouseenter={() => toggle(index)}>
+						<button class="w-full" on:click={() => toggle(index)} on:mouseenter={() => toggle(index)}>
 							<h3 class="text-left w-full">
 								{item.headline}
 							</h3>
 						</button>
 	
 						{#if openIndex === index}
-							<div class="text-base text-neutral-600 -mt-1 pb-6 " transition:slide={{ duration: 300 }}>
+							<div class="text-base text-[var(--text-secondary-color)] -mt-1 pb-6 " transition:slide={{ duration: 300 }}>
 								<PrismicText field={item.text} />
 							</div>
 						{/if}

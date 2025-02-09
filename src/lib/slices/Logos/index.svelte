@@ -17,7 +17,7 @@
 	</div>
 
 	{#if slice.primary.headline}
-		<div class="text-center pt-8 text-neutral-600" data-aos="fade" data-aos-delay={300 + slice.primary.items.length * 150}>
+		<div class="text-center pt-8 text-[var(--text-secondary-color)]" data-aos="fade" data-aos-delay={300 + slice.primary.items.length * 150}>
 			{slice.primary.headline}
 		</div>
 	{/if}
