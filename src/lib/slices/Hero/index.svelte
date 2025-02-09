@@ -27,7 +27,7 @@
 						<PrismicImage class="rounded-lg object-cover w-full aspect-[3/4] lg:aspect-[16/8]" field={item.image} />
 					{/if}
 
-					<h1 data-aos="fade" class="text-[var(--text-primary-color)] px-6 py-3 absolute bottom-0 left-0 w-full lg:w-3/4 h-full flex items-end">
+					<h1 data-aos="fade" class="text-[var(--text-tertiary-color)] px-6 py-3 absolute bottom-0 left-0 w-full lg:w-3/4 h-full flex items-end">
 						{item.text}
 					</h1>
 				</div>
