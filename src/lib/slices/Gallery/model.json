@@ -1,0 +1,83 @@
+{
+  "id": "gallery",
+  "type": "SharedSlice",
+  "name": "Gallery",
+  "description": "Gallery",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "columns": {
+          "type": "Select",
+          "config": {
+            "label": "Columns",
+            "placeholder": "",
+            "options": [
+              "2",
+              "3",
+              "4"
+            ],
+            "default_value": "2"
+          }
+        },
+        "size": {
+          "type": "Boolean",
+          "config": {
+            "label": "Size",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Items",
+            "repeat": true,
+            "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "video": {
+                "type": "Text",
+                "config": {
+                  "label": "Video",
+                  "placeholder": ""
+                }
+              },
+              "text": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Text",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "controlled": {
+                "type": "Boolean",
+                "config": {
+                  "label": "Controlled",
+                  "placeholder_false": "false",
+                  "placeholder_true": "true",
+                  "default_value": false
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

@@ -78,6 +78,7 @@ export type HeaderDocument<Lang extends string = string> = prismic.PrismicDocume
 >;
 
 type PageDocumentDataSlicesSlice =
+	| GallerySlice
 	| BlankSlice
 	| HeroFadeSlice
 	| MediaSlice
@@ -474,6 +475,116 @@ type CtaSliceVariation = CtaSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type CtaSlice = prismic.SharedSlice<'cta', CtaSliceVariation>;
+
+/**
+ * Item in *Gallery → Default → Primary → Items*
+ */
+export interface GallerySliceDefaultPrimaryItemsItem {
+	/**
+	 * Image field in *Gallery → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gallery.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video field in *Gallery → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gallery.default.primary.items[].video
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video: prismic.KeyTextField;
+
+	/**
+	 * Text field in *Gallery → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gallery.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+
+	/**
+	 * Controlled field in *Gallery → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: gallery.default.primary.items[].controlled
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	controlled: prismic.BooleanField;
+}
+
+/**
+ * Primary content in *Gallery → Default → Primary*
+ */
+export interface GallerySliceDefaultPrimary {
+	/**
+	 * Columns field in *Gallery → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: 2
+	 * - **API ID Path**: gallery.default.primary.columns
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	columns: prismic.SelectField<'2' | '3' | '4', 'filled'>;
+
+	/**
+	 * Size field in *Gallery → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: gallery.default.primary.size
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	size: prismic.BooleanField;
+
+	/**
+	 * Items field in *Gallery → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: gallery.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<GallerySliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for Gallery Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<GallerySliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Gallery*
+ */
+type GallerySliceVariation = GallerySliceDefault;
+
+/**
+ * Gallery Shared Slice
+ *
+ * - **API ID**: `gallery`
+ * - **Description**: Gallery
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GallerySlice = prismic.SharedSlice<'gallery', GallerySliceVariation>;
 
 /**
  * Primary content in *Headline → Default → Primary*
@@ -1082,6 +1193,17 @@ export interface MediaSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
 	style: prismic.SelectField<'inline' | 'big' | 'full' | 'logo'>;
+
+	/**
+	 * Controlled field in *Media → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: media.default.primary.controlled
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	controlled: prismic.BooleanField;
 }
 
 /**
@@ -1337,6 +1459,11 @@ declare module '@prismicio/client' {
 			CtaSliceDefaultPrimary,
 			CtaSliceVariation,
 			CtaSliceDefault,
+			GallerySlice,
+			GallerySliceDefaultPrimaryItemsItem,
+			GallerySliceDefaultPrimary,
+			GallerySliceVariation,
+			GallerySliceDefault,
 			HeadlineSlice,
 			HeadlineSliceDefaultPrimary,
 			HeadlineSliceVariation,

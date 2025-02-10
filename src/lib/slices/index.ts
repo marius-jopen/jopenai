@@ -4,6 +4,7 @@ import Accordeon from './Accordeon/index.svelte';
 import Blank from './Blank/index.svelte';
 import Cards from './Cards/index.svelte';
 import Cta from './Cta/index.svelte';
+import Gallery from './Gallery/index.svelte';
 import Headline from './Headline/index.svelte';
 import Hero from './Hero/index.svelte';
 import HeroFade from './HeroFade/index.svelte';
@@ -19,6 +20,7 @@ export const components = {
 	blank: Blank,
 	cards: Cards,
 	cta: Cta,
+	gallery: Gallery,
 	headline: Headline,
 	hero: Hero,
 	hero_fade: HeroFade,

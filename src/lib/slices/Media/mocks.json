@@ -51,6 +51,10 @@
 				"__TYPE__": "FieldContent",
 				"value": "big",
 				"type": "Select"
+			},
+			"controlled": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			}
 		},
 		"items": []

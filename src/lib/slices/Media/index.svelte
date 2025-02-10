@@ -30,7 +30,16 @@
 		<div class="{style == 'box' ? 'md:px-8' : ''}" data-aos="fade-up">
 			<div class="{style == 'full' ? 'rounded-none' : 'rounded-lg   overflow-hidden'} h-auto">
 				{#if slice.primary.video}
-					<video src={slice.primary.video} poster={slice.primary.image.url} class="w-full h-auto" playsinline autoplay muted loop />
+					<video 
+						src={slice.primary.video} 
+						poster={slice.primary.image.url} 
+						class="w-full h-auto" 
+						playsinline 
+						autoplay={!slice.primary.controlled}
+						controls={slice.primary.controlled}
+						muted={!slice.primary.controlled}
+						loop 
+					/>
 				{:else}
 					<PrismicImage class="w-full h-auto " field={slice.primary.image} />
 				{/if}
@@ -63,8 +72,9 @@
 						poster={slice.primary.image.url} 
 						class="w-full h-full object-cover" 
 						playsinline 
-						autoplay 
-						muted 
+						autoplay={!slice.primary.controlled}
+						controls={slice.primary.controlled}
+						muted={!slice.primary.controlled} 
 						loop 
 					/>
 				{:else}

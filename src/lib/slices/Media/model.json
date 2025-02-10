@@ -55,6 +55,15 @@
               "logo"
             ]
           }
+        },
+        "controlled": {
+          "type": "Boolean",
+          "config": {
+            "label": "Controlled",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
         }
       },
       "items": {}
