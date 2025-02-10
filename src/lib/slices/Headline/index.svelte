@@ -5,7 +5,7 @@
 	export let slice: Content.HeadlineSlice;
 </script>
 
-<section class="pb-20 px-8 md:px-0" data-id={slice.primary.hash}>
+<section class="pb-24 px-8 md:px-0" data-id={slice.primary.hash}>
 	<div class="box">
 		{#if slice.primary.big}
 			<h1 class="mx-auto text-center" data-aos="fade-up">
