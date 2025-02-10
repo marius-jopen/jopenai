@@ -30,9 +30,9 @@
 				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 250} style={calculateStyles(index, items.length)} class="item">
 					<div class="w-full rounded-lg overflow-hidden   aspect-[4/3] md:aspect-[6/3] lg:aspect-[5/3]" >
 						{#if item.video}
-							<video src={item.video} poster={item.image.url} class="h-full object-cover h-full scale-105" autoplay muted loop playsinline />
+							<video src={item.video} poster={item.image.url} class="w-full object-cover h-full scale-105" autoplay muted loop playsinline />
 						{:else}
-							<PrismicImage class="h-full object-cover h-full scale-105" field={item.image} />
+							<PrismicImage class="w-full object-cover h-full scale-105" field={item.image} />
 						{/if}
 					</div>
 
