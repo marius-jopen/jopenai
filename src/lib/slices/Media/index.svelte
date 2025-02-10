@@ -33,7 +33,7 @@
 					<video 
 						src={slice.primary.video} 
 						poster={slice.primary.image.url} 
-						class="w-full h-auto" 
+						class="w-full h-auto bg-[var(--secondary-color)]" 
 						playsinline 
 						autoplay={!slice.primary.controlled}
 						controls={slice.primary.controlled}
@@ -41,7 +41,7 @@
 						loop 
 					/>
 				{:else}
-					<PrismicImage class="w-full h-auto " field={slice.primary.image} />
+					<PrismicImage class="w-full h-auto bg-[var(--secondary-color)]" field={slice.primary.image} />
 				{/if}
 			</div>
 
@@ -70,7 +70,7 @@
 					<video 
 						src={slice.primary.video} 
 						poster={slice.primary.image.url} 
-						class="w-full h-full object-cover" 
+						class="w-full h-full object-cover bg-[var(--secondary-color)]" 
 						playsinline 
 						autoplay={!slice.primary.controlled}
 						controls={slice.primary.controlled}
@@ -79,7 +79,7 @@
 					/>
 				{:else}
 					<PrismicImage 
-						class="w-full h-full object-cover" 
+						class="w-full h-full object-cover bg-[var(--secondary-color)]" 
 						field={slice.primary.image} 
 					/>
 				{/if}

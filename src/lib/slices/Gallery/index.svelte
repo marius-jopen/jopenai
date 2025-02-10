@@ -17,7 +17,7 @@
 						<video 
 							src={item.video} 
 							poster={item.image.url} 
-							class="w-full h-auto" 
+							class="w-full h-auto bg-[var(--secondary-color)]" 
 							playsinline 
 							loop
 							autoplay={!item.controlled}
@@ -25,7 +25,7 @@
 							muted={!item.controlled}
 						/>
 					{:else}
-						<PrismicImage class="w-full h-auto " field={item.image} />
+						<PrismicImage class="w-full h-auto bg-[var(--secondary-color)]" field={item.image} />
 					{/if}
 				</div>
 	
