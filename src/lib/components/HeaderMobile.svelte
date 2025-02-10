@@ -67,7 +67,7 @@
             </div>
         </div>
 
-        <div class="flex flex-col justify-center h-full text-center -mt-12">
+        <div class="flex flex-col justify-center h-full text-center -mt-20">
             {#each data.header[0].data.links as link, index}
                 <a data-aos="fade-zoom-in" data-aos-delay={200 + index * 50} on:click={closeNav} class="text-xl text-[var(--text-tertiary-color)] hover:text-[var(--text-secondary-color)] transition-all duration-300 py-1" href={link.url} >
                     {link.text} 
