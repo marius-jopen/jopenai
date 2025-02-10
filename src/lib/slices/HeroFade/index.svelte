@@ -25,11 +25,6 @@
 	$: {
 		isMobile = innerWidth < 1024; // Determine if the view is mobile based on innerWidth
 		splideOptions.heightRatio = isMobile ? 4 / 3 : 1 / 2;
-		// Rebuild Splide when screen size changes
-		if (splide) {
-			splide.options = splideOptions;
-			splide.refresh();
-		}
 	}
 
 	function goToNext() {
