@@ -35,7 +35,7 @@ body {
 }
 
 body, p {
-    @apply text-sm  md:text-base;
+    @apply text-base-mobile  md:text-base;
     /* font-family: helvetica; */
 }
 

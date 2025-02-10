@@ -50,7 +50,7 @@
 						</button>
 	
 						{#if openIndex === index}
-							<div class="text-base text-[var(--text-secondary-color)] -mt-1 pb-6 " transition:slide={{ duration: 300 }}>
+							<div class="text-base-mobile md:text-base text-[var(--text-secondary-color)] -mt-1 pb-6 " transition:slide={{ duration: 300 }}>
 								<PrismicText field={item.text} />
 							</div>
 						{/if}

@@ -19,7 +19,7 @@
     }
 </script>
 
-<div class="flex gap-2.5 rounded-full px-4 py-1 bg-[var(--primary-color)] md:bg-[var(--secondary-color)]">
+<div class="flex gap-2.5 rounded-full px-4 pt-1 pb-1.5 bg-[var(--primary-color)] md:bg-[var(--secondary-color)]">
     {#each languages as langCode}
         <a
             href={getDomain(langCode)}

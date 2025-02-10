@@ -15,6 +15,7 @@ export default {
           '4xl': '45px',
           base: '19px',
           sm: '15px',
+          'base-mobile': '17px',
         },
         borderRadius: {
           'lg': '40px',

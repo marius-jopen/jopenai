@@ -46,7 +46,7 @@
         </a>
     </div>
 
-    <div on:click={triggerNav} class="cursor-pointer fixed top-[18px] right-4 z-20">
+    <div on:click={triggerNav} class="uppercase cursor-pointer fixed top-[15px] right-4 z-20">
         Menu
     </div>
 </div>
@@ -62,7 +62,7 @@
                 </a>
             </div>
         
-            <div on:click={closeNav} class="cursor-pointer fixed top-[18px] right-4 z-20 ">
+            <div on:click={closeNav} class="uppercase cursor-pointer fixed top-[15px] right-4 z-20 ">
                 Close
             </div>
         </div>
@@ -72,11 +72,11 @@
                 <a data-aos="fade-zoom-in" data-aos-delay={200 + index * 50} on:click={closeNav} class="text-xl text-[var(--text-tertiary-color)] hover:text-[var(--text-secondary-color)] transition-all duration-300 py-1" href={link.url} >
                     {link.text} 
                 </a>
-            {/each}
-            
-            <div data-aos="fade-zoom-in" data-aos-delay={200 + data.header[0].data.links.length * 50} class="flex justify-center pt-8">
-                <LanguageSwitch />
-            </div>
+            {/each}    
+        </div>
+
+        <div data-aos="fade-zoom-in" data-aos-delay={200 + data.header[0].data.links.length * 50} class="flex justify-center pt-6 fixed bottom-8 w-full">
+            <LanguageSwitch />
         </div>
     </div>
 {/if}

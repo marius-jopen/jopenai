@@ -6,13 +6,13 @@
 </script>
 
 <section class="box pb-28" data-id={slice.primary.hash}>
-	<div class="bg-[var(--secondary-color)] rounded-lg px-8 pt-16 pb-16 text-center">
+	<div class="bg-[var(--secondary-color)] rounded-lg md:px-8 pt-16 pb-16 text-center">
 		<div class="mx-auto w-9/12">
 			<h2 data-aos="fade">
 				{slice.primary.headline}
 			</h2>
 	
-			<div class="text-[var(--text-secondary-color)] pb-8" data-aos="fade" >
+			<div class="text-[var(--text-secondary-color)] pb-8 text-base-mobile md:text-base" data-aos="fade" >
 				<PrismicText field={slice.primary.text} />
 			</div>
 

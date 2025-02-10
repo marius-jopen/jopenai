@@ -41,7 +41,7 @@
 							{item.headline}
 						</h3>
 				
-						<div class="text-sm text-[var(--text-secondary-color)]" data-aos="fade" data-aos-delay={150 + index * 150}>
+						<div class="text-base-mobile md:text-sm text-[var(--text-secondary-color)]" data-aos="fade" data-aos-delay={150 + index * 150}>
 							<PrismicText field={item.text} />
 						</div>
 					</div>
