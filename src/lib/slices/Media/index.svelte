@@ -25,7 +25,7 @@
     }
 </script>
 
-<section class="pb-4 md:pb-4 {styleClasses}" data-id={slice.primary.hash}>
+<section class="pb-4 md:pb-24 {styleClasses}" data-id={slice.primary.hash}>
 	{#if style != 'logo'}
 		<div class="{style == 'box' ? 'md:px-8' : ''}" data-aos="fade-up">
 			<div class="{style == 'full' ? 'rounded-none' : 'rounded-lg   overflow-hidden'} h-auto">

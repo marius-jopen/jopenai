@@ -1383,6 +1383,17 @@ export interface TextSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
 	text: prismic.RichTextField;
+
+	/**
+	 * Centered field in *Text → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: text.default.primary.centered
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	centered: prismic.BooleanField;
 }
 
 /**

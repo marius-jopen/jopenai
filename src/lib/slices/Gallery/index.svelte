@@ -8,7 +8,7 @@
 	$: gridClass = `grid-cold-1 md:grid-cols-${columns}`;
 </script>
 
-<section class="pb-4 md:pb-6">
+<section class="pb-4 md:pb-24">
 	<div class="{slice.primary.size ? 'px-3 md:px-8' : 'box'} grid gap-6 {gridClass}">
 		{#each slice.primary.items as item}
 			<div data-aos="fade-up">

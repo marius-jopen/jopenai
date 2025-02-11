@@ -55,6 +55,6 @@ h3 {
     @apply mx-3 lg:mx-[15vw];
 }
 
-.text-box  p{
-    @apply pb-2;
+.text-box p {
+    @apply mb-2;
 }

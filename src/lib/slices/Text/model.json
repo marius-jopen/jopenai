@@ -34,6 +34,15 @@
             "allowTargetBlank": true,
             "multi": "paragraph,preformatted,heading6,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
           }
+        },
+        "centered": {
+          "type": "Boolean",
+          "config": {
+            "label": "Centered",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
         }
       },
       "items": {}

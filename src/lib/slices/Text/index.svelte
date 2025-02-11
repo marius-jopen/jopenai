@@ -1,6 +1,7 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import { PrismicRichText } from '@prismicio/svelte';
+
 	export let slice: Content.TextSlice;
 </script>
 
@@ -14,9 +15,8 @@
 	{/if}
 
 	<div class="px-8" data-aos="fade-up">
-		<div class="mx-auto max-w-2xl leading-relaxed text-box">
+		<div class="mx-auto max-w-2xl leading-relaxed text-box {slice.primary.centered ? 'text-center' : ''}">
 			<PrismicRichText field={slice.primary.text} />
 		</div>
 	</div>
 </section>
-

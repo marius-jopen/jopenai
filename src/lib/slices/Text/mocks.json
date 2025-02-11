@@ -23,6 +23,10 @@
 				"__TYPE__": "FieldContent",
 				"value": "feet",
 				"type": "Text"
+			},
+			"centered": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			}
 		},
 		"items": []

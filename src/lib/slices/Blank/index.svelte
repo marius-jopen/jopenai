@@ -9,7 +9,7 @@
 	const heightClasses = {
 		"xxl": "h-80",
 		"xl": "h-64",
-		"l": "h-32",
+		"l": "h-24",
 		"m": "h-12",
 		"s": "h-4"
 	};
