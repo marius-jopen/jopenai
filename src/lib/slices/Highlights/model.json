@@ -26,6 +26,15 @@
             "placeholder": ""
           }
         },
+        "mobile_simple": {
+          "type": "Boolean",
+          "config": {
+            "label": "Mobile Simple",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "items": {
           "type": "Group",
           "config": {

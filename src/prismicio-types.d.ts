@@ -923,6 +923,17 @@ export interface HighlightsSliceDefaultPrimary {
 	headline: prismic.KeyTextField;
 
 	/**
+	 * Mobile Simple field in *Highlights → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: highlights.default.primary.mobile_simple
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	mobile_simple: prismic.BooleanField;
+
+	/**
 	 * Items field in *Highlights → Default → Primary*
 	 *
 	 * - **Field Type**: Group

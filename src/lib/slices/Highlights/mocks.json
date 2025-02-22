@@ -65,8 +65,8 @@
 							[
 								"link",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "cb16d92b-e7c8-48c5-a476-82602b266891",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "ExternalLink",
 										"url": "http://google.com"
@@ -81,6 +81,10 @@
 				"__TYPE__": "FieldContent",
 				"value": "plus",
 				"type": "Text"
+			},
+			"mobile_simple": {
+				"__TYPE__": "BooleanContent",
+				"value": false
 			}
 		},
 		"items": []
