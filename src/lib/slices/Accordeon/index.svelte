@@ -2,11 +2,35 @@
 	import type { Content } from '@prismicio/client';
 	import { PrismicText, PrismicImage } from '@prismicio/svelte';
 	import { slide } from 'svelte/transition';
-
+	import { onMount, afterUpdate } from 'svelte';
 
 	export let slice: Content.AccordeonSlice;
 
 	let openIndex: number | null = 0; // Track the currently open item index
+
+	// Handle hash changes both on mount and during navigation
+	function scrollToHash() {
+		const hash = window.location.hash.replace('#', '');
+		console.log('Current hash:', hash);
+		
+		if (hash) {
+			setTimeout(() => {
+				const element = document.querySelector(`[data-id="${hash}"]`);
+				console.log('Looking for element with data-id:', hash);
+				console.log('Found element:', element);
+				if (element) {
+					element.scrollIntoView({ behavior: 'smooth' });
+				}
+			}, 100);
+		}
+	}
+
+	onMount(() => {
+		scrollToHash();
+		// Also listen for hash changes
+		window.addEventListener('hashchange', scrollToHash);
+		return () => window.removeEventListener('hashchange', scrollToHash);
+	});
 
 	function toggle(index: number) {
 		// Check if the item being toggled is the only one open

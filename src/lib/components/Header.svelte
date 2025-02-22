@@ -36,7 +36,7 @@
             JopenAI
         </a>
     
-        <div class="flex gap-8 text-base pt-[0px] absolute top-[16px] left-0 w-full justify-center">
+        <div class="flex gap-8 text-base z-20">
             <Navigation {data} />
         </div>
     
