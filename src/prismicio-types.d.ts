@@ -1141,6 +1141,21 @@ type LogosSliceVariation = LogosSliceDefault;
 export type LogosSlice = prismic.SharedSlice<'logos', LogosSliceVariation>;
 
 /**
+ * Item in *Media → Default → Primary → Items*
+ */
+export interface MediaSliceDefaultPrimaryItemsItem {
+	/**
+	 * Image field in *Media → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
  * Primary content in *Media → Default → Primary*
  */
 export interface MediaSliceDefaultPrimary {
@@ -1204,6 +1219,16 @@ export interface MediaSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#boolean
 	 */
 	controlled: prismic.BooleanField;
+
+	/**
+	 * Items field in *Media → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: media.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<MediaSliceDefaultPrimaryItemsItem>>;
 }
 
 /**
@@ -1504,6 +1529,7 @@ declare module '@prismicio/client' {
 			LogosSliceVariation,
 			LogosSliceDefault,
 			MediaSlice,
+			MediaSliceDefaultPrimaryItemsItem,
 			MediaSliceDefaultPrimary,
 			MediaSliceVariation,
 			MediaSliceDefault,

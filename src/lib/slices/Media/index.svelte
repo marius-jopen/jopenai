@@ -1,8 +1,12 @@
 <script lang="ts">
 	import { PrismicText, PrismicImage } from '@prismicio/svelte';
 	import type { Content } from '@prismicio/client';
+	import { onDestroy, onMount } from 'svelte';
 
 	export let slice: Content.MediaSlice;
+
+	const SLIDE_DURATION = 6000; // Time between slides in milliseconds
+	const ANIMATION_DURATION = 4000; // Fade animation duration in milliseconds
 
 	const style = slice.primary.style || 'full';
     
@@ -23,12 +27,36 @@
         img.onload = () => maskLoaded = true;
         img.src = `data:image/svg+xml;utf8,<svg viewBox='0 0 1686 912' xmlns='http://www.w3.org/2000/svg'><path d='${maskPath}' fill='white'/></svg>`;
     }
+
+	let currentImageIndex = 0;
+	let timeoutId: ReturnType<typeof setTimeout>;
+    
+    // Combine the original image with items array from primary
+    $: allImages = slice?.primary?.image ? 
+        [slice.primary.image, ...(slice.primary.items?.map(item => item.image) || [])] : 
+        [];
+    
+    function nextImage() {
+        if (!allImages || allImages.length <= 1) return;
+        currentImageIndex = (currentImageIndex + 1) % allImages.length;
+        timeoutId = setTimeout(nextImage, SLIDE_DURATION);
+    }
+
+    onMount(() => {
+        if (allImages && allImages.length > 1) {
+            timeoutId = setTimeout(nextImage, SLIDE_DURATION);
+        }
+    });
+
+    onDestroy(() => {
+        if (timeoutId) clearTimeout(timeoutId);
+    });
 </script>
 
 <section class="pb-4 md:pb-24 {styleClasses}" data-id={slice.primary.hash}>
 	{#if style != 'logo'}
 		<div class="{style == 'box' ? 'md:px-8' : ''}" data-aos="fade-up">
-			<div class="{style == 'full' ? 'rounded-none' : 'rounded-lg   overflow-hidden'} h-auto">
+			<div class="{style == 'full' ? 'rounded-none' : 'rounded-lg overflow-hidden'} h-auto relative">
 				{#if slice.primary.video}
 					<video 
 						src={slice.primary.video} 
@@ -41,7 +69,20 @@
 						loop 
 					/>
 				{:else}
-					<PrismicImage class="w-full h-auto bg-[var(--secondary-color)]" field={slice.primary.image} />
+					<div class="relative w-full">
+						<PrismicImage class="w-full h-auto bg-[var(--secondary-color)] invisible" field={allImages[0]} />
+						{#each allImages as image, i}
+							<div 
+								class="absolute inset-0"
+								style="
+									opacity: {currentImageIndex === i ? 1 : 0};
+									transition: opacity {ANIMATION_DURATION}ms ease;
+								"
+							>
+								<PrismicImage class="w-full h-auto bg-[var(--secondary-color)]" field={image} />
+							</div>
+						{/each}
+					</div>
 				{/if}
 			</div>
 
@@ -52,18 +93,19 @@
 	{:else}
 		<div class="px-3 md:px-8 md:mb-12 w-full relative">
 			<div 
-				class="w-full aspect-[1686/912]"
+				class="w-full h-full"
 				style="
 					opacity: {maskLoaded ? 1 : 0};
 					transition: opacity 0.3s ease;
 					mask-image: url('data:image/svg+xml;utf8,<svg viewBox=\'0 0 1686 912\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'{maskPath}\' fill=\'white\'/></svg>');
 					-webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox=\'0 0 1686 912\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'{maskPath}\' fill=\'white\'/></svg>');
-					mask-size: contain;
-					-webkit-mask-size: contain;
+					mask-size: 100% 100%;
+					-webkit-mask-size: 100% 100%;
 					mask-repeat: no-repeat;
 					-webkit-mask-repeat: no-repeat;
 					mask-position: center;
 					-webkit-mask-position: center;
+					aspect-ratio: 1686/912;
 				"
 			>
 				{#if slice.primary.video}
@@ -78,10 +120,23 @@
 						loop 
 					/>
 				{:else}
-					<PrismicImage 
-						class="w-full h-full object-cover bg-[var(--secondary-color)]" 
-						field={slice.primary.image} 
-					/>
+					<div class="relative w-full h-full">
+						<PrismicImage class="w-full h-full object-cover bg-[var(--secondary-color)] invisible" field={allImages[0]} />
+						{#each allImages as image, i}
+							<div 
+								class="absolute inset-0"
+								style="
+									opacity: {currentImageIndex === i ? 1 : 0};
+									transition: opacity {ANIMATION_DURATION}ms ease;
+								"
+							>
+								<PrismicImage 
+									class="w-full h-full object-cover bg-[var(--secondary-color)]" 
+									field={image}
+								/>
+							</div>
+						{/each}
+					</div>
 				{/if}
 			</div>
 		</div>
