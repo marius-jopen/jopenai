@@ -51,44 +51,44 @@
 				</div>
 			</div>
 		{/each}
+	</div>
 
-		<div class="block md:hidden" data-aos="fade-up">
-			<Slider>
-				{#each slice.primary.items as item, index}
-					<div data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="item rounded-lg px-8 pt-10 pb-14 transition-colors duration-200  bg-[var(--secondary-color)] md:hover:bg-[var(--tertiary-color)] " style={calculateStyles(index, slice.primary.items.length)}>
-						<div class="flex flex-col justify-between h-full ">
-							<div>
-								<h3 class="text-center border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
-									{item.headline}
-								</h3>
-				
-								<h4 class="text-center border-b mb-4 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
-									{item.price}
-								</h4>
-		
-								<div class="text-box font-bold text-center text-base-mobile md:text-base pb-4 border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
-									<PrismicRichText field={item.subheadline} />
-								</div>
-				
-								<div class="text-box text-base-mobile md:text-base border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
-									<PrismicRichText field={item.text} />
-								</div>
-		
-								<div class="text-box font-bold text-base-mobile md:text-base pb-4" data-aos="fade" data-aos-delay={index * 250}>
-									<PrismicRichText field={item.info} />
-								</div>
+	<div class="block md:hidden" data-aos="fade-up">
+		<Slider>
+			{#each slice.primary.items as item, index}
+				<div data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="item rounded-lg px-8 pt-10 pb-14 transition-colors duration-200  bg-[var(--secondary-color)] md:hover:bg-[var(--tertiary-color)] " style={calculateStyles(index, slice.primary.items.length)}>
+					<div class="flex flex-col justify-between h-full ">
+						<div>
+							<h3 class="text-center border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
+								{item.headline}
+							</h3>
+			
+							<h4 class="text-center border-b mb-4 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
+								{item.price}
+							</h4>
+	
+							<div class="text-box font-bold text-center text-base-mobile md:text-base pb-4 border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
+								<PrismicRichText field={item.subheadline} />
 							</div>
 			
-							{#if item.button.url}
-								<div class="flex justify-center mt-8 md:mt-12" data-aos="fade" data-aos-delay={400 + index * 150} >
-									<Button onwhite big data={item.button} />
-								</div>
-							{/if}
+							<div class="text-box text-base-mobile md:text-base border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
+								<PrismicRichText field={item.text} />
+							</div>
+	
+							<div class="text-box font-bold text-base-mobile md:text-base pb-4" data-aos="fade" data-aos-delay={index * 250}>
+								<PrismicRichText field={item.info} />
+							</div>
 						</div>
+		
+						{#if item.button.url}
+							<div class="flex justify-center mt-8 md:mt-12" data-aos="fade" data-aos-delay={400 + index * 150} >
+								<Button onwhite big data={item.button} />
+							</div>
+						{/if}
 					</div>
-				{/each}
-			</Slider>
-		</div>
+				</div>
+			{/each}
+		</Slider>
 	</div>
 </section>
 
