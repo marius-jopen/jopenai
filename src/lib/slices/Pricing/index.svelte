@@ -16,8 +16,8 @@
 	};
 </script>
 
-<section class="md:box-big pb-28">
-	<div class="hidden md:grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up">
+<section class=" pb-28">
+	<div class="box-big hidden md:grid grid-cols-1 md:grid-cols-3 gap-6" data-aos="fade-up">
 		{#each slice.primary.items as item, index}
 			<div data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class=" card   rounded-lg px-8 pt-10 pb-14 transition-colors duration-200  bg-[var(--secondary-color)] md:hover:bg-[var(--tertiary-color)] ">
 				<div class="flex flex-col justify-between h-full ">
