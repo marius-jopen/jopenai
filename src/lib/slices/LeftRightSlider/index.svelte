@@ -18,11 +18,13 @@
 </script>
 
 <section class="pb-24" data-id={slice.primary.hash}>
-	<div class="box text-center pb-0 lg:pb-4" data-aos="fade-up">
-		<h2>
-			{slice.primary.headline}
-		</h2>
-	</div>
+	{#if slice.primary.headline}
+		<div class="box text-center pb-0 lg:pb-4" data-aos="fade-up">
+			<h2>
+				{slice.primary.headline}
+			</h2>
+		</div>
+	{/if}
 	
 	<div class="{slice.primary.mobile_simple ? 'hidden lg:block' : ''}">
 		<div data-aos="fade-up">
