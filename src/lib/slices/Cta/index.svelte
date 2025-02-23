@@ -6,7 +6,7 @@
 </script>
 
 <section class="box pb-28" data-id={slice.primary.hash}>
-	<div class="bg-[var(--secondary-color)] rounded-lg md:px-8 pt-16 pb-16 text-center">
+	<div class="bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg md:px-8 pt-16 pb-16 text-center">
 		<div class="mx-auto w-9/12">
 			<h2 data-aos="fade">
 				{slice.primary.headline}

@@ -27,7 +27,7 @@
 	{#if slice.primary.slider == false}
 		<div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-3 gap-6 box-big">
 			{#each items as item, index}
-				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="flex flex-col rounded-lg overflow-hidden h-full">
+				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="flex flex-col rounded-lg overflow-hidden h-full bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition">
 					<div class="w-full h-[250px]">
 						{#if item.video}
 							<video src={item.video} poster={item.image.url} class="rounded-t-lg w-full h-full object-cover" autoplay muted loop playsinline />
@@ -36,12 +36,12 @@
 						{/if}
 					</div>
 				
-					<div class="rounded-b-lg bg-[var(--secondary-color)] px-8 pt-6 md:pt-10 pb-8 md:pb-12 w-full flex-1 flex flex-col">
+					<div class="rounded-b-lg px-8 pt-6 md:pt-10 pb-8 md:pb-12 w-full flex-1 flex flex-col">
 						<div data-aos-delay={100 + index * 150}>
 							<PrismicRichText field={item.headline} />
 						</div>
 				
-						<div class="text-base-mobile md:text-base text-[var(--text-secondary-color)] flex-1" data-aos="fade" data-aos-delay={150 + index * 150}>
+						<div class="text-base-mobile md:text-base text-box text-[var(--text-secondary-color)] flex-1" data-aos="fade" data-aos-delay={150 + index * 150}>
 							<PrismicRichText field={item.text} />
 						</div>
 					</div>

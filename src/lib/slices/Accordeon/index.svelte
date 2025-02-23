@@ -22,7 +22,7 @@
 				if (element) {
 					element.scrollIntoView({ behavior: 'smooth' });
 				}
-			}, 400);
+			}, 4000);
 		}
 	}
 
@@ -32,7 +32,7 @@
 		window.addEventListener('hashchange', scrollToHash);
 		
 		// Start autoplay
-		autoplayInterval = setInterval(nextSlide, 4000);
+		autoplayInterval = setInterval(nextSlide, 8000);
 
 		// Cleanup function
 		return () => {
@@ -76,7 +76,7 @@
 		</div>
 	{/if}
 
-	<div class="bg-[var(--secondary-color)]  rounded-lg flex flex-col md:flex-row overflow-hidden" data-aos="fade-up" on:mouseenter={pauseAutoplay} on:mouseleave={resumeAutoplay}>
+	<div class="bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg flex flex-col md:flex-row overflow-hidden" data-aos="fade-up" on:mouseenter={pauseAutoplay} on:mouseleave={resumeAutoplay}>
 		<div class="w-full md:w-1/2 relative mr-8 aspect-square md:aspect-auto">
 			{#each slice.primary.items as item, index}
 				<div class="absolute w-full h-full " style:opacity={openIndex === index ? 1 : 0} transition:opacity={{ duration: 300 }}>
