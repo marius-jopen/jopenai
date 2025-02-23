@@ -106,7 +106,7 @@
 		-webkit-overflow-scrolling: touch;
 		padding: 0;
 		margin: 0;
-		grid-gap: 20px;
+		grid-gap: 30px;
 		grid-auto-flow: column;
 		list-style: none;
 	}
@@ -165,7 +165,7 @@
                 <slot />
 			</div>
 
-			<div class="hidden md:flex justify-center w-full pt-6" data-aos="fade-up" data-aos-delay={500}>
+			<div class="hidden md:flex justify-center w-full pt-12" data-aos="fade-up" data-aos-delay={500}>
 				<div class="ss-carousel__header">
 					<div class="ss-carousel__controls">
 						<button class="ss-carousel__arrow disabled arrow-prev" aria-label="Previous"></button>

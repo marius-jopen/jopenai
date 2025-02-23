@@ -41,14 +41,6 @@
 								}
 							],
 							[
-								"headline",
-								{
-									"__TYPE__": "FieldContent",
-									"value": "drop",
-									"type": "Text"
-								}
-							],
-							[
 								"text",
 								{
 									"__TYPE__": "StructuredTextContent",
@@ -73,12 +65,26 @@
 							[
 								"link",
 								{
-									"__TYPE__": "LinkContent",
 									"key": "3f25edce-3266-4f9d-ba42-0193c9e55842",
+									"__TYPE__": "LinkContent",
 									"value": {
 										"__TYPE__": "ExternalLink",
 										"url": "https://slicemachine.dev"
 									}
+								}
+							],
+							[
+								"headline",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "heading1",
+											"content": {
+												"text": "Deeply"
+											}
+										}
+									]
 								}
 							]
 						]
@@ -89,6 +95,10 @@
 				"__TYPE__": "FieldContent",
 				"value": "storm",
 				"type": "Text"
+			},
+			"slider": {
+				"__TYPE__": "BooleanContent",
+				"value": true
 			}
 		},
 		"items": []

@@ -30,18 +30,13 @@
 				"__TYPE__": "ImageContent",
 				"thumbnails": {}
 			},
-			"headline": {
-				"__TYPE__": "FieldContent",
-				"value": "calm",
-				"type": "Text"
-			},
 			"text": {
 				"__TYPE__": "StructuredTextContent",
 				"value": [
 					{
 						"type": "paragraph",
 						"content": {
-							"text": "Et esse officia non quis id sunt fugiat mollit dolor quis laborum ad aute ex veniam. Fugiat ex ad adipisicing excepteur. Exercitation minim nisi culpa proident fugiat adipisicing nulla."
+							"text": "Exercitation aliqua labore ipsum."
 						}
 					}
 				]
@@ -57,12 +52,23 @@
 				"type": "Text"
 			},
 			"link": {
-				"__TYPE__": "LinkContent",
 				"key": "268cecef-7e44-41c0-a19b-4ab6f77b2cdc",
+				"__TYPE__": "LinkContent",
 				"value": {
 					"__TYPE__": "ExternalLink",
 					"url": "https://slicemachine.dev"
 				}
+			},
+			"headline": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "heading1",
+						"content": {
+							"text": "Carry"
+						}
+					}
+				]
 			}
 		},
 		"items": []

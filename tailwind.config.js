@@ -13,7 +13,7 @@ export default {
       extend: {
         fontSize: {
           '4xl': '45px',
-          base: '19px',
+          base: '20px',
           sm: '15px',
           'base-mobile': '17px',
         },

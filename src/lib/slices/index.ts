@@ -10,8 +10,10 @@ import Hero from './Hero/index.svelte';
 import HeroFade from './HeroFade/index.svelte';
 import Highlights from './Highlights/index.svelte';
 import LeftRight from './LeftRight/index.svelte';
+import LeftRightSlider from './LeftRightSlider/index.svelte';
 import Logos from './Logos/index.svelte';
 import Media from './Media/index.svelte';
+import Pricing from './Pricing/index.svelte';
 import SlidingCards from './SlidingCards/index.svelte';
 import Text from './Text/index.svelte';
 
@@ -26,8 +28,10 @@ export const components = {
 	hero_fade: HeroFade,
 	highlights: Highlights,
 	left_right: LeftRight,
+	left_right_slider: LeftRightSlider,
 	logos: Logos,
 	media: Media,
+	pricing: Pricing,
 	sliding_cards: SlidingCards,
 	text: Text
 };

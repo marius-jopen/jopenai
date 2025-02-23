@@ -8,9 +8,9 @@
 	<div class="box" data-aos="fade-up">
 		<a href="{slice.primary.link && slice.primary.link.url}" class="rounded-lg   overflow-hidden flex flex-col-reverse {slice.primary.switched ? 'md:flex-row-reverse' : 'md:flex-row'} w-full">
 			<div class="w-full md:w-1/2 bg-[var(--secondary-color)] px-10 flex flex-col justify-center py-10 md:py-12">
-				<h3 data-aos="fade" data-aos-delay={100}>
-					{slice.primary.headline}
-				</h3>
+				<div data-aos="fade" data-aos-delay={100} >
+					<PrismicRichText field={slice.primary.headline} />
+				</div>
 	
 				<div class="text-[var(--text-secondary-color)] text-box" data-aos="fade" data-aos-delay={150}>
 					<PrismicRichText field={slice.primary.text} />

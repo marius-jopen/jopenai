@@ -27,6 +27,12 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"left_right_slider": {
+							"type": "SharedSlice"
+						},
+						"pricing": {
+							"type": "SharedSlice"
+						},
 						"gallery": {
 							"type": "SharedSlice"
 						},

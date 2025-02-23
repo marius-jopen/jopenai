@@ -1,8 +1,8 @@
 {
-  "id": "cards",
+  "id": "left_right_slider",
   "type": "SharedSlice",
-  "name": "Cards",
-  "description": "Cards",
+  "name": "LeftRightSlider",
+  "description": "LeftRightSlider",
   "variations": [
     {
       "id": "default",
@@ -26,12 +26,36 @@
             "placeholder": ""
           }
         },
+        "mobile_simple": {
+          "type": "Boolean",
+          "config": {
+            "label": "Mobile Simple",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "items": {
           "type": "Group",
           "config": {
             "label": "Items",
             "repeat": true,
             "fields": {
+              "image": {
+                "type": "Image",
+                "config": {
+                  "label": "Image",
+                  "constraint": {},
+                  "thumbnails": []
+                }
+              },
+              "video": {
+                "type": "Text",
+                "config": {
+                  "label": "Video",
+                  "placeholder": ""
+                }
+              },
               "headline": {
                 "type": "StructuredText",
                 "config": {
@@ -48,6 +72,17 @@
                   "placeholder": "",
                   "allowTargetBlank": true,
                   "multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
+                }
+              },
+              "link": {
+                "type": "Link",
+                "config": {
+                  "label": "Link",
+                  "placeholder": "",
+                  "select": null,
+                  "allowTargetBlank": true,
+                  "allowText": false,
+                  "repeat": false
                 }
               }
             }

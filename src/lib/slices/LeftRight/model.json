@@ -44,10 +44,12 @@
           }
         },
         "headline": {
-          "type": "Text",
+          "type": "StructuredText",
           "config": {
             "label": "Headline",
-            "placeholder": ""
+            "placeholder": "",
+            "allowTargetBlank": true,
+            "multi": "heading1,heading2,heading3,heading4,heading5,heading6"
           }
         },
         "text": {
@@ -56,7 +58,7 @@
             "label": "Text",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
+            "multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item,rtl,heading1,heading2,heading3,heading4"
           }
         },
         "link": {

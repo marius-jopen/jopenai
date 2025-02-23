@@ -25,7 +25,7 @@
             "label": "Headline",
             "placeholder": "",
             "allowTargetBlank": true,
-            "multi": "em"
+            "multi": "heading1,heading2,heading3,heading4,heading5,heading6"
           }
         },
         "text": {
@@ -37,13 +37,15 @@
             "multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
           }
         },
-        "big": {
-          "type": "Boolean",
+        "button": {
+          "type": "Link",
           "config": {
-            "label": "Big",
-            "placeholder_false": "false",
-            "placeholder_true": "true",
-            "default_value": false
+            "label": "Button",
+            "placeholder": "",
+            "select": null,
+            "allowTargetBlank": true,
+            "allowText": true,
+            "repeat": false
           }
         }
       },

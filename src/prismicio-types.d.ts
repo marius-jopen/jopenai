@@ -78,6 +78,8 @@ export type HeaderDocument<Lang extends string = string> = prismic.PrismicDocume
 >;
 
 type PageDocumentDataSlicesSlice =
+	| LeftRightSliderSlice
+	| PricingSlice
 	| GallerySlice
 	| BlankSlice
 	| HeroFadeSlice
@@ -324,12 +326,12 @@ export interface CardsSliceDefaultPrimaryItemsItem {
 	/**
 	 * Headline field in *Cards → Default → Primary → Items*
 	 *
-	 * - **Field Type**: Text
+	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: *None*
 	 * - **API ID Path**: cards.default.primary.items[].headline
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
-	headline: prismic.KeyTextField;
+	headline: prismic.RichTextField;
 
 	/**
 	 * Text field in *Cards → Default → Primary → Items*
@@ -621,15 +623,14 @@ export interface HeadlineSliceDefaultPrimary {
 	text: prismic.RichTextField;
 
 	/**
-	 * Big field in *Headline → Default → Primary*
+	 * Button field in *Headline → Default → Primary*
 	 *
-	 * - **Field Type**: Boolean
+	 * - **Field Type**: Link
 	 * - **Placeholder**: *None*
-	 * - **Default Value**: false
-	 * - **API ID Path**: headline.default.primary.big
-	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 * - **API ID Path**: headline.default.primary.button
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
-	big: prismic.BooleanField;
+	button: prismic.LinkField;
 }
 
 /**
@@ -1019,12 +1020,12 @@ export interface LeftRightSliceDefaultPrimary {
 	/**
 	 * Headline field in *LeftRight → Default → Primary*
 	 *
-	 * - **Field Type**: Text
+	 * - **Field Type**: Rich Text
 	 * - **Placeholder**: *None*
 	 * - **API ID Path**: left_right.default.primary.headline
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
 	 */
-	headline: prismic.KeyTextField;
+	headline: prismic.RichTextField;
 
 	/**
 	 * Text field in *LeftRight → Default → Primary*
@@ -1073,6 +1074,137 @@ type LeftRightSliceVariation = LeftRightSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type LeftRightSlice = prismic.SharedSlice<'left_right', LeftRightSliceVariation>;
+
+/**
+ * Item in *LeftRightSlider → Default → Primary → Items*
+ */
+export interface LeftRightSliderSliceDefaultPrimaryItemsItem {
+	/**
+	 * Image field in *LeftRightSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right_slider.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video field in *LeftRightSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right_slider.default.primary.items[].video
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video: prismic.KeyTextField;
+
+	/**
+	 * Headline field in *LeftRightSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right_slider.default.primary.items[].headline
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	headline: prismic.RichTextField;
+
+	/**
+	 * Text field in *LeftRightSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right_slider.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+
+	/**
+	 * Link field in *LeftRightSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right_slider.default.primary.items[].link
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	link: prismic.LinkField;
+}
+
+/**
+ * Primary content in *LeftRightSlider → Default → Primary*
+ */
+export interface LeftRightSliderSliceDefaultPrimary {
+	/**
+	 * hash field in *LeftRightSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right_slider.default.primary.hash
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	hash: prismic.KeyTextField;
+
+	/**
+	 * Headline field in *LeftRightSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right_slider.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Mobile Simple field in *LeftRightSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: left_right_slider.default.primary.mobile_simple
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	mobile_simple: prismic.BooleanField;
+
+	/**
+	 * Items field in *LeftRightSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right_slider.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<LeftRightSliderSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for LeftRightSlider Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LeftRightSliderSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<LeftRightSliderSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *LeftRightSlider*
+ */
+type LeftRightSliderSliceVariation = LeftRightSliderSliceDefault;
+
+/**
+ * LeftRightSlider Shared Slice
+ *
+ * - **API ID**: `left_right_slider`
+ * - **Description**: LeftRightSlider
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LeftRightSliderSlice = prismic.SharedSlice<
+	'left_right_slider',
+	LeftRightSliderSliceVariation
+>;
 
 /**
  * Item in *Logos → Default → Primary → Items*
@@ -1270,6 +1402,113 @@ type MediaSliceVariation = MediaSliceDefault;
 export type MediaSlice = prismic.SharedSlice<'media', MediaSliceVariation>;
 
 /**
+ * Item in *Pricing → Default → Primary → Items*
+ */
+export interface PricingSliceDefaultPrimaryItemsItem {
+	/**
+	 * Headline field in *Pricing → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: pricing.default.primary.items[].headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Price field in *Pricing → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: pricing.default.primary.items[].price
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	price: prismic.KeyTextField;
+
+	/**
+	 * Subheadline field in *Pricing → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: pricing.default.primary.items[].subheadline
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	subheadline: prismic.RichTextField;
+
+	/**
+	 * Text field in *Pricing → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: pricing.default.primary.items[].text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+
+	/**
+	 * Button field in *Pricing → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: pricing.default.primary.items[].button
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	button: prismic.LinkField;
+
+	/**
+	 * Info field in *Pricing → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: pricing.default.primary.items[].info
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	info: prismic.RichTextField;
+}
+
+/**
+ * Primary content in *Pricing → Default → Primary*
+ */
+export interface PricingSliceDefaultPrimary {
+	/**
+	 * Items field in *Pricing → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: pricing.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<PricingSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for Pricing Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PricingSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<PricingSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Pricing*
+ */
+type PricingSliceVariation = PricingSliceDefault;
+
+/**
+ * Pricing Shared Slice
+ *
+ * - **API ID**: `pricing`
+ * - **Description**: Pricing
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type PricingSlice = prismic.SharedSlice<'pricing', PricingSliceVariation>;
+
+/**
  * Item in *SlidingCards → Default → Primary → Items*
  */
 export interface SlidingCardsSliceDefaultPrimaryItemsItem {
@@ -1294,16 +1533,6 @@ export interface SlidingCardsSliceDefaultPrimaryItemsItem {
 	video: prismic.KeyTextField;
 
 	/**
-	 * Headline field in *SlidingCards → Default → Primary → Items*
-	 *
-	 * - **Field Type**: Text
-	 * - **Placeholder**: *None*
-	 * - **API ID Path**: sliding_cards.default.primary.items[].headline
-	 * - **Documentation**: https://prismic.io/docs/field#key-text
-	 */
-	headline: prismic.KeyTextField;
-
-	/**
 	 * Text field in *SlidingCards → Default → Primary → Items*
 	 *
 	 * - **Field Type**: Rich Text
@@ -1322,6 +1551,16 @@ export interface SlidingCardsSliceDefaultPrimaryItemsItem {
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
 	link: prismic.LinkField;
+
+	/**
+	 * Headline field in *SlidingCards → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: sliding_cards.default.primary.items[].headline
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	headline: prismic.RichTextField;
 }
 
 /**
@@ -1347,6 +1586,17 @@ export interface SlidingCardsSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	headline: prismic.KeyTextField;
+
+	/**
+	 * Slider field in *SlidingCards → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: sliding_cards.default.primary.slider
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	slider: prismic.BooleanField;
 
 	/**
 	 * Items field in *SlidingCards → Default → Primary*
@@ -1534,6 +1784,11 @@ declare module '@prismicio/client' {
 			LeftRightSliceDefaultPrimary,
 			LeftRightSliceVariation,
 			LeftRightSliceDefault,
+			LeftRightSliderSlice,
+			LeftRightSliderSliceDefaultPrimaryItemsItem,
+			LeftRightSliderSliceDefaultPrimary,
+			LeftRightSliderSliceVariation,
+			LeftRightSliderSliceDefault,
 			LogosSlice,
 			LogosSliceDefaultPrimaryItemsItem,
 			LogosSliceDefaultPrimary,
@@ -1544,6 +1799,11 @@ declare module '@prismicio/client' {
 			MediaSliceDefaultPrimary,
 			MediaSliceVariation,
 			MediaSliceDefault,
+			PricingSlice,
+			PricingSliceDefaultPrimaryItemsItem,
+			PricingSliceDefaultPrimary,
+			PricingSliceVariation,
+			PricingSliceDefault,
 			SlidingCardsSlice,
 			SlidingCardsSliceDefaultPrimaryItemsItem,
 			SlidingCardsSliceDefaultPrimary,

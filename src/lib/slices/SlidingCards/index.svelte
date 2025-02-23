@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
 	import Slider from '$lib/components/slider.svelte';
-	import { PrismicText, PrismicImage } from '@prismicio/svelte';
+	import { PrismicImage, PrismicRichText } from '@prismicio/svelte';
 
 	export let slice: Content.SlidingCardsSlice;
 
@@ -24,31 +24,57 @@
 		</h2>
 	</div>
 
-	<div data-aos="fade-up">
-		<Slider>
+	{#if slice.primary.slider == false}
+		<div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-3 gap-6 box-big">
 			{#each items as item, index}
-				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="item lg:flex flex-col lg:flex-row rounded-lg   overflow-hidden" style={calculateStyles(index, items.length)}>
-					<div class="w-full lg:w-1/2" >
+				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="flex flex-col rounded-lg overflow-hidden h-full">
+					<div class="w-full h-[250px]">
 						{#if item.video}
-							<video src={item.video} poster={item.image.url} class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" autoplay muted loop playsinline />
+							<video src={item.video} poster={item.image.url} class="rounded-t-lg w-full h-full object-cover" autoplay muted loop playsinline />
 						{:else}
-							<PrismicImage class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" field={item.image} />
+							<PrismicImage class="rounded-t-lg w-full h-full object-cover" field={item.image} />
 						{/if}
 					</div>
 				
-					<div class="rounded-b-lg lg:rounded-b-none lg:!rounded-r-lg bg-[var(--secondary-color)] px-8 pt-10 pb-12 w-full lg:w-1/2 flex flex-col lg:justify-center lg:aspect-[4/3] h-full lg:h-auto">
-						<h3 data-aos="fade" data-aos-delay={100 + index * 150}>
-							{item.headline}
-						</h3>
+					<div class="rounded-b-lg bg-[var(--secondary-color)] px-8 pt-6 md:pt-10 pb-8 md:pb-12 w-full flex-1 flex flex-col">
+						<div data-aos-delay={100 + index * 150}>
+							<PrismicRichText field={item.headline} />
+						</div>
 				
-						<div class="text-base-mobile md:text-sm text-[var(--text-secondary-color)]" data-aos="fade" data-aos-delay={150 + index * 150}>
-							<PrismicText field={item.text} />
+						<div class="text-base-mobile md:text-base text-[var(--text-secondary-color)] flex-1" data-aos="fade" data-aos-delay={150 + index * 150}>
+							<PrismicRichText field={item.text} />
 						</div>
 					</div>
 				</a>
 			{/each}
-		</Slider>
-	</div>
+		</div>
+	{:else}
+		<div data-aos="fade-up">
+			<Slider>
+				{#each items as item, index}
+					<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="item lg:flex flex-col lg:flex-row rounded-lg   overflow-hidden" style={calculateStyles(index, items.length)}>
+						<div class="w-full lg:w-1/2" >
+							{#if item.video}
+								<video src={item.video} poster={item.image.url} class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" autoplay muted loop playsinline />
+							{:else}
+								<PrismicImage class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" field={item.image} />
+							{/if}
+						</div>
+					
+						<div class="rounded-b-lg lg:rounded-b-none lg:!rounded-r-lg bg-[var(--secondary-color)] px-8 pt-10 pb-12 w-full lg:w-1/2 flex flex-col lg:justify-center lg:aspect-[4/3] h-full lg:h-auto">
+							<div data-aos-delay={100 + index * 150}>
+								<PrismicRichText field={item.headline} />
+							</div>
+					
+							<div class="text-base-mobile md:text-base text-[var(--text-secondary-color)]" data-aos="fade" data-aos-delay={150 + index * 150}>
+								<PrismicRichText field={item.text} />
+							</div>
+						</div>
+					</a>
+				{/each}
+			</Slider>
+		</div>
+	{/if}
 </section>
 
 

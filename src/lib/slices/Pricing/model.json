@@ -1,8 +1,8 @@
 {
-  "id": "sliding_cards",
+  "id": "pricing",
   "type": "SharedSlice",
-  "name": "SlidingCards",
-  "description": "SlidingCards",
+  "name": "Pricing",
+  "description": "Pricing",
   "variations": [
     {
       "id": "default",
@@ -12,48 +12,33 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
-        "hash": {
-          "type": "Text",
-          "config": {
-            "label": "hash",
-            "placeholder": ""
-          }
-        },
-        "headline": {
-          "type": "Text",
-          "config": {
-            "label": "Headline",
-            "placeholder": ""
-          }
-        },
-        "slider": {
-          "type": "Boolean",
-          "config": {
-            "label": "Slider",
-            "placeholder_false": "false",
-            "placeholder_true": "true",
-            "default_value": false
-          }
-        },
         "items": {
           "type": "Group",
           "config": {
             "label": "Items",
             "repeat": true,
             "fields": {
-              "image": {
-                "type": "Image",
-                "config": {
-                  "label": "Image",
-                  "constraint": {},
-                  "thumbnails": []
-                }
-              },
-              "video": {
+              "headline": {
                 "type": "Text",
                 "config": {
-                  "label": "Video",
+                  "label": "Headline",
                   "placeholder": ""
+                }
+              },
+              "price": {
+                "type": "Text",
+                "config": {
+                  "label": "Price",
+                  "placeholder": ""
+                }
+              },
+              "subheadline": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Subheadline",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
                 }
               },
               "text": {
@@ -62,27 +47,27 @@
                   "label": "Text",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "paragraph,preformatted,heading6,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
                 }
               },
-              "link": {
+              "button": {
                 "type": "Link",
                 "config": {
-                  "label": "Link",
+                  "label": "Button",
                   "placeholder": "",
                   "select": null,
                   "allowTargetBlank": true,
-                  "allowText": false,
+                  "allowText": true,
                   "repeat": false
                 }
               },
-              "headline": {
+              "info": {
                 "type": "StructuredText",
                 "config": {
-                  "label": "Headline",
+                  "label": "Info",
                   "placeholder": "",
                   "allowTargetBlank": true,
-                  "multi": "heading1,heading2,heading3,heading4,heading5,heading6"
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
                 }
               }
             }

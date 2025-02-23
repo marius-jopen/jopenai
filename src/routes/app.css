@@ -51,10 +51,26 @@ h3 {
     @apply text-xl md:text-3xl pb-4 lg:pb-6 font-display;
 }
 
+h4 {
+    @apply text-lg md:text-2xl pb-4 lg:pb-6 font-display;
+}
+
 .box {
     @apply mx-3 lg:mx-[15vw];
 }
 
+.box-big {
+    @apply mx-3 lg:mx-[7.5vw];
+}
+
 .text-box p {
     @apply mb-2;
+}
+
+.text-box ul, ol {
+    @apply mb-4;
+}
+
+.text-box ol li {
+    @apply mb-2 list-none list-inside;
 }
