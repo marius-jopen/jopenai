@@ -27,12 +27,12 @@
 	{#if slice.primary.slider == false}
 		<div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-3 gap-6 box-big">
 			{#each items as item, index}
-				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="flex flex-col rounded-lg overflow-hidden h-full bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition">
-					<div class="w-full h-[250px]">
+				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="flex flex-col rounded-lg overflow-hidden h-full bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition group">
+					<div class="w-full h-[250px] overflow-hidden">
 						{#if item.video}
-							<video src={item.video} poster={item.image.url} class="rounded-t-lg w-full h-full object-cover" autoplay muted loop playsinline />
+							<video src={item.video} poster={item.image.url} class="rounded-t-lg w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" autoplay muted loop playsinline />
 						{:else}
-							<PrismicImage class="rounded-t-lg w-full h-full object-cover" field={item.image} />
+							<PrismicImage class="rounded-t-lg w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" field={item.image} />
 						{/if}
 					</div>
 				
@@ -52,12 +52,12 @@
 		<div data-aos="fade-up">
 			<Slider>
 				{#each items as item, index}
-					<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="item lg:flex flex-col lg:flex-row rounded-lg   overflow-hidden" style={calculateStyles(index, items.length)}>
-						<div class="w-full lg:w-1/2" >
+					<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="item lg:flex flex-col lg:flex-row rounded-lg overflow-hidden group" style={calculateStyles(index, items.length)}>
+						<div class="w-full lg:w-1/2 overflow-hidden">
 							{#if item.video}
-								<video src={item.video} poster={item.image.url} class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" autoplay muted loop playsinline />
+								<video src={item.video} poster={item.image.url} class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3] transition-transform duration-300 group-hover:scale-105" autoplay muted loop playsinline />
 							{:else}
-								<PrismicImage class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3]" field={item.image} />
+								<PrismicImage class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3] transition-transform duration-300 group-hover:scale-105" field={item.image} />
 							{/if}
 						</div>
 					
