@@ -18,7 +18,7 @@
 
 <svelte:head>
 	<title>
-		JopenAI - {$page.data.meta_title}
+		{$page.data.meta_title}
 	</title>
 	
 	{#if $page.data.meta_description}
