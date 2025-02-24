@@ -8,11 +8,11 @@
 
 <section class="pb-12 " data-id={slice.primary.hash}>
 	<div class="box">
-		<div class="mx-auto max-w-3xl text-center" data-aos="fade" data-aos-delay={250}>
+		<div class="mx-auto max-w-3xl text-center px-4 md:px-0" data-aos="fade" data-aos-delay={250}>
 			<PrismicRichText field={slice.primary.headline} />
 		</div>
 
-		<div class="mx-auto max-w-2xl text-center {slice.primary.big ? 'text-base' : 'text-base'} text-[var(--text-primary-color)]" data-aos="fade" data-aos-delay={500}>
+		<div class="mx-auto max-w-2xl text-center px-4 md:px-0 {slice.primary.big ? 'text-base' : 'text-base'} text-[var(--text-primary-color)]" data-aos="fade" data-aos-delay={500}>
 			<PrismicRichText field={slice.primary.text} />
 		</div>
 
