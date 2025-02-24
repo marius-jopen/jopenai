@@ -30,7 +30,7 @@
 							{item.price}
 						</h4>
 
-						<div class="text-box font-bold text-center text-base-mobile md:text-base pb-4 border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
+						<div class="text-box text-center text-base-mobile md:text-base pb-4 border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
 							<PrismicRichText field={item.subheadline} />
 						</div>
 		
@@ -38,7 +38,7 @@
 							<PrismicRichText field={item.text} />
 						</div>
 
-						<div class="text-box font-bold text-base-mobile md:text-base pb-4" data-aos="fade" data-aos-delay={index * 250}>
+						<div class="text-box text-base-mobile md:text-base pb-4" data-aos="fade" data-aos-delay={index * 250}>
 							<PrismicRichText field={item.info} />
 						</div>
 					</div>
@@ -67,7 +67,7 @@
 								{item.price}
 							</h4>
 	
-							<div class="text-box font-bold text-center text-base-mobile md:text-base pb-4 border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
+							<div class="text-box  text-center text-base-mobile md:text-base pb-4 border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
 								<PrismicRichText field={item.subheadline} />
 							</div>
 			
@@ -75,7 +75,7 @@
 								<PrismicRichText field={item.text} />
 							</div>
 	
-							<div class="text-box font-bold text-base-mobile md:text-base pb-4" data-aos="fade" data-aos-delay={index * 250}>
+							<div class="text-box text-base-mobile md:text-base pb-4" data-aos="fade" data-aos-delay={index * 250}>
 								<PrismicRichText field={item.info} />
 							</div>
 						</div>
