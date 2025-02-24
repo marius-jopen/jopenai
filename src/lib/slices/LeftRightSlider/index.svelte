@@ -62,17 +62,29 @@
 
 	<div class="{slice.primary.mobile_simple ? 'block lg:hidden box' : 'hidden'}">
 		{#each items as item, index}
-			<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 250} style={calculateStyles(index, items.length)} class="item group">
-				<div class="w-full rounded-lg overflow-hidden aspect-[4/3] md:aspect-[6/3] lg:aspect-[5/3] mobile-image-container">
-					{#if item.video}
-						<video src={item.video} poster={item.image.url} class="w-full object-cover h-full scale-105 transition-transform duration-500 group-hover:scale-115" autoplay muted loop playsinline />
-					{:else}
-						<PrismicImage class="w-full object-cover h-full scale-105 transition-transform duration-500 group-hover:scale-115" field={item.image} />
-					{/if}
-				</div>
+			<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 250}  class="mb-4 item-simple flex bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg overflow-hidden group ">
+				<div class="flex flex-col-reverse md:flex-row flex-row-reverse w-full justify-between">
+					<div class="w-full md:w-1/2 px-6 md:px-10 flex flex-col justify-start py-10 md:py-12 h-full">
+						<div data-aos="fade" data-aos-delay={100}>
+							<PrismicRichText field={item.headline} />
+						</div>
+			
+						<div class="text-[var(--text-secondary-color)] text-box" data-aos="fade" data-aos-delay={150}>
+							<PrismicRichText field={item.text} />
+						</div>
 
-				<div class="text-center text-[var(--text-secondary-color)] pt-3 pb-8 px-8 mobile-text-container">
-					<PrismicRichText field={item.text} />
+						<div class="text-[var(--text-secondary-color)] text-box mt-6" data-aos="fade" data-aos-delay={150}>
+							<PrismicRichText field={item.text_2} />
+						</div>
+					</div>
+			
+					<div class="w-full md:w-1/2 overflow-hidden relative">
+						{#if item.video}
+							<video src={item.video} poster={item.image.url} class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" playsinline autoplay muted loop />
+						{:else}
+							<PrismicImage class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" field={item.image} />
+						{/if}
+					</div>
 				</div>
 			</a>
 		{/each}
@@ -119,6 +131,8 @@
 		}
 	}
 
+	.item-simple :global(img),
+	.item-simple video,
 	.item :global(img),
 	.item video {
 		position: absolute;
@@ -127,6 +141,7 @@
 		object-fit: cover;
 	}
 
+	.item-simple .w-full.md\:w-1\/2.overflow-hidden,
 	.item .w-full.md\:w-1\/2.overflow-hidden {
 		min-height: 300px;
 	}
