@@ -1,41 +1,22 @@
 <script>
-    import { onMount } from 'svelte';
     export let data;
-    let mounted = false;
-
-    onMount(() => {
-        mounted = true;
-        if (window.location.hash) {
-            const hash = window.location.hash.replace('#', '');
-            findAndScrollToElement(hash);
-        }
-    });
 
     function handleClick(e, url) {
+        // Check if it's a hash link
         if (url.startsWith('#')) {
             e.preventDefault();
             const hash = url.replace('#', '');
-            findAndScrollToElement(hash);
-        }
-    }
-
-    function findAndScrollToElement(hash, attempts = 0, maxAttempts = 10) {
-        const element = document.querySelector(`[data-id="${hash}"]`);
-        
-        if (element) {
-            // Element found, scroll to it
-            const headerOffset = 50;
-            const elementPosition = element.getBoundingClientRect().top;
-            const offsetPosition = elementPosition + window.scrollY - headerOffset;
+            const element = document.querySelector(`[data-id="${hash}"]`);
             
-            window.scrollTo({
-                top: offsetPosition
-            });
-        } else if (attempts < maxAttempts) {
-            // Element not found, try again in 100ms
-            setTimeout(() => {
-                findAndScrollToElement(hash, attempts + 1, maxAttempts);
-            }, 100);
+            if (element) {
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - 50; // Add 20px offset
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
         }
     }
 </script>
