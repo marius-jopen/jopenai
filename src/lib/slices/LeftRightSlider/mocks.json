@@ -22,6 +22,20 @@
 										}
 									]
 								}
+							],
+							[
+								"text_2",
+								{
+									"__TYPE__": "StructuredTextContent",
+									"value": [
+										{
+											"type": "paragraph",
+											"content": {
+												"text": "Cupidatat qui duis excepteur cillum ipsum velit consequat nisi. Nostrud culpa sint consectetur eu quis ullamco reprehenderit et duis cillum dolore elit culpa est amet."
+											}
+										}
+									]
+								}
 							]
 						]
 					}

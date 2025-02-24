@@ -74,6 +74,15 @@
                   "multi": "paragraph,preformatted,strong,em,hyperlink,embed,list-item,o-list-item,rtl"
                 }
               },
+              "text_2": {
+                "type": "StructuredText",
+                "config": {
+                  "label": "Text 2",
+                  "placeholder": "",
+                  "allowTargetBlank": true,
+                  "multi": "paragraph,preformatted,heading1,heading2,heading3,heading4,heading5,heading6,strong,em,hyperlink,image,embed,list-item,o-list-item,rtl"
+                }
+              },
               "link": {
                 "type": "Link",
                 "config": {

@@ -90,7 +90,7 @@
 				{/each}
 			</div>
 	
-			<div class="w-full md:w-1/2 py-4 md:py-10 divide-y divide-[var(--text-quaternary-color)] pr-8 pl-8 md:pl-0">
+			<div class="w-full md:w-1/2 py-4 md:py-10 divide-y divide-[var(--text-quaternary-color)] px-6 md:px-10 md:pl-0">
 				{#each slice.primary.items as item, index}
 					<div class="pt-4 flex">
 						<div class="w-full">

@@ -1120,6 +1120,16 @@ export interface LeftRightSliderSliceDefaultPrimaryItemsItem {
 	text: prismic.RichTextField;
 
 	/**
+	 * Text 2 field in *LeftRightSlider → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: left_right_slider.default.primary.items[].text_2
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text_2: prismic.RichTextField;
+
+	/**
 	 * Link field in *LeftRightSlider → Default → Primary → Items*
 	 *
 	 * - **Field Type**: Link

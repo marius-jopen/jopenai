@@ -36,7 +36,7 @@
 						{/if}
 					</div>
 				
-					<div class="rounded-b-lg px-8 pt-6 md:pt-10 pb-8 md:pb-12 w-full flex-1 flex flex-col">
+					<div class="rounded-b-lg px-6 md:px-10 pt-6 md:pt-10 pb-8 md:pb-12 w-full flex-1 flex flex-col">
 						<div data-aos-delay={100 + index * 150}>
 							<PrismicRichText field={item.headline} />
 						</div>
@@ -61,7 +61,7 @@
 							{/if}
 						</div>
 					
-						<div class="rounded-b-lg lg:rounded-b-none lg:!rounded-r-lg bg-[var(--secondary-color)] px-8 pt-10 pb-12 w-full lg:w-1/2 flex flex-col lg:justify-center lg:aspect-[4/3] h-full lg:h-auto">
+						<div class="rounded-b-lg lg:rounded-b-none lg:!rounded-r-lg bg-[var(--secondary-color)] px-6 md:px-10 pt-10 pb-12 w-full lg:w-1/2 flex flex-col lg:justify-center lg:aspect-[4/3] h-full lg:h-auto">
 							<div data-aos-delay={100 + index * 150}>
 								<PrismicRichText field={item.headline} />
 							</div>

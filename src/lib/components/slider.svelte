@@ -165,7 +165,7 @@
                 <slot />
 			</div>
 
-			<div class="hidden md:flex justify-center w-full pt-12" data-aos="fade-up" data-aos-delay={500}>
+			<div class="flex justify-center w-full pt-12" data-aos="fade-up" data-aos-delay={500}>
 				<div class="ss-carousel__header">
 					<div class="ss-carousel__controls">
 						<button class="ss-carousel__arrow disabled arrow-prev" aria-label="Previous"></button>

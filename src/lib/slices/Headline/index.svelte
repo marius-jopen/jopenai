@@ -6,7 +6,7 @@
 	export let slice: Content.HeadlineSlice;
 </script>
 
-<section class="pb-12 px-8 md:px-0" data-id={slice.primary.hash}>
+<section class="pb-12 " data-id={slice.primary.hash}>
 	<div class="box">
 		<div class="mx-auto max-w-3xl text-center" data-aos="fade" data-aos-delay={250}>
 			<PrismicRichText field={slice.primary.headline} />
