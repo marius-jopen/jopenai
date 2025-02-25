@@ -8,30 +8,59 @@
     let isVisible = true;
     let lastScrollY = 0;
     let navVisible = false;
+    let ticking = false;  // Add this for scroll optimization
 
     function triggerNav() {
-        navVisible = !navVisible; // Toggle visibility
+        navVisible = !navVisible;
     }
 
     function closeNav() {
         navVisible = false; // Toggle visibility
     }
 
+    function handleClick(e, url) {
+        // Check if it's a hash link
+        if (url.startsWith('#')) {
+            e.preventDefault();
+            const hash = url.replace('#', '');
+            const element = document.querySelector(`[data-id="${hash}"]`);
+            
+            if (element) {
+                const elementPosition = element.getBoundingClientRect().top;
+                const offsetPosition = elementPosition + window.pageYOffset - 50; // Add 20px offset
+
+                window.scrollTo({
+                    top: offsetPosition,
+                    behavior: 'smooth'
+                });
+            }
+        }
+    }
+
     onMount(() => {
         const handleScroll = () => {
             const currentScroll = window.scrollY;
-
-            // Check if scrolling down or up
-            if (currentScroll > lastScrollY && currentScroll > 0) {
+            
+            // Immediately update visibility based on scroll direction
+            if (currentScroll > lastScrollY) {
                 isVisible = false; // Scrolling down
-            } else if (currentScroll < lastScrollY && currentScroll > 0) {
-                isVisible = true; // Scrolling up, but not at the top
+            } else {
+                isVisible = true;  // Scrolling up
             }
-
-            lastScrollY = currentScroll; // Update last scroll position
+            
+            lastScrollY = currentScroll;
+            ticking = false;
         };
 
-        window.addEventListener('scroll', handleScroll);
+        // Optimize scroll event handling
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    handleScroll();
+                });
+                ticking = true;
+            }
+        });
         
         return () => {
             window.removeEventListener('scroll', handleScroll);
@@ -69,7 +98,7 @@
 
         <div class="flex flex-col justify-center h-full text-center -mt-20">
             {#each data.header[0].data.links as link, index}
-                <a data-aos="fade-zoom-in" data-aos-delay={200 + index * 50} on:click={closeNav} class="text-xl text-[var(--text-tertiary-color)] hover:text-[var(--text-secondary-color)] transition-all duration-300 py-1" href={link.url} >
+                <a  on:click={(e) => handleClick(e, link.url)} data-aos="fade-zoom-in" data-aos-delay={200 + index * 50} on:click={closeNav} class="text-xl text-[var(--text-tertiary-color)] hover:text-[var(--text-secondary-color)] transition-all duration-300 py-1" href={link.url} >
                     {link.text} 
                 </a>
             {/each}    
