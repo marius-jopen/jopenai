@@ -78,19 +78,19 @@
 							{/if}
 	
 							{#if item.subheadline.length > 0}
-								<div class="text-box  text-center text-base-mobile md:text-base pb-4 border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
+								<div class="text-box text-center text-center text-base-mobile md:text-base pb-2 border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
 									<PrismicRichText field={item.subheadline} />
 								</div>
 							{/if}
 			
 							{#if item.text.length > 0}
-								<div class="text-box text-base-mobile md:text-base border-b mb-6 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
+								<div class="text-box text-center text-base-mobile md:text-base border-b mb-6 pb-4 border-[var(--text-quaternary-color)]" data-aos="fade" data-aos-delay={index * 250}>
 									<PrismicRichText field={item.text} />
 								</div>
 							{/if}
 	
 							{#if item.info.length > 0}
-								<div class="text-box text-base-mobile md:text-base pb-4" data-aos="fade" data-aos-delay={index * 250}>
+								<div class="text-box text-center text-base-mobile md:text-base pb-4" data-aos="fade" data-aos-delay={index * 250}>
 									<PrismicRichText field={item.info} />
 								</div>
 							{/if}

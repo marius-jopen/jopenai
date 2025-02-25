@@ -8,6 +8,7 @@
 
 	let openIndex: number | null = 0; // Track the currently open item index
 	let autoplayInterval: ReturnType<typeof setInterval>;
+	let isMobile: boolean;
 
 	// Handle hash changes both on mount and during navigation
 	function scrollToHash() {
@@ -27,16 +28,33 @@
 	}
 
 	onMount(() => {
+		// Check if device is mobile based on screen width
+		isMobile = window.innerWidth < 768; // 768px is standard MD breakpoint
+
+		// Add resize listener to update isMobile state
+		const handleResize = () => {
+			isMobile = window.innerWidth < 768;
+			if (isMobile) {
+				clearInterval(autoplayInterval);
+			} else {
+				resumeAutoplay();
+			}
+		};
+		window.addEventListener('resize', handleResize);
+
 		scrollToHash();
 		// Also listen for hash changes
 		window.addEventListener('hashchange', scrollToHash);
 		
-		// Start autoplay
-		autoplayInterval = setInterval(nextSlide, 8000);
+		// Only start autoplay if not on mobile
+		if (!isMobile) {
+			autoplayInterval = setInterval(nextSlide, 8000);
+		}
 
 		// Cleanup function
 		return () => {
 			window.removeEventListener('hashchange', scrollToHash);
+			window.removeEventListener('resize', handleResize);
 			clearInterval(autoplayInterval);
 		};
 	});
@@ -52,7 +70,10 @@
 	}
 
 	function resumeAutoplay() {
-		autoplayInterval = setInterval(nextSlide, 2000);
+		// Only resume autoplay if not on mobile
+		if (!isMobile) {
+			autoplayInterval = setInterval(nextSlide, 2000);
+		}
 	}
 
 	function toggle(index: number) {
