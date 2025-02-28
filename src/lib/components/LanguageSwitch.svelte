@@ -34,6 +34,6 @@
 
 <style>
     .active {
-        @apply text-[var(--text-primary-color)] md:text-[var(--text-primary-color)];
+        @apply font-bold text-[var(--text-primary-color)] md:text-[var(--text-primary-color)];
     }
 </style>

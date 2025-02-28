@@ -41,11 +41,11 @@
         const handleScroll = () => {
             const currentScroll = window.scrollY;
             
-            // Immediately update visibility based on scroll direction
-            if (currentScroll > lastScrollY) {
+            // Only hide navbar after scrolling down 50px
+            if (currentScroll > lastScrollY && currentScroll > 50) {
                 isVisible = false; // Scrolling down
             } else {
-                isVisible = true;  // Scrolling up
+                isVisible = true;  // Scrolling up or within first 50px
             }
             
             lastScrollY = currentScroll;
