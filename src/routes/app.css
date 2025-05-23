@@ -85,3 +85,7 @@ h4 {
     font-weight: normal !important;
     @apply block pt-4;
 }
+
+.text-box ul li {
+    @apply list-disc ml-4 pl-1;
+}
