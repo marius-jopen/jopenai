@@ -64,15 +64,6 @@
                 }
             }
         }
-        
-        // Close mobile nav if it's mobile (only for same-page navigation)
-        if (isMobile && !url.includes('#')) {
-            try {
-                closeNav();
-            } catch (error) {
-                console.log('closeNav error (component may be destroyed):', error);
-            }
-        }
     }
 
     function getUrl(item: any): string {
