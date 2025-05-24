@@ -19,7 +19,7 @@
 
 				{#if slice.primary.link.url}
 					<div class="mt-6" data-aos="fade" data-aos-delay={200}>
-						<Button data={slice.primary.link} big={false} onwhite={true} />
+						<Button data={slice.primary.link} medium onwhite={true} />
 					</div>
 				{/if}
 			</div>
