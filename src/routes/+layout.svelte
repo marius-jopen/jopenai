@@ -19,12 +19,15 @@
 	// Reactive hash scrolling - much cleaner Svelte approach!
 	$: if (browser && $page.url.hash) {
 		const hash = $page.url.hash.substring(1);
+		console.log('Layout detected hash:', hash, 'on page:', $page.url.pathname);
 		// Small delay to ensure DOM is ready after navigation
 		setTimeout(() => {
 			const element = document.querySelector(`[data-id="${hash}"]`);
+			console.log('Looking for element with data-id:', hash, 'found:', element);
 			if (element) {
 				const elementPosition = element.getBoundingClientRect().top;
 				const offsetPosition = elementPosition + window.pageYOffset - 50;
+				console.log('Scrolling to:', offsetPosition);
 				window.scrollTo({
 					top: offsetPosition,
 					behavior: 'smooth'

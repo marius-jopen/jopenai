@@ -10,6 +10,8 @@
     export let linkClass = "";
 
     function handleClick(e: Event, url: string) {
+        console.log('Navigation click:', {url, currentPath: window.location.pathname, currentOrigin: window.location.origin});
+        
         // Check if it's a hash link or a URL with hash
         if (url.startsWith('#') || url.includes('#')) {
             const hashIndex = url.indexOf('#');
@@ -21,15 +23,23 @@
                 if (hashIndex === 0) {
                     // Pure hash link like #pricing
                     isSamePage = true;
+                    console.log('Pure hash link detected');
                 } else {
-                    // Full URL with hash - check if it's exactly the same page
+                    // Full URL with hash - normalize URLs for comparison
                     const linkUrl = url.substring(0, hashIndex);
                     const currentUrl = browser ? window.location.origin + window.location.pathname : '';
-                    isSamePage = linkUrl === currentUrl;
+                    
+                    // Normalize both URLs by removing trailing slashes for comparison
+                    const normalizedLinkUrl = linkUrl.replace(/\/$/, '') || linkUrl;
+                    const normalizedCurrentUrl = currentUrl.replace(/\/$/, '') || currentUrl;
+                    
+                    isSamePage = normalizedLinkUrl === normalizedCurrentUrl;
+                    console.log('URL comparison:', {linkUrl, currentUrl, normalizedLinkUrl, normalizedCurrentUrl, isSamePage});
                 }
                 
                 // Only prevent default and scroll if we're on the same page
                 if (isSamePage) {
+                    console.log('Same page - preventing default and scrolling');
                     e.preventDefault();
                     const element = document.querySelector(`[data-id="${hash}"]`);
                     if (element) {
@@ -40,6 +50,8 @@
                             behavior: 'smooth'
                         });
                     }
+                } else {
+                    console.log('Different page - allowing normal navigation');
                 }
             }
         }
