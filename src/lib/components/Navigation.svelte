@@ -1,6 +1,7 @@
 <script lang="ts">
     import { PrismicLink } from '@prismicio/svelte';
     import { asLink } from '@prismicio/client';
+    import { browser } from '$app/environment';
     import type { HeaderDocumentDataNavTopItem } from '../../prismicio-types';
 
     export let data;
@@ -47,7 +48,9 @@
             // Get the properly resolved link URL
             const baseUrl = asLink(item.link);
             if (baseUrl) {
-                const fullUrl = `${baseUrl}#${item.anchor}`;
+                // If baseUrl is just '/', convert it to full URL (only in browser)
+                const fullBaseUrl = baseUrl === '/' && browser ? window.location.origin : baseUrl;
+                const fullUrl = `${fullBaseUrl}#${item.anchor}`;
                 console.log('Generated URL with anchor:', fullUrl, 'from baseUrl:', baseUrl, 'anchor:', item.anchor);
                 return fullUrl;
             }
