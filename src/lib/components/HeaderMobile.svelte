@@ -112,8 +112,8 @@
 
 <!-- Debug element -->
 {#if navVisible}
-    <div style="position: fixed; top: 100px; left: 20px; background: yellow; padding: 10px; z-index: 999999;">
-        DEBUG: Menu should be visible! navVisible = {navVisible}
+    <div style="position: fixed; top: 100px; left: 20px; background: yellow; padding: 10px; z-index: 999999; color: black; font-weight: bold;">
+        DEBUG: Menu should be visible! navVisible = {navVisible}, mounted = {mounted}
     </div>
 {/if}
 
