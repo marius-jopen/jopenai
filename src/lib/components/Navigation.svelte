@@ -15,18 +15,26 @@
             const hashIndex = url.indexOf('#');
             if (hashIndex !== -1) {
                 const hash = url.substring(hashIndex + 1);
-                const currentPath = window.location.pathname;
-                const linkPath = hashIndex === 0 ? currentPath : url.substring(0, hashIndex);
+                
+                // Check if we're linking to the same page
+                let isSamePage = false;
+                if (hashIndex === 0) {
+                    // Pure hash link like #pricing
+                    isSamePage = true;
+                } else {
+                    // Full URL with hash - check if it's exactly the same page
+                    const linkUrl = url.substring(0, hashIndex);
+                    const currentUrl = browser ? window.location.origin + window.location.pathname : '';
+                    isSamePage = linkUrl === currentUrl;
+                }
                 
                 // Only prevent default and scroll if we're on the same page
-                if (linkPath === currentPath || hashIndex === 0) {
+                if (isSamePage) {
                     e.preventDefault();
                     const element = document.querySelector(`[data-id="${hash}"]`);
-                    
                     if (element) {
                         const elementPosition = element.getBoundingClientRect().top;
-                        const offsetPosition = elementPosition + window.pageYOffset - 50; // Add 20px offset
-
+                        const offsetPosition = elementPosition + window.pageYOffset - 50;
                         window.scrollTo({
                             top: offsetPosition,
                             behavior: 'smooth'
@@ -65,6 +73,8 @@
     const defaultClass = linkClass || (isMobile 
         ? "text-xl text-[var(--text-tertiary-color)] hover:text-[var(--text-secondary-color)] transition-all duration-300 py-1"
         : "cursor-pointer text-[var(--text-primary-color)] hover:text-[var(--text-primary-color)] transition-all duration-300");
+
+
 </script>
 
 {#each data.header[0].data.nav_top || data.header[0].data.links as item, index}

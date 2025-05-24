@@ -6,6 +6,7 @@
 	import AOS from 'aos';
 	import 'aos/dist/aos.css';
 	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
 
 	onMount(() => {
 		AOS.init({
@@ -14,6 +15,23 @@
 			offset: 50
 		});
 	});
+
+	// Reactive hash scrolling - much cleaner Svelte approach!
+	$: if (browser && $page.url.hash) {
+		const hash = $page.url.hash.substring(1);
+		// Small delay to ensure DOM is ready after navigation
+		setTimeout(() => {
+			const element = document.querySelector(`[data-id="${hash}"]`);
+			if (element) {
+				const elementPosition = element.getBoundingClientRect().top;
+				const offsetPosition = elementPosition + window.pageYOffset - 50;
+				window.scrollTo({
+					top: offsetPosition,
+					behavior: 'smooth'
+				});
+			}
+		}, 100);
+	}
 </script>
 
 <svelte:head>
