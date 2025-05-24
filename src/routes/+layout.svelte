@@ -14,6 +14,7 @@
 			once: false,
 			offset: 50
 		});
+		console.log('Layout mounted, AOS initialized');
 	});
 
 	// Reactive hash scrolling - much cleaner Svelte approach!

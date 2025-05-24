@@ -11,21 +11,33 @@
     let lastScrollY = 0;
     let navVisible = false;
     let ticking = false;  // Add this for scroll optimization
-    let lastToggleTime = 0; // Debounce mechanism
+    let mounted = false;
 
     function triggerNav() {
+        if (!mounted) {
+            console.log('triggerNav called but component not mounted');
+            return;
+        }
         console.log('triggerNav called, current navVisible:', navVisible);
         navVisible = !navVisible;
         console.log('triggerNav result, new navVisible:', navVisible);
     }
 
     function closeNav() {
+        if (!mounted) {
+            console.log('closeNav called but component not mounted');
+            return;
+        }
         console.log('closeNav called, current navVisible:', navVisible);
         navVisible = false; // Toggle visibility
     }
 
     onMount(() => {
+        mounted = true;
+        console.log('HeaderMobile mounted');
+        
         const handleScroll = () => {
+            if (!mounted) return;
             const currentScroll = window.scrollY;
             
             // Only hide navbar after scrolling down 50px
@@ -40,17 +52,21 @@
         };
 
         // Optimize scroll event handling
-        window.addEventListener('scroll', () => {
-            if (!ticking) {
+        const scrollHandler = () => {
+            if (!ticking && mounted) {
                 window.requestAnimationFrame(() => {
                     handleScroll();
                 });
                 ticking = true;
             }
-        });
+        };
+        
+        window.addEventListener('scroll', scrollHandler);
         
         return () => {
-            window.removeEventListener('scroll', handleScroll);
+            mounted = false;
+            console.log('HeaderMobile unmounted');
+            window.removeEventListener('scroll', scrollHandler);
         };
     });
 
