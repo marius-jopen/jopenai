@@ -57,9 +57,14 @@
         </a>
     </div>
 
-    <div on:click={triggerNav} class="uppercase cursor-pointer fixed top-[15px] right-4 z-20">
+    <button 
+        on:click={triggerNav} 
+        on:touchstart={triggerNav}
+        class="uppercase cursor-pointer fixed top-[10px] right-4 z-20 p-2 min-w-[60px] min-h-[40px] flex items-center justify-center"
+        aria-label="Open menu"
+    >
         Menu
-    </div>
+    </button>
 </div>
 
 <div class="h-[62px] w-full  bg-[var(--primary-color)] md:hidden" />
@@ -73,9 +78,14 @@
                 </a>
             </div>
         
-            <div on:click={closeNav} class="uppercase cursor-pointer fixed top-[15px] right-4 z-20 ">
+            <button 
+                on:click={closeNav}
+                on:touchstart={closeNav} 
+                class="uppercase cursor-pointer fixed top-[10px] right-4 z-20 p-2 min-w-[60px] min-h-[40px] flex items-center justify-center"
+                aria-label="Close menu"
+            >
                 Close
-            </div>
+            </button>
         </div>
 
         <div class="flex flex-col justify-center h-full text-center -mt-20">
