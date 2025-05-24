@@ -68,7 +68,7 @@
             "placeholder": "",
             "select": null,
             "allowTargetBlank": true,
-            "allowText": false,
+            "allowText": true,
             "repeat": false
           }
         }

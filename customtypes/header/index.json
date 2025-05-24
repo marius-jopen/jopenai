@@ -6,17 +6,6 @@
 	"status": true,
 	"json": {
 		"Main": {
-			"links": {
-				"type": "Link",
-				"config": {
-					"label": "Links",
-					"placeholder": "",
-					"select": null,
-					"allowTargetBlank": true,
-					"allowText": true,
-					"repeat": true
-				}
-			},
 			"button": {
 				"type": "Link",
 				"config": {
@@ -26,6 +15,33 @@
 					"allowTargetBlank": true,
 					"allowText": true,
 					"repeat": false
+				}
+			},
+			"nav_top": {
+				"type": "Group",
+				"config": {
+					"label": "Nav Top",
+					"repeat": true,
+					"fields": {
+						"link": {
+							"type": "Link",
+							"config": {
+								"label": "Link",
+								"placeholder": "",
+								"select": null,
+								"allowTargetBlank": true,
+								"allowText": true,
+								"repeat": false
+							}
+						},
+						"anchor": {
+							"type": "Text",
+							"config": {
+								"label": "Anchor",
+								"placeholder": ""
+							}
+						}
+					}
 				}
 			}
 		}

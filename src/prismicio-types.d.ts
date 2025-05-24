@@ -36,20 +36,34 @@ export type FooterDocument<Lang extends string = string> = prismic.PrismicDocume
 >;
 
 /**
- * Content for Header documents
+ * Item in *Header → Nav Top*
  */
-interface HeaderDocumentData {
+export interface HeaderDocumentDataNavTopItem {
 	/**
-	 * Links field in *Header*
+	 * Link field in *Header → Nav Top*
 	 *
 	 * - **Field Type**: Link
 	 * - **Placeholder**: *None*
-	 * - **API ID Path**: header.links
-	 * - **Tab**: Main
+	 * - **API ID Path**: header.nav_top[].link
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
-	links: prismic.Repeatable<prismic.LinkField>;
+	link: prismic.LinkField;
 
+	/**
+	 * Anchor field in *Header → Nav Top*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: header.nav_top[].anchor
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	anchor: prismic.KeyTextField;
+}
+
+/**
+ * Content for Header documents
+ */
+interface HeaderDocumentData {
 	/**
 	 * Button field in *Header*
 	 *
@@ -60,6 +74,17 @@ interface HeaderDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
 	button: prismic.LinkField;
+
+	/**
+	 * Nav Top field in *Header*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: header.nav_top[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	nav_top: prismic.GroupField<Simplify<HeaderDocumentDataNavTopItem>>;
 }
 
 /**
@@ -1744,6 +1769,7 @@ declare module '@prismicio/client' {
 			FooterDocumentData,
 			HeaderDocument,
 			HeaderDocumentData,
+			HeaderDocumentDataNavTopItem,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
