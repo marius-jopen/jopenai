@@ -25,16 +25,23 @@
                     isSamePage = true;
                     console.log('Pure hash link detected');
                 } else {
-                    // Full URL with hash - normalize URLs for comparison
+                    // Full URL with hash - check if we need to navigate to a different page
                     const linkUrl = url.substring(0, hashIndex);
                     const currentUrl = browser ? window.location.origin + window.location.pathname : '';
                     
-                    // Normalize both URLs by removing trailing slashes for comparison
-                    const normalizedLinkUrl = linkUrl.replace(/\/$/, '') || linkUrl;
-                    const normalizedCurrentUrl = currentUrl.replace(/\/$/, '') || currentUrl;
+                    // Extract just the pathname parts for comparison
+                    const linkPath = linkUrl.replace(window.location.origin, '') || '/';
+                    const currentPath = window.location.pathname;
                     
-                    isSamePage = normalizedLinkUrl === normalizedCurrentUrl;
-                    console.log('URL comparison:', {linkUrl, currentUrl, normalizedLinkUrl, normalizedCurrentUrl, isSamePage});
+                    isSamePage = linkPath === currentPath;
+                    console.log('Path comparison:', {linkUrl, currentUrl, linkPath, currentPath, isSamePage});
+                    
+                    // If we're going to a different page, force navigation
+                    if (!isSamePage) {
+                        console.log('Different page detected - forcing navigation');
+                        window.location.href = url;
+                        return;
+                    }
                 }
                 
                 // Only prevent default and scroll if we're on the same page
