@@ -39,10 +39,7 @@
                     // If we're going to a different page, force navigation
                     if (!isSamePage) {
                         console.log('Different page detected - forcing navigation');
-                        // Close mobile nav immediately before navigation
-                        if (isMobile) {
-                            closeNav();
-                        }
+
                         e.preventDefault();
                         window.location.href = url;
                         return;

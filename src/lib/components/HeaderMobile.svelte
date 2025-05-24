@@ -11,6 +11,7 @@
     let lastScrollY = 0;
     let navVisible = false;
     let ticking = false;  // Add this for scroll optimization
+    let lastToggleTime = 0; // Debounce mechanism
 
     function triggerNav() {
         console.log('triggerNav called, current navVisible:', navVisible);
@@ -53,11 +54,7 @@
         };
     });
 
-    // Reset mobile nav state after navigation
-    afterNavigate(() => {
-        console.log('afterNavigate - resetting navVisible to false');
-        navVisible = false;
-    });
+
 </script>
 
 <div class="md:hidden fixed top-0 left-0 w-full z-20 transition-transform duration-300  bg-[var(--primary-color)] bg-opacity-80 backdrop-blur" style="transform: translateY({isVisible ? '0' : '-100%'})">
@@ -68,12 +65,11 @@
     </div>
 
     <button 
-        on:click={triggerNav} 
-        on:touchstart|preventDefault={triggerNav}
+        on:click={triggerNav}
         class="uppercase cursor-pointer fixed top-[10px] right-4 z-20 p-2 min-w-[60px] min-h-[40px] flex items-center justify-center"
         aria-label="Open menu"
     >
-        Menu
+        Menu ({navVisible ? 'open' : 'closed'})
     </button>
 </div>
 
@@ -90,7 +86,6 @@
         
             <button 
                 on:click={closeNav}
-                on:touchstart|preventDefault={closeNav} 
                 class="uppercase cursor-pointer fixed top-[10px] right-4 z-20 p-2 min-w-[60px] min-h-[40px] flex items-center justify-center"
                 aria-label="Close menu"
             >
