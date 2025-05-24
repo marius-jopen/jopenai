@@ -30,7 +30,7 @@
         class="fixed bottom-0 left-0 mb-6 mr-4 z-20 flex md:hidden justify-center w-full" 
         transition:fade={{ duration: 300 }}
     >
-        <Button big={true} data={data.header[0].data.button} />
+        <Button big={true} medium={false} onwhite={false} data={data.header[0].data.button} />
         <!-- <LanguageSwitch /> -->
     </div>
 {/if}

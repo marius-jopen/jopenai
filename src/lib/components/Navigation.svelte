@@ -4,6 +4,9 @@
     import type { HeaderDocumentDataNavTopItem } from '../../prismicio-types';
 
     export let data;
+    export let isMobile = false;
+    export let closeNav = () => {};
+    export let linkClass = "";
 
     function handleClick(e: Event, url: string) {
         // Check if it's a hash link or a URL with hash
@@ -31,6 +34,11 @@
                 }
             }
         }
+        
+        // Close mobile nav if it's mobile
+        if (isMobile) {
+            closeNav();
+        }
     }
 
     function getUrl(item: any): string {
@@ -47,33 +55,45 @@
         console.log('Generated URL without anchor:', url);
         return url;
     }
+
+    // Default classes for desktop and mobile
+    const defaultClass = linkClass || (isMobile 
+        ? "text-xl text-[var(--text-tertiary-color)] hover:text-[var(--text-secondary-color)] transition-all duration-300 py-1"
+        : "cursor-pointer text-[var(--text-primary-color)] hover:text-[var(--text-primary-color)] transition-all duration-300");
 </script>
 
-{#each data.header[0].data.nav_top || data.header[0].data.links as item}
+{#each data.header[0].data.nav_top || data.header[0].data.links as item, index}
     {#if item.link}
         <!-- New structure with link field and optional anchor -->
         {#if item.anchor}
             <a 
-                class="cursor-pointer text-[var(--text-primary-color)] hover:text-[var(--text-primary-color)] transition-all duration-300" 
+                class={defaultClass}
                 href={getUrl(item)}
                 on:click={(e) => handleClick(e, getUrl(item))}
+                data-aos={isMobile ? "fade-zoom-in" : ""}
+                data-aos-delay={isMobile ? 200 + index * 50 : ""}
             >
                 {item.link.text}
             </a>
         {:else}
             <PrismicLink 
                 field={item.link}
-                class="cursor-pointer text-[var(--text-primary-color)] hover:text-[var(--text-primary-color)] transition-all duration-300"
+                class={defaultClass}
+                on:click={() => isMobile && closeNav()}
+                data-aos={isMobile ? "fade-zoom-in" : ""}
+                data-aos-delay={isMobile ? 200 + index * 50 : ""}
             />
         {/if}
     {:else}
         <!-- Old structure with url and text -->
         <a 
-            class="cursor-pointer text-[var(--text-primary-color)] hover:text-[var(--text-primary-color)] transition-all duration-300" 
+            class={defaultClass}
             href={item.url}
             on:click={(e) => handleClick(e, item.url)}
+            data-aos={isMobile ? "fade-zoom-in" : ""}
+            data-aos-delay={isMobile ? 200 + index * 50 : ""}
         >
-            {item.link.text}
-    </a>
+            {item.text}
+        </a>
     {/if}
 {/each}

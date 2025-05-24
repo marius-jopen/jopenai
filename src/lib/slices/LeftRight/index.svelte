@@ -18,7 +18,7 @@
 				</div>
 
 				{#if slice.primary.link.url}
-					<div class="mt-6" data-aos="fade" data-aos-delay={200}>
+					<div class="mt-6 mx-auto md:mx-0" data-aos="fade" data-aos-delay={200}>
 						<Button data={slice.primary.link} medium onwhite={true} />
 					</div>
 				{/if}

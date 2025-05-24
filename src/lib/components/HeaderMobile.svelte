@@ -1,6 +1,7 @@
 <script>
     import { onMount } from 'svelte';
     import { fade } from 'svelte/transition';
+    import Navigation from './Navigation.svelte';
     import LanguageSwitch from './LanguageSwitch.svelte';
 
     export let data;
@@ -16,25 +17,6 @@
 
     function closeNav() {
         navVisible = false; // Toggle visibility
-    }
-
-    function handleClick(e, url) {
-        // Check if it's a hash link
-        if (url.startsWith('#')) {
-            e.preventDefault();
-            const hash = url.replace('#', '');
-            const element = document.querySelector(`[data-id="${hash}"]`);
-            
-            if (element) {
-                const elementPosition = element.getBoundingClientRect().top;
-                const offsetPosition = elementPosition + window.pageYOffset - 50; // Add 20px offset
-
-                window.scrollTo({
-                    top: offsetPosition,
-                    behavior: 'smooth'
-                });
-            }
-        }
     }
 
     onMount(() => {
@@ -97,14 +79,10 @@
         </div>
 
         <div class="flex flex-col justify-center h-full text-center -mt-20">
-            {#each data.header[0].data.links as link, index}
-                <a  on:click={(e) => handleClick(e, link.url)} data-aos="fade-zoom-in" data-aos-delay={200 + index * 50} on:click={closeNav} class="text-xl text-[var(--text-tertiary-color)] hover:text-[var(--text-secondary-color)] transition-all duration-300 py-1" href={link.url} >
-                    {link.text} 
-                </a>
-            {/each}    
+            <Navigation {data} isMobile={true} {closeNav} />
         </div>
 
-        <div data-aos="fade-zoom-in" data-aos-delay={200 + data.header[0].data.links.length * 50} class="flex justify-center pt-6 fixed bottom-8 w-full">
+        <div data-aos="fade-zoom-in" data-aos-delay={200 + (data.header[0].data.nav_top || data.header[0].data.links || []).length * 50} class="flex justify-center pt-6 fixed bottom-8 w-full">
             <LanguageSwitch />
         </div>
     </div>

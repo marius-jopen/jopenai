@@ -41,7 +41,7 @@
         </div>
     
         <div class="flex gap-6 z-20 -mt-0.5">            
-            <Button data={data.header[0].data.button} />
+            <Button data={data.header[0].data.button} big={false} medium={true} onwhite={false} />
         </div>
     </div>
 </div>
