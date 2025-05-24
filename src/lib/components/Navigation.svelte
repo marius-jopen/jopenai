@@ -67,22 +67,31 @@
     }
 
     function getUrl(item: any): string {
-        // If there's an anchor, append it to the link URL
-        if (item.anchor) {
-            // Get the properly resolved link URL
-            const baseUrl = asLink(item.link);
-            if (baseUrl) {
-                // If baseUrl is just '/', convert it to full URL (only in browser)
-                const fullBaseUrl = baseUrl === '/' && browser ? window.location.origin : baseUrl;
-                const fullUrl = `${fullBaseUrl}#${item.anchor}`;
-                console.log('Generated URL with anchor:', fullUrl, 'from baseUrl:', baseUrl, 'anchor:', item.anchor);
-                return fullUrl;
+        try {
+            // If there's an anchor, append it to the link URL
+            if (item.anchor) {
+                // Get the properly resolved link URL
+                const baseUrl = asLink(item.link);
+                if (baseUrl) {
+                    // If baseUrl is just '/', convert it to full URL (only in browser)
+                    const fullBaseUrl = baseUrl === '/' && browser ? window.location.origin : baseUrl;
+                    const fullUrl = `${fullBaseUrl}#${item.anchor}`;
+                    if (isMobile) {
+                        console.log('Mobile - Generated URL with anchor:', fullUrl, 'from baseUrl:', baseUrl, 'anchor:', item.anchor);
+                    }
+                    return fullUrl;
+                }
             }
+            // For old structure, use the URL directly or fallback to asLink
+            const url = item.url || asLink(item.link) || asLink(item) || '';
+            if (isMobile) {
+                console.log('Mobile - Generated URL without anchor:', url);
+            }
+            return url;
+        } catch (error) {
+            console.error('Error in getUrl:', error);
+            return '#';
         }
-        // For old structure, use the URL directly or fallback to asLink
-        const url = item.url || asLink(item.link) || asLink(item) || '';
-        console.log('Generated URL without anchor:', url);
-        return url;
     }
 
     // Default classes for desktop and mobile

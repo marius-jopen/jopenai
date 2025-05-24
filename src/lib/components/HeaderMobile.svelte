@@ -13,11 +13,6 @@
     let ticking = false;  // Add this for scroll optimization
     let mounted = false;
     let stableData = data; // Create stable reference
-    
-    // Update stable data only when component is properly mounted
-    $: if (mounted && data) {
-        stableData = data;
-    }
 
     function triggerNav() {
         console.log('=== triggerNav ENTRY ===');
@@ -142,8 +137,11 @@
         </div>
 
         <div class="flex flex-col justify-center h-full text-center -mt-20">
+            <!-- Protected Navigation component -->
             {#if mounted && stableData}
-                <Navigation data={stableData} isMobile={true} {closeNav} />
+                {#key navVisible}
+                    <Navigation data={stableData} isMobile={true} closeNav={closeNav} />
+                {/key}
             {:else}
                 <div>Loading navigation...</div>
             {/if}
