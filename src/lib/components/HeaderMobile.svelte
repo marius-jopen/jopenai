@@ -88,37 +88,20 @@
     </div>
 
     <button 
-        on:click={(e) => {
-            console.log('Button clicked!', e);
-            console.log('Mounted state:', mounted);
-            triggerNav();
-        }}
-        on:mousedown={() => console.log('Button mousedown')}
-        on:touchstart={() => console.log('Button touchstart')}
+        on:click={triggerNav}
         class="uppercase cursor-pointer fixed top-[10px] right-4 z-20 p-2 min-w-[60px] min-h-[40px] flex items-center justify-center"
         aria-label="Open menu"
-        style="background: rgba(255,0,0,0.1); border: 1px solid red;"
     >
-        Menu ({navVisible ? 'open' : 'closed'}) - Mounted: {mounted}
+        Menu
     </button>
 </div>
 
 <div class="h-[62px] w-full  bg-[var(--primary-color)] md:hidden" />
 
-<!-- Debug element -->
-{#if navVisible}
-    <div style="position: fixed; top: 100px; left: 20px; background: yellow; padding: 10px; z-index: 999999; color: black; font-weight: bold;">
-        DEBUG: Menu should be visible! navVisible = {navVisible}, mounted = {mounted}
-    </div>
-{/if}
-
 {#if navVisible}
     <div 
         transition:fade={{duration: 300 }} 
         class="bg-[var(--quaternary-color)] text-[var(--text-primary-color)] fixed top-[40px] left-0 z-40 h-screen w-full"
-        style="background: red !important; z-index: 99999 !important;"
-        on:introstart={() => console.log('Menu intro animation started')}
-        on:introend={() => console.log('Menu intro animation ended')}
     >
         <div class="top-0 left-0 fixed w-full fixed bg-[var(--quaternary-color)] text-[var(--text-tertiary-color)]">        
             <div class="box py-3.5 flex justify-between">

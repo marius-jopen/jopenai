@@ -9,7 +9,18 @@
     export let closeNav = () => {};
     export let linkClass = "";
 
-    function handleClick(e: Event, url: string) {
+        function handleClick(e: Event, url: string) {
+        // Mobile: Always use hard reload for simplicity
+        if (isMobile) {
+            e.preventDefault();
+            if (isMobile) {
+                closeNav();
+            }
+            window.location.href = url;
+            return;
+        }
+        
+        // Desktop: Use the smooth anchor scrolling behavior
         console.log('Navigation click:', {url, currentPath: window.location.pathname, currentOrigin: window.location.origin});
         
         // Check if it's a hash link or a URL with hash
@@ -39,7 +50,6 @@
                     // If we're going to a different page, force navigation
                     if (!isSamePage) {
                         console.log('Different page detected - forcing navigation');
-
                         e.preventDefault();
                         window.location.href = url;
                         return;
