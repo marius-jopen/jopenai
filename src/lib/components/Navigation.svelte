@@ -44,11 +44,13 @@
     function getUrl(item: any): string {
         // If there's an anchor, append it to the link URL
         if (item.anchor) {
-            // Get the link URL using asLink helper
-            const baseUrl = asLink(item.link) || '';
-            const fullUrl = `${baseUrl}#${item.anchor}`;
-            console.log('Generated URL with anchor:', fullUrl, 'from baseUrl:', baseUrl, 'anchor:', item.anchor);
-            return fullUrl;
+            // Get the properly resolved link URL
+            const baseUrl = asLink(item.link);
+            if (baseUrl) {
+                const fullUrl = `${baseUrl}#${item.anchor}`;
+                console.log('Generated URL with anchor:', fullUrl, 'from baseUrl:', baseUrl, 'anchor:', item.anchor);
+                return fullUrl;
+            }
         }
         // For old structure, use the URL directly or fallback to asLink
         const url = item.url || asLink(item.link) || asLink(item) || '';
