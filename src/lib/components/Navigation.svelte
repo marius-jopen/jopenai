@@ -2,7 +2,6 @@
     import { PrismicLink } from '@prismicio/svelte';
     import { asLink } from '@prismicio/client';
     import { browser } from '$app/environment';
-    import type { HeaderDocumentDataNavTopItem } from '../../prismicio-types';
 
     export let data;
     export let isMobile = false;
