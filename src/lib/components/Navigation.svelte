@@ -39,6 +39,11 @@
                     // If we're going to a different page, force navigation
                     if (!isSamePage) {
                         console.log('Different page detected - forcing navigation');
+                        // Close mobile nav immediately before navigation
+                        if (isMobile) {
+                            closeNav();
+                        }
+                        e.preventDefault();
                         window.location.href = url;
                         return;
                     }
@@ -63,9 +68,13 @@
             }
         }
         
-        // Close mobile nav if it's mobile
-        if (isMobile) {
-            closeNav();
+        // Close mobile nav if it's mobile (only for same-page navigation)
+        if (isMobile && !url.includes('#')) {
+            try {
+                closeNav();
+            } catch (error) {
+                console.log('closeNav error (component may be destroyed):', error);
+            }
         }
     }
 
@@ -113,7 +122,15 @@
             <PrismicLink 
                 field={item.link}
                 class={defaultClass}
-                on:click={() => isMobile && closeNav()}
+                on:click={() => {
+                    if (isMobile) {
+                        try {
+                            closeNav();
+                        } catch (error) {
+                            console.log('closeNav error in PrismicLink:', error);
+                        }
+                    }
+                }}
                 data-aos={isMobile ? "fade-zoom-in" : ""}
                 data-aos-delay={isMobile ? 200 + index * 50 : ""}
             />
