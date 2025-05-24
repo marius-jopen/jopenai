@@ -12,6 +12,12 @@
     let navVisible = false;
     let ticking = false;  // Add this for scroll optimization
     let mounted = false;
+    let stableData = data; // Create stable reference
+    
+    // Update stable data only when component is properly mounted
+    $: if (mounted && data) {
+        stableData = data;
+    }
 
     function triggerNav() {
         console.log('=== triggerNav ENTRY ===');
@@ -136,11 +142,17 @@
         </div>
 
         <div class="flex flex-col justify-center h-full text-center -mt-20">
-            <Navigation {data} isMobile={true} {closeNav} />
+            {#if mounted && stableData}
+                <Navigation data={stableData} isMobile={true} {closeNav} />
+            {:else}
+                <div>Loading navigation...</div>
+            {/if}
         </div>
 
-        <div data-aos="fade-zoom-in" data-aos-delay={200 + (data.header[0].data.nav_top || data.header[0].data.links || []).length * 50} class="flex justify-center pt-6 fixed bottom-8 w-full">
-            <LanguageSwitch />
+        <div data-aos="fade-zoom-in" data-aos-delay={200 + (stableData?.header?.[0]?.data?.nav_top || stableData?.header?.[0]?.data?.links || []).length * 50} class="flex justify-center pt-6 fixed bottom-8 w-full">
+            {#if mounted}
+                <LanguageSwitch />
+            {/if}
         </div>
     </div>
 {/if}
