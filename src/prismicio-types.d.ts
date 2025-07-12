@@ -1170,6 +1170,17 @@ export interface LeftRightSliderSliceDefaultPrimaryItemsItem {
  */
 export interface LeftRightSliderSliceDefaultPrimary {
 	/**
+	 * Deactivated field in *LeftRightSlider → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: left_right_slider.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
+	/**
 	 * hash field in *LeftRightSlider → Default → Primary*
 	 *
 	 * - **Field Type**: Text

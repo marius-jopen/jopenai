@@ -57,93 +57,94 @@
     });
 </script>
 
-<section class="pb-16 md:pb-24 {styleClasses}" data-id={slice.primary.hash}>
-	{#if style != 'logo'}
-		<div class="{style == 'box' ? 'md:px-8' : ''}" data-aos="fade-up">
-			<div class="{style == 'full' ? 'rounded-none' : 'rounded-lg overflow-hidden'} h-auto relative">
-				{#if slice.primary.video}
-					<video 
-						src={slice.primary.video} 
-						poster={slice.primary.image.url} 
-						class="w-full h-auto bg-[var(--secondary-color)]" 
-						playsinline 
-						autoplay={!slice.primary.controlled}
-						controls={slice.primary.controlled}
-						muted={!slice.primary.controlled}
-						loop 
-					/>
-				{:else}
-					<div class="relative w-full">
-						<PrismicImage class="w-full h-auto bg-[var(--secondary-color)] invisible" field={allImages[0]} />
-						{#each allImages as image, i}
-							<div 
-								class="absolute inset-0"
-								style="
-									opacity: {currentImageIndex === i ? 1 : 0};
-									transition: opacity {ANIMATION_DURATION}ms ease;
-								"
-							>
-								<PrismicImage class="w-full h-auto bg-[var(--secondary-color)]" field={image} />
-							</div>
-						{/each}
-					</div>
-				{/if}
-			</div>
+{#if !slice.primary.deactivated}
+	<section class="pb-16 md:pb-24 {styleClasses}" data-id={slice.primary.hash}>
+		{#if style != 'logo'}
+			<div class="{style == 'box' ? 'md:px-8' : ''}" data-aos="fade-up">
+				<div class="{style == 'full' ? 'rounded-none' : 'rounded-lg overflow-hidden'} h-auto relative">
+					{#if slice.primary.video}
+						<video 
+							src={slice.primary.video} 
+							poster={slice.primary.image.url} 
+							class="w-full h-auto bg-[var(--secondary-color)]" 
+							playsinline 
+							autoplay={!slice.primary.controlled}
+							controls={slice.primary.controlled}
+							muted={!slice.primary.controlled}
+							loop 
+						/>
+					{:else}
+						<div class="relative w-full">
+							<PrismicImage class="w-full h-auto bg-[var(--secondary-color)] invisible" field={allImages[0]} />
+							{#each allImages as image, i}
+								<div 
+									class="absolute inset-0"
+									style="
+										opacity: {currentImageIndex === i ? 1 : 0};
+										transition: opacity {ANIMATION_DURATION}ms ease;
+									"
+								>
+									<PrismicImage class="w-full h-auto bg-[var(--secondary-color)]" field={image} />
+								</div>
+							{/each}
+						</div>
+					{/if}
+				</div>
 
-			<div class="mx-auto text-neutral-500 pt-3 text-sm text-center mx-auto md:w-8/12">
-				<PrismicText field={slice.primary.text} />
+				<div class="mx-auto text-neutral-500 pt-3 text-sm text-center mx-auto md:w-8/12">
+					<PrismicText field={slice.primary.text} />
+				</div>
 			</div>
-		</div>
-	{:else}
-		<div class="px-3 md:px-8 w-full relative">
-			<div 
-				class="w-full h-full"
-				style="
-					opacity: {maskLoaded ? 1 : 0};
-					transition: opacity 0.3s ease;
-					mask-image: url('data:image/svg+xml;utf8,<svg viewBox=\'0 0 591.82 276.38\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'{maskPath}\' fill=\'white\'/></svg>');
-					-webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox=\'0 0 591.82 276.38\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'{maskPath}\' fill=\'white\'/></svg>');
-					mask-size: 100% 100%;
-					-webkit-mask-size: 100% 100%;
-					mask-repeat: no-repeat;
-					-webkit-mask-repeat: no-repeat;
-					mask-position: center;
-					-webkit-mask-position: center;
-					aspect-ratio: 591.82/276.38;
-				"
-			>
-				{#if slice.primary.video}
-					<video 
-						src={slice.primary.video} 
-						poster={slice.primary.image.url} 
-						class="w-full h-full object-cover bg-[var(--secondary-color)]" 
-						playsinline 
-						autoplay={!slice.primary.controlled}
-						controls={slice.primary.controlled}
-						muted={!slice.primary.controlled} 
-						loop 
-					/>
-				{:else}
-					<div class="relative w-full h-full">
-						<PrismicImage class="w-full h-full object-cover bg-[var(--secondary-color)] invisible" field={allImages[0]} />
-						{#each allImages as image, i}
-							<div 
-								class="absolute inset-0"
-								style="
-									opacity: {currentImageIndex === i ? 1 : 0};
-									transition: opacity {ANIMATION_DURATION}ms ease;
-								"
-							>
-								<PrismicImage 
-									class="w-full h-full object-cover bg-[var(--secondary-color)]" 
-									field={image}
-								/>
-							</div>
-						{/each}
-					</div>
-				{/if}
+		{:else}
+			<div class="px-3 md:px-8 w-full relative">
+				<div 
+					class="w-full h-full"
+					style="
+						opacity: {maskLoaded ? 1 : 0};
+						transition: opacity 0.3s ease;
+						mask-image: url('data:image/svg+xml;utf8,<svg viewBox=\'0 0 591.82 276.38\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'{maskPath}\' fill=\'white\'/></svg>');
+						-webkit-mask-image: url('data:image/svg+xml;utf8,<svg viewBox=\'0 0 591.82 276.38\' xmlns=\'http://www.w3.org/2000/svg\'><path d=\'{maskPath}\' fill=\'white\'/></svg>');
+						mask-size: 100% 100%;
+						-webkit-mask-size: 100% 100%;
+						mask-repeat: no-repeat;
+						-webkit-mask-repeat: no-repeat;
+						mask-position: center;
+						-webkit-mask-position: center;
+						aspect-ratio: 591.82/276.38;
+					"
+				>
+					{#if slice.primary.video}
+						<video 
+							src={slice.primary.video} 
+							poster={slice.primary.image.url} 
+							class="w-full h-full object-cover bg-[var(--secondary-color)]" 
+							playsinline 
+							autoplay={!slice.primary.controlled}
+							controls={slice.primary.controlled}
+							muted={!slice.primary.controlled} 
+							loop 
+						/>
+					{:else}
+						<div class="relative w-full h-full">
+							<PrismicImage class="w-full h-full object-cover bg-[var(--secondary-color)] invisible" field={allImages[0]} />
+							{#each allImages as image, i}
+								<div 
+									class="absolute inset-0"
+									style="
+										opacity: {currentImageIndex === i ? 1 : 0};
+										transition: opacity {ANIMATION_DURATION}ms ease;
+									"
+								>
+									<PrismicImage 
+										class="w-full h-full object-cover bg-[var(--secondary-color)]" 
+										field={image}
+									/>
+								</div>
+							{/each}
+						</div>
+					{/if}
+				</div>
 			</div>
-		</div>
-	{/if}
-</section>
-
+		{/if}
+	</section>
+{/if}

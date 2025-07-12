@@ -12,6 +12,15 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "deactivated": {
+          "type": "Boolean",
+          "config": {
+            "label": "Deactivated",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
+        },
         "selector": {
           "type": "Select",
           "config": {

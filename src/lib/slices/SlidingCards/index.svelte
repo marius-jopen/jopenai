@@ -17,66 +17,67 @@
 	};
 </script>
 
-<section class="pb-28" data-id={slice.primary.hash}>
-	<div class="box text-center pb-4" data-aos="fade-up">
-		<h2>
-			{slice.primary.headline}
-		</h2>
-	</div>
-
-	{#if slice.primary.slider == false}
-		<div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-3 gap-6 box-big">
-			{#each items as item, index}
-				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="flex flex-col rounded-lg overflow-hidden h-full bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition group">
-					<div class="w-full h-[250px] overflow-hidden">
-						{#if item.video}
-							<video src={item.video} poster={item.image.url} class="rounded-t-lg w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" autoplay muted loop playsinline />
-						{:else}
-							<PrismicImage class="rounded-t-lg w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" field={item.image} />
-						{/if}
-					</div>
-				
-					<div class="rounded-b-lg px-6 md:px-10 pt-6 md:pt-10 pb-8 md:pb-12 w-full flex-1 flex flex-col">
-						<div data-aos-delay={100 + index * 150}>
-							<PrismicRichText field={item.headline} />
-						</div>
-				
-						<div class="text-base-mobile md:text-base text-box text-[var(--text-secondary-color)] flex-1" data-aos="fade" data-aos-delay={150 + index * 150}>
-							<PrismicRichText field={item.text} />
-						</div>
-					</div>
-				</a>
-			{/each}
+{#if !slice.primary.deactivated}
+	<section class="pb-28" data-id={slice.primary.hash}>
+		<div class="box text-center pb-4" data-aos="fade-up">
+			<h2>
+				{slice.primary.headline}
+			</h2>
 		</div>
-	{:else}
-		<div data-aos="fade-up">
-			<Slider>
+
+		{#if slice.primary.slider == false}
+			<div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-3 gap-6 box-big">
 				{#each items as item, index}
-					<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="item lg:flex flex-col lg:flex-row rounded-lg overflow-hidden group" style={calculateStyles(index, items.length)}>
-						<div class="w-full lg:w-1/2 overflow-hidden">
+					<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="flex flex-col rounded-lg overflow-hidden h-full bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition group">
+						<div class="w-full h-[250px] overflow-hidden">
 							{#if item.video}
-								<video src={item.video} poster={item.image.url} class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3] transition-transform duration-300 group-hover:scale-105" autoplay muted loop playsinline />
+								<video src={item.video} poster={item.image.url} class="rounded-t-lg w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" autoplay muted loop playsinline />
 							{:else}
-								<PrismicImage class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3] transition-transform duration-300 group-hover:scale-105" field={item.image} />
+								<PrismicImage class="rounded-t-lg w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" field={item.image} />
 							{/if}
 						</div>
 					
-						<div class="rounded-b-lg lg:rounded-b-none lg:!rounded-r-lg bg-[var(--secondary-color)] px-6 md:px-10 pt-10 pb-12 w-full lg:w-1/2 flex flex-col lg:justify-center lg:aspect-[4/3] h-full lg:h-auto">
+						<div class="rounded-b-lg px-6 md:px-10 pt-6 md:pt-10 pb-8 md:pb-12 w-full flex-1 flex flex-col">
 							<div data-aos-delay={100 + index * 150}>
 								<PrismicRichText field={item.headline} />
 							</div>
 					
-							<div class="text-base-mobile md:text-base text-[var(--text-secondary-color)]" data-aos="fade" data-aos-delay={150 + index * 150}>
+							<div class="text-base-mobile md:text-base text-box text-[var(--text-secondary-color)] flex-1" data-aos="fade" data-aos-delay={150 + index * 150}>
 								<PrismicRichText field={item.text} />
 							</div>
 						</div>
 					</a>
 				{/each}
-			</Slider>
-		</div>
-	{/if}
-</section>
-
+			</div>
+		{:else}
+			<div data-aos="fade-up">
+				<Slider>
+					{#each items as item, index}
+						<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="item lg:flex flex-col lg:flex-row rounded-lg overflow-hidden group" style={calculateStyles(index, items.length)}>
+							<div class="w-full lg:w-1/2 overflow-hidden">
+								{#if item.video}
+									<video src={item.video} poster={item.image.url} class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3] transition-transform duration-300 group-hover:scale-105" autoplay muted loop playsinline />
+								{:else}
+									<PrismicImage class="rounded-t-lg lg:rounded-t-none lg:!rounded-l-lg md:h-full object-cover aspect-[4/3] md:aspect-[6/3] lg:aspect-[4/3] transition-transform duration-300 group-hover:scale-105" field={item.image} />
+								{/if}
+							</div>
+						
+							<div class="rounded-b-lg lg:rounded-b-none lg:!rounded-r-lg bg-[var(--secondary-color)] px-6 md:px-10 pt-10 pb-12 w-full lg:w-1/2 flex flex-col lg:justify-center lg:aspect-[4/3] h-full lg:h-auto">
+								<div data-aos-delay={100 + index * 150}>
+									<PrismicRichText field={item.headline} />
+								</div>
+						
+								<div class="text-base-mobile md:text-base text-[var(--text-secondary-color)]" data-aos="fade" data-aos-delay={150 + index * 150}>
+									<PrismicRichText field={item.text} />
+								</div>
+							</div>
+						</a>
+					{/each}
+				</Slider>
+			</div>
+		{/if}
+	</section>
+{/if}
 
 <style>
 	.item:first-child {

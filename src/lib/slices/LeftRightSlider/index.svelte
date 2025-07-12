@@ -17,79 +17,81 @@
 	};
 </script>
 
-<section class="pb-24" data-id={slice.primary.hash}>
-	{#if slice.primary.headline}
-		<div class="box text-center pb-0 lg:pb-4" data-aos="fade-up">
-			<h2>
-				{slice.primary.headline}
-			</h2>
-		</div>
-	{/if}
-	
-	<div class="{slice.primary.mobile_simple ? 'hidden lg:block' : ''}">
-		<div data-aos="fade-up">
-			<Slider>
-				{#each items as item, index}
-					<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 250} style={calculateStyles(index, items.length)} class="item flex bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg overflow-hidden group">
-						<div class="flex flex-col-reverse md:flex-row flex-row-reverse w-full justify-between">
-							<div class="w-full md:w-1/2 px-6 md:px-10 flex flex-col justify-start py-10 md:py-12 h-full">
-								<div data-aos="fade" data-aos-delay={100}>
-									<PrismicRichText field={item.headline} />
-								</div>
-					
-								<div class="text-[var(--text-secondary-color)] text-box" data-aos="fade" data-aos-delay={150}>
-									<PrismicRichText field={item.text} />
-								</div>
+{#if !slice.primary.deactivated}
+	<section class="pb-24" data-id={slice.primary.hash}>
+		{#if slice.primary.headline}
+			<div class="box text-center pb-0 lg:pb-4" data-aos="fade-up">
+				<h2>
+					{slice.primary.headline}
+				</h2>
+			</div>
+		{/if}
+		
+		<div class="{slice.primary.mobile_simple ? 'hidden lg:block' : ''}">
+			<div data-aos="fade-up">
+				<Slider>
+					{#each items as item, index}
+						<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 250} style={calculateStyles(index, items.length)} class="item flex bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg overflow-hidden group">
+							<div class="flex flex-col-reverse md:flex-row flex-row-reverse w-full justify-between">
+								<div class="w-full md:w-1/2 px-6 md:px-10 flex flex-col justify-start py-10 md:py-12 h-full">
+									<div data-aos="fade" data-aos-delay={100}>
+										<PrismicRichText field={item.headline} />
+									</div>
+						
+									<div class="text-[var(--text-secondary-color)] text-box" data-aos="fade" data-aos-delay={150}>
+										<PrismicRichText field={item.text} />
+									</div>
 
-								<div class="text-[var(--text-secondary-color)] text-box mt-6" data-aos="fade" data-aos-delay={150}>
-									<PrismicRichText field={item.text_2} />
+									<div class="text-[var(--text-secondary-color)] text-box mt-6" data-aos="fade" data-aos-delay={150}>
+										<PrismicRichText field={item.text_2} />
+									</div>
+								</div>
+						
+								<div class="w-full md:w-1/2 overflow-hidden relative">
+									{#if item.video}
+										<video src={item.video} poster={item.image.url} class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" playsinline autoplay muted loop />
+									{:else}
+										<PrismicImage class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" field={item.image} />
+									{/if}
 								</div>
 							</div>
-					
-							<div class="w-full md:w-1/2 overflow-hidden relative">
-								{#if item.video}
-									<video src={item.video} poster={item.image.url} class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" playsinline autoplay muted loop />
-								{:else}
-									<PrismicImage class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" field={item.image} />
-								{/if}
+						</a>
+					{/each}
+				</Slider>
+			</div>
+		</div>
+
+		<div class="{slice.primary.mobile_simple ? 'block lg:hidden box' : 'hidden'}">
+			{#each items as item, index}
+				<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 250}  class="mb-4 item-simple flex bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg overflow-hidden group ">
+					<div class="flex flex-col-reverse md:flex-row flex-row-reverse w-full justify-between">
+						<div class="w-full md:w-1/2 px-6 md:px-10 flex flex-col justify-start py-10 md:py-12 h-full">
+							<div data-aos="fade" data-aos-delay={100}>
+								<PrismicRichText field={item.headline} />
+							</div>
+				
+							<div class="text-[var(--text-secondary-color)] text-box" data-aos="fade" data-aos-delay={150}>
+								<PrismicRichText field={item.text} />
+							</div>
+
+							<div class="text-[var(--text-secondary-color)] text-box mt-6" data-aos="fade" data-aos-delay={150}>
+								<PrismicRichText field={item.text_2} />
 							</div>
 						</div>
-					</a>
-				{/each}
-			</Slider>
+				
+						<div class="w-full md:w-1/2 overflow-hidden relative">
+							{#if item.video}
+								<video src={item.video} poster={item.image.url} class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" playsinline autoplay muted loop />
+							{:else}
+								<PrismicImage class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" field={item.image} />
+							{/if}
+						</div>
+					</div>
+				</a>
+			{/each}
 		</div>
-	</div>
-
-	<div class="{slice.primary.mobile_simple ? 'block lg:hidden box' : 'hidden'}">
-		{#each items as item, index}
-			<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={200 + index * 250}  class="mb-4 item-simple flex bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg overflow-hidden group ">
-				<div class="flex flex-col-reverse md:flex-row flex-row-reverse w-full justify-between">
-					<div class="w-full md:w-1/2 px-6 md:px-10 flex flex-col justify-start py-10 md:py-12 h-full">
-						<div data-aos="fade" data-aos-delay={100}>
-							<PrismicRichText field={item.headline} />
-						</div>
-			
-						<div class="text-[var(--text-secondary-color)] text-box" data-aos="fade" data-aos-delay={150}>
-							<PrismicRichText field={item.text} />
-						</div>
-
-						<div class="text-[var(--text-secondary-color)] text-box mt-6" data-aos="fade" data-aos-delay={150}>
-							<PrismicRichText field={item.text_2} />
-						</div>
-					</div>
-			
-					<div class="w-full md:w-1/2 overflow-hidden relative">
-						{#if item.video}
-							<video src={item.video} poster={item.image.url} class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" playsinline autoplay muted loop />
-						{:else}
-							<PrismicImage class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" field={item.image} />
-						{/if}
-					</div>
-				</div>
-			</a>
-		{/each}
-	</div>
-</section>
+	</section>
+{/if}
 
 <style>
 	.item:first-child {

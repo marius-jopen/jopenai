@@ -17,7 +17,9 @@
 	// Get the corresponding height class based on the selection
 	let heightClass = heightClasses[selection] || '';
 </script>
-
-<section class={heightClass}>
 	
-</section>
+{#if !slice.primary.deactivated}
+	<section class={heightClass}>
+		
+	</section>
+{/if}

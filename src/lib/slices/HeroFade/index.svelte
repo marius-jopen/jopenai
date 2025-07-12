@@ -36,31 +36,33 @@
 
 <svelte:window bind:innerWidth />
 
-<section data-aos="fade-up" class="pb-28 pt-0" data-id={slice.primary.hash}>
-	<Splide 
-		bind:this={splide} 
-		options={splideOptions}
-		aria-label="Hero Fade Carousel"
-	>
-		{#each items as item, index}
-			<SplideSlide>
-				<div on:click={goToNext} class="px-3 md:px-8 w-full relative cursor-pointer h-full flex">
-					{#if item.video}
-						<video src={item.video} poster={item.image.url} class="bg-[var(--secondary-color)] rounded-lg overflow-hidden object-cover w-full aspect-auto h-full lg:aspect-[16/8]" playsinline autoplay muted loop />
-					{:else}
-						<PrismicImage class="bg-[var(--secondary-color)] rounded-lg overflow-hidden  object-cover w-full aspect-auto h-full lg:aspect-[16/8]" field={item.image} />
-					{/if}
+{#if !slice.primary.deactivated}
+	<section data-aos="fade-up" class="pb-28 pt-0" data-id={slice.primary.hash}>
+		<Splide 
+			bind:this={splide} 
+			options={splideOptions}
+			aria-label="Hero Fade Carousel"
+		>
+			{#each items as item, index}
+				<SplideSlide>
+					<div on:click={goToNext} class="px-3 md:px-8 w-full relative cursor-pointer h-full flex">
+						{#if item.video}
+							<video src={item.video} poster={item.image.url} class="bg-[var(--secondary-color)] rounded-lg overflow-hidden object-cover w-full aspect-auto h-full lg:aspect-[16/8]" playsinline autoplay muted loop />
+						{:else}
+							<PrismicImage class="bg-[var(--secondary-color)] rounded-lg overflow-hidden  object-cover w-full aspect-auto h-full lg:aspect-[16/8]" field={item.image} />
+						{/if}
 
-					<div class="text-[var(--text-tertiary-color)] pb-7 text-center absolute top-0 left-0 w-full h-full flex items-center mt-8 flex justify-center">
-						<h1 data-aos="fade" class="px-6 md:px-10 md:px-20 ">
-							{item.text}
-						</h1>
+						<div class="text-[var(--text-tertiary-color)] pb-7 text-center absolute top-0 left-0 w-full h-full flex items-center mt-8 flex justify-center">
+							<h1 data-aos="fade" class="px-6 md:px-10 md:px-20 ">
+								{item.text}
+							</h1>
+						</div>
 					</div>
-				</div>
-			</SplideSlide>
-		{/each}
-	</Splide>
-</section>
+				</SplideSlide>
+			{/each}
+		</Splide>
+	</section>
+{/if}
 
 <style lang="postcss">
 	.ss-carousel__controls {
