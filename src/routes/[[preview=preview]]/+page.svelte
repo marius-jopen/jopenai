@@ -18,4 +18,4 @@
 <SliceZone slices={data.page.data.slices} {components} />
 <Footer {data} />
 <!-- <FloatingButton {data} /> -->
-<FloatingLanguage {data} />
+<!-- <FloatingLanguage {data} /> -->

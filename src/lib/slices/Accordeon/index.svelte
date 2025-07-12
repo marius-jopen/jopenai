@@ -2,12 +2,11 @@
 	import type { Content } from '@prismicio/client';
 	import { PrismicText, PrismicImage } from '@prismicio/svelte';
 	import { slide } from 'svelte/transition';
-	import { onMount, afterUpdate } from 'svelte';
+	import { onMount } from 'svelte';
 
 	export let slice: Content.AccordeonSlice;
 
 	let openIndex: number | null = 0; // Track the currently open item index
-	let autoplayInterval: ReturnType<typeof setInterval>;
 	let isMobile: boolean;
 
 	// Handle hash changes both on mount and during navigation
@@ -34,52 +33,21 @@
 		// Add resize listener to update isMobile state
 		const handleResize = () => {
 			isMobile = window.innerWidth < 768;
-			if (isMobile) {
-				clearInterval(autoplayInterval);
-			} else {
-				resumeAutoplay();
-			}
 		};
 		window.addEventListener('resize', handleResize);
 
 		scrollToHash();
 		// Also listen for hash changes
 		window.addEventListener('hashchange', scrollToHash);
-		
-		// Only start autoplay if not on mobile
-		if (!isMobile) {
-			autoplayInterval = setInterval(nextSlide, 8000);
-		}
 
 		// Cleanup function
 		return () => {
 			window.removeEventListener('hashchange', scrollToHash);
 			window.removeEventListener('resize', handleResize);
-			clearInterval(autoplayInterval);
 		};
 	});
 
-	// Add function to handle auto-sliding
-	function nextSlide() {
-		const totalItems = slice.primary.items.length;
-		openIndex = openIndex === totalItems - 1 ? 0 : (openIndex ?? 0) + 1;
-	}
-
-	function pauseAutoplay() {
-		clearInterval(autoplayInterval);
-	}
-
-	function resumeAutoplay() {
-		// Only resume autoplay if not on mobile
-		if (!isMobile) {
-			autoplayInterval = setInterval(nextSlide, 2000);
-		}
-	}
-
 	function toggle(index: number) {
-		// Clear the autoplay interval when user interacts
-		clearInterval(autoplayInterval);
-		
 		// Check if the item being toggled is the only one open
 		if (openIndex === index && slice.primary.items.filter((_, i) => openIndex === i).length === 1) {
 			return; // Prevent closing if it's the only open item
@@ -98,10 +66,10 @@
 	{/if}
 
 	<div data-aos="fade-up">
-		<div class="bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg flex flex-col md:flex-row overflow-hidden group" on:mouseenter={pauseAutoplay} on:mouseleave={resumeAutoplay}>
+		<div class="bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg flex flex-col md:flex-row overflow-hidden group">
 			<div class="w-full md:w-1/2 relative mr-8 aspect-square md:aspect-auto overflow-hidden">
 				{#each slice.primary.items as item, index}
-					<div class="absolute w-full h-full" style:opacity={openIndex === index ? 1 : 0} transition:opacity={{ duration: 300 }}>
+					<div class="absolute w-full h-full" style:opacity={openIndex === index ? 1 : 0} style:transition="opacity 300ms">
 						{#if item.video}
 							<video src={item.video} poster={item.image.url} class="h-full w-full object-cover aspect-square md:aspect-auto transition-transform duration-500 group-hover:scale-105" autoplay muted loop playsinline />
 						{:else}

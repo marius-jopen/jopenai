@@ -83,7 +83,7 @@
 <div class="md:hidden fixed top-0 left-0 w-full z-20 transition-transform duration-300  bg-[var(--primary-color)] bg-opacity-80 backdrop-blur" style="transform: translateY({isVisible ? '0' : '-100%'})">
     <div class="box py-3.5 flex justify-between">
         <a href="/" class="font-display text-xl font-bold z-20 text-center w-full">
-            Marius Jopen
+            THE ROBOTS
         </a>
     </div>
 
@@ -106,7 +106,7 @@
         <div class="top-0 left-0 fixed w-full fixed bg-[var(--quaternary-color)] text-[var(--text-tertiary-color)]">        
             <div class="box py-3.5 flex justify-between">
                 <a on:click={closeNav} href="/" class="font-display text-xl font-bold z-20 text-center w-full">
-                    Marius Jopen
+                    THE ROBOTS
                 </a>
             </div>
         
