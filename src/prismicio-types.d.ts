@@ -103,6 +103,7 @@ export type HeaderDocument<Lang extends string = string> = prismic.PrismicDocume
 >;
 
 type PageDocumentDataSlicesSlice =
+	| ToolsSlice
 	| LeftRightSliderSlice
 	| PricingSlice
 	| GallerySlice
@@ -245,6 +246,17 @@ export interface AccordeonSliceDefaultPrimaryItemsItem {
  */
 export interface AccordeonSliceDefaultPrimary {
 	/**
+	 * Deactivated field in *Accordeon → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: accordeon.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
+	/**
 	 * hash field in *Accordeon → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -306,6 +318,17 @@ export type AccordeonSlice = prismic.SharedSlice<'accordeon', AccordeonSliceVari
  * Primary content in *Blank → Default → Primary*
  */
 export interface BlankSliceDefaultPrimary {
+	/**
+	 * Deactivated field in *Blank → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: blank.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
 	/**
 	 * Selector field in *Blank → Default → Primary*
 	 *
@@ -374,6 +397,17 @@ export interface CardsSliceDefaultPrimaryItemsItem {
  */
 export interface CardsSliceDefaultPrimary {
 	/**
+	 * Deactivated field in *Cards → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: cards.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
+	/**
 	 * hash field in *Cards → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -435,6 +469,17 @@ export type CardsSlice = prismic.SharedSlice<'cards', CardsSliceVariation>;
  * Primary content in *Cta → Default → Primary*
  */
 export interface CtaSliceDefaultPrimary {
+	/**
+	 * Deactivated field in *Cta → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: cta.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
 	/**
 	 * hash field in *Cta → Default → Primary*
 	 *
@@ -554,6 +599,17 @@ export interface GallerySliceDefaultPrimaryItemsItem {
  */
 export interface GallerySliceDefaultPrimary {
 	/**
+	 * Deactivated field in *Gallery → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: gallery.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
+	/**
 	 * Columns field in *Gallery → Default → Primary*
 	 *
 	 * - **Field Type**: Select
@@ -617,6 +673,17 @@ export type GallerySlice = prismic.SharedSlice<'gallery', GallerySliceVariation>
  * Primary content in *Headline → Default → Primary*
  */
 export interface HeadlineSliceDefaultPrimary {
+	/**
+	 * Deactivated field in *Headline → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: headline.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
 	/**
 	 * hash field in *Headline → Default → Primary*
 	 *
@@ -735,6 +802,17 @@ export interface HeroSliceDefaultPrimaryItemsItem {
  */
 export interface HeroSliceDefaultPrimary {
 	/**
+	 * Deactivated field in *Hero → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: hero.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
+	/**
 	 * hash field in *Hero → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -831,6 +909,17 @@ export interface HeroFadeSliceDefaultPrimaryItemsItem {
  * Primary content in *HeroFade → Default → Primary*
  */
 export interface HeroFadeSliceDefaultPrimary {
+	/**
+	 * Deactivated field in *HeroFade → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: hero_fade.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
 	/**
 	 * hash field in *HeroFade → Default → Primary*
 	 *
@@ -929,6 +1018,17 @@ export interface HighlightsSliceDefaultPrimaryItemsItem {
  */
 export interface HighlightsSliceDefaultPrimary {
 	/**
+	 * Deactivated field in *Highlights → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: highlights.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
+	/**
 	 * hash field in *Highlights → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -1001,6 +1101,17 @@ export type HighlightsSlice = prismic.SharedSlice<'highlights', HighlightsSliceV
  * Primary content in *LeftRight → Default → Primary*
  */
 export interface LeftRightSliceDefaultPrimary {
+	/**
+	 * Deactivated field in *LeftRight → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: left_right.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
 	/**
 	 * hash field in *LeftRight → Default → Primary*
 	 *
@@ -1272,6 +1383,17 @@ export interface LogosSliceDefaultPrimaryItemsItem {
  */
 export interface LogosSliceDefaultPrimary {
 	/**
+	 * Deactivated field in *Logos → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: logos.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
+	/**
 	 * hash field in *Logos → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -1348,6 +1470,17 @@ export interface MediaSliceDefaultPrimaryItemsItem {
  * Primary content in *Media → Default → Primary*
  */
 export interface MediaSliceDefaultPrimary {
+	/**
+	 * Deactivated field in *Media → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: media.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
 	/**
 	 * Hash field in *Media → Default → Primary*
 	 *
@@ -1517,6 +1650,17 @@ export interface PricingSliceDefaultPrimaryItemsItem {
  */
 export interface PricingSliceDefaultPrimary {
 	/**
+	 * Deactivated field in *Pricing → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: pricing.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
+	/**
 	 * Items field in *Pricing → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -1614,6 +1758,17 @@ export interface SlidingCardsSliceDefaultPrimaryItemsItem {
  */
 export interface SlidingCardsSliceDefaultPrimary {
 	/**
+	 * Deactivated field in *SlidingCards → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: sliding_cards.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
+	/**
 	 * hash field in *SlidingCards → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -1687,6 +1842,17 @@ export type SlidingCardsSlice = prismic.SharedSlice<'sliding_cards', SlidingCard
  */
 export interface TextSliceDefaultPrimary {
 	/**
+	 * Deactivated field in *Text → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: text.default.primary.deactivated
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	deactivated: prismic.BooleanField;
+
+	/**
 	 * hash field in *Text → Default → Primary*
 	 *
 	 * - **Field Type**: Text
@@ -1754,6 +1920,33 @@ type TextSliceVariation = TextSliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type TextSlice = prismic.SharedSlice<'text', TextSliceVariation>;
+
+/**
+ * Default variation for Tools Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ToolsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Tools*
+ */
+type ToolsSliceVariation = ToolsSliceDefault;
+
+/**
+ * Tools Shared Slice
+ *
+ * - **API ID**: `tools`
+ * - **Description**: Tools
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ToolsSlice = prismic.SharedSlice<'tools', ToolsSliceVariation>;
 
 declare module '@prismicio/client' {
 	interface CreateClient {
@@ -1859,7 +2052,10 @@ declare module '@prismicio/client' {
 			TextSlice,
 			TextSliceDefaultPrimary,
 			TextSliceVariation,
-			TextSliceDefault
+			TextSliceDefault,
+			ToolsSlice,
+			ToolsSliceVariation,
+			ToolsSliceDefault
 		};
 	}
 }

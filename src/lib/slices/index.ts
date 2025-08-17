@@ -16,6 +16,7 @@ import Media from './Media/index.svelte';
 import Pricing from './Pricing/index.svelte';
 import SlidingCards from './SlidingCards/index.svelte';
 import Text from './Text/index.svelte';
+import Tools from './Tools/index.svelte';
 
 export const components = {
 	accordeon: Accordeon,
@@ -33,5 +34,6 @@ export const components = {
 	media: Media,
 	pricing: Pricing,
 	sliding_cards: SlidingCards,
-	text: Text
+	text: Text,
+	tools: Tools
 };
