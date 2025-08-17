@@ -1,4 +1,12 @@
 <script lang="ts">
+    import { goto } from '$app/navigation';
+    function slugify(input: string): string {
+        return (input || '')
+            .toLowerCase()
+            .trim()
+            .replace(/[^a-z0-9]+/g, '-')
+            .replace(/^-+|-+$/g, '');
+    }
 	export type Tool = {
 		id: string;
 		name: string;
@@ -14,7 +22,12 @@
 	export let tool: Tool;
 </script>
 
-<a class="rounded-xl overflow-hidden transition-colors bg-[var(--secondary-color)]" href={tool.url} target="_blank" rel="noopener noreferrer">
+<a
+    class="rounded-xl overflow-hidden transition-colors bg-[var(--secondary-color)]"
+    href={`/tools/${slugify(tool.name)}`}
+    sveltekit:prefetch
+    on:click|preventDefault={() => goto(`/tools/${slugify(tool.name)}`)}
+>
 	{#if tool.imageUrl}
 		<img src={tool.imageUrl} alt={tool.name} class="w-full aspect-video object-cover" loading="lazy" />
 	{/if}

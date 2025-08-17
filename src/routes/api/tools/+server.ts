@@ -85,6 +85,20 @@ export const GET: RequestHandler = async ({ fetch, url }) => {
 		const checked = Boolean(findField<boolean | string>(f, ['checked', 'Checked']) ?? false);
 		const weight = Number(findField<number | string>(f, ['Weight', 'Score', 'Rank']) || 0);
 
+		// Normalize tags field into a string[] from common Airtable shapes
+		const rawTags = findField<unknown>(f, ['Tags', 'tags', 'Categories']);
+		let tags: string[] = [];
+		if (Array.isArray(rawTags)) {
+			tags = (rawTags as any[])
+				.map((t) => (typeof t === 'string' ? t : (t && typeof t === 'object' && 'name' in t ? String((t as any).name) : '')))
+				.filter(Boolean);
+		} else if (typeof rawTags === 'string') {
+			tags = rawTags
+				.split(',')
+				.map((s) => s.trim())
+				.filter(Boolean);
+		}
+
 		return {
 			id: r.id,
 			createdTime: r.createdTime,
@@ -95,7 +109,8 @@ export const GET: RequestHandler = async ({ fetch, url }) => {
 			url: urlField,
 			imageUrl,
 			checked,
-			weight
+			weight,
+			tags
 		};
 	});
 
