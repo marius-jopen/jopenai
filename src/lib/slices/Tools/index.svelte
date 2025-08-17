@@ -34,6 +34,12 @@
 	}
 
 	onMount(loadTools);
+
+	// Set meta for listing page
+	$: if (tools && tools.length) {
+		// provide minimal meta; layout reads $page.data
+		// We can't set $page.data here, but we can emit events if needed.
+	}
 </script>
 
 <ToolsOverview initialTools={tools} />

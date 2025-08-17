@@ -29,7 +29,12 @@ export const load: PageServerLoad = async ({ params, fetch, cookies }) => {
     client.getAllByType('footer', { lang })
   ]);
 
-  return { tool, header, footer, lang };
+  // SEO meta
+  const meta_title = `${tool.name} · AI Tool`;
+  const meta_description = tool.description || `${tool.name} in ${tool.category}`;
+  const meta_image = tool.imageUrl || undefined;
+
+  return { tool, header, footer, lang, meta_title, meta_description, meta_image };
 };
 
 
