@@ -56,9 +56,30 @@
 		pageItems = filtered.slice(0, PAGE_SIZE);
 	}
 
+	function normalizeName(name: unknown): string {
+		return String(name || '')
+			.toLowerCase()
+			.trim()
+			.replace(/\s+/g, ' ');
+	}
+
+	function dedupeByName(arr: Tool[]): Tool[] {
+		const seen = new Set<string>();
+		const out: Tool[] = [];
+		for (const t of arr || []) {
+			const key = normalizeName(t?.name);
+			if (!key) continue;
+			if (!seen.has(key)) {
+				seen.add(key);
+				out.push(t);
+			}
+		}
+		return out;
+	}
+
 	$: {
 		// hydrate local state from input
-		tools = initialTools;
+		tools = dedupeByName(initialTools);
 		const tagSet = new Set<string>();
 		tools.forEach((t) => (t.tags || []).forEach((tag) => tagSet.add(tag)));
 		categories = ['Most Popular', 'All', ...Array.from(tagSet).sort((a, b) => a.localeCompare(b))];
