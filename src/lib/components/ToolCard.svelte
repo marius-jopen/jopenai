@@ -24,7 +24,7 @@
 <a
     class="rounded-xl overflow-hidden transition-colors bg-[var(--secondary-color)]"
     href={`/tools/${slugify(tool.name)}`}
-    sveltekit:prefetch
+    data-sveltekit-reload
 >
 	{#if tool.imageUrl}
 		<img src={tool.imageUrl} alt={tool.name} class="w-full aspect-video object-cover" loading="lazy" />
