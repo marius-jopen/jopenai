@@ -19,10 +19,13 @@
 
 	let tools: Tool[] = [];
 	let filtered: Tool[] = [];
+	let pageItems: Tool[] = [];
 	let categories: string[] = [];
 	let selectedCategory = 'Most Popular';
 	let search = '';
 	let sort = 'Newest to Oldest';
+	const PAGE_SIZE = 32;
+	let page = 1;
 
 	const DEFAULT_CATEGORIES: string[] = [
 		'Most Popular',
@@ -61,6 +64,10 @@
 				(!q || t.name?.toLowerCase().includes(q) || t.description?.toLowerCase().includes(q))
 			)
 			.sort(rankComparator);
+
+		// reset to first page whenever filters change
+		page = 1;
+		pageItems = filtered.slice(0, PAGE_SIZE);
 	}
 
 	async function loadTools() {
@@ -80,7 +87,17 @@
 
 	onMount(loadTools);
 
-	$: applyFilters();
+	// recompute on state changes
+	$: {
+		// referencing deps makes the reactive block explicit
+		selectedCategory, search, tools, sort;
+		applyFilters();
+	}
+
+	$: {
+		const start = (page - 1) * PAGE_SIZE;
+		pageItems = filtered.slice(start, start + PAGE_SIZE);
+	}
 </script>
 
 <section class="box py-16 md:pt-28 md:pb-24">
@@ -110,8 +127,37 @@
 	</div>
 
 	<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-		{#each filtered as t}
+		{#each pageItems as t}
 			<ToolCard tool={t} />
 		{/each}
 	</div>
+
+	{#if filtered.length === 0}
+		<p class="text-center text-sm text-black mt-8">No tools match your filters.</p>
+	{/if}
+
+	{#if filtered.length > PAGE_SIZE}
+		<div class="flex items-center justify-center gap-2 mt-10">
+			<button class="px-3 py-1 rounded-full bg-[var(--secondary-color)] text-sm disabled:opacity-40" on:click={() => (page = Math.max(1, page - 1))} disabled={page === 1}>
+				Prev
+			</button>
+			{#each Array(Math.ceil(filtered.length / PAGE_SIZE)) as _, i}
+				{#if i + 1 === page || Math.abs(i + 1 - page) <= 2 || i === 0 || i + 1 === Math.ceil(filtered.length / PAGE_SIZE)}
+					<button
+						class="px-3 py-1 rounded-full text-sm {page === i + 1 ? 'bg-white text-black' : 'bg-[var(--secondary-color)]'}"
+						on:click={() => (page = i + 1)}
+					>
+						{i + 1}
+					</button>
+				{:else}
+					{#if i === 1 || i + 1 === Math.ceil(filtered.length / PAGE_SIZE) - 1}
+						<span class="px-2">…</span>
+					{/if}
+				{/if}
+			{/each}
+			<button class="px-3 py-1 rounded-full bg-[var(--secondary-color)] text-sm disabled:opacity-40" on:click={() => (page = Math.min(Math.ceil(filtered.length / PAGE_SIZE), page + 1))} disabled={page >= Math.ceil(filtered.length / PAGE_SIZE)}>
+				Next
+			</button>
+		</div>
+	{/if}
 </section>
