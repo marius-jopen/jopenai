@@ -1,5 +1,4 @@
 <script lang="ts">
-    import { goto } from '$app/navigation';
     function slugify(input: string): string {
         return (input || '')
             .toLowerCase()
@@ -26,7 +25,6 @@
     class="rounded-xl overflow-hidden transition-colors bg-[var(--secondary-color)]"
     href={`/tools/${slugify(tool.name)}`}
     sveltekit:prefetch
-    on:click|preventDefault={() => goto(`/tools/${slugify(tool.name)}`)}
 >
 	{#if tool.imageUrl}
 		<img src={tool.imageUrl} alt={tool.name} class="w-full aspect-video object-cover" loading="lazy" />
