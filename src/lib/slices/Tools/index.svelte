@@ -1,10 +1,9 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
-	import { onMount, onDestroy } from 'svelte';
+	import { onMount } from 'svelte';
 	import ToolsOverview from '$lib/components/ToolsOverview.svelte';
 	import { browser } from '$app/environment';
 	import { page } from '$app/stores';
-	import { afterNavigate } from '$app/navigation';
 
 	export let slice: Content.ToolsSlice;
 
@@ -41,15 +40,6 @@
 		}
 	}
 
-	// Register navigation listener during component init (required by Svelte)
-	const offNav = afterNavigate(({ to }) => {
-		try {
-			if (to?.url?.pathname?.includes('/tools') && tools.length === 0 && !loading) {
-				loadTools();
-			}
-		} catch {}
-	});
-
 	onMount(() => {
 		loadTools();
 
@@ -65,10 +55,6 @@
 		return () => {
 			window.removeEventListener('pageshow', onPageShow);
 		};
-	});
-
-	onDestroy(() => {
-		try { offNav(); } catch {}
 	});
 
 	// Fallback: if navigating within SPA and tools became empty for any reason
