@@ -2,6 +2,8 @@
 	import type { Content } from '@prismicio/client';
 	import { onMount } from 'svelte';
 	import ToolsOverview from '$lib/components/ToolsOverview.svelte';
+	import { browser } from '$app/environment';
+	import { page } from '$app/stores';
 
 	export let slice: Content.ToolsSlice;
 
@@ -19,8 +21,11 @@
 	};
 
 	let tools: Tool[] = [];
+	let loading = false;
 
 	async function loadTools() {
+		if (loading) return;
+		loading = true;
 		try {
 			const res = await fetch('/api/tools');
 			const json = await res.json();
@@ -30,15 +35,20 @@
 			}));
 		} catch (e) {
 			console.error('Failed to load tools', e);
+		} finally {
+			loading = false;
 		}
 	}
 
 	onMount(loadTools);
 
-	// Set meta for listing page
-	$: if (tools && tools.length) {
-		// provide minimal meta; layout reads $page.data
-		// We can't set $page.data here, but we can emit events if needed.
+	// Fallback: if navigating back via SPA or bfcache restores an empty state, refetch
+	$: if (browser && !loading && tools.length === 0) {
+		loadTools();
+	}
+	$: if (browser) {
+		$page.url; // depend on url updates
+		if (!loading && tools.length === 0) loadTools();
 	}
 </script>
 
