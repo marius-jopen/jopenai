@@ -19,13 +19,13 @@
 
 {#if !slice.primary.deactivated}
 	<section class="pb-28" data-id={slice.primary.hash}>
-		{#if !slice.primary.headline?.length}
+		<!-- {#if !slice.primary.headline?.length}
 			<div class="box text-center pb-4" data-aos="fade-up">
 				<h2>
 					{slice.primary.headline}
 				</h2>
 			</div>
-		{/if}
+		{/if} -->
 
 		{#if slice.primary.slider == false}
 			<div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-3 gap-6 box-big">
