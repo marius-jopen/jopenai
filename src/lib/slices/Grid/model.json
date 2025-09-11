@@ -1,0 +1,47 @@
+{
+  "id": "grid",
+  "type": "SharedSlice",
+  "name": "Grid",
+  "description": "Grid",
+  "variations": [
+    {
+      "id": "default",
+      "name": "Default",
+      "docURL": "...",
+      "version": "initial",
+      "description": "Default",
+      "imageUrl": "",
+      "primary": {
+        "headline": {
+          "type": "Text",
+          "config": {
+            "label": "Headline",
+            "placeholder": ""
+          }
+        },
+        "items": {
+          "type": "Group",
+          "config": {
+            "label": "Items",
+            "repeat": true,
+            "fields": {
+              "related": {
+                "type": "Link",
+                "config": {
+                  "label": "Related",
+                  "select": "document",
+                  "repeat": false,
+                  "customtypes": [
+                    "news_article",
+                    "project"
+                  ]
+                }
+              }
+            }
+          }
+        }
+      },
+      "items": {}
+    }
+  ]
+}

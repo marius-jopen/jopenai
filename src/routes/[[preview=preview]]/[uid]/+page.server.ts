@@ -9,7 +9,7 @@ export async function load({ params, fetch, cookies }) {
 
 	try {
 		const [page, header, footer] = await Promise.all([
-			client.getByUID('page', params.uid, { lang }),
+			client.getByUID('page', params.uid, { lang, fetchLinks: ['news_article.title','news_article.subtitle','news_article.image','news_article.video','project.title','project.subtitle','project.image','project.video'] }),
 			client.getAllByType('header', { lang }),
 			client.getAllByType('footer', { lang })
 		]);

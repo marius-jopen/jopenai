@@ -5,6 +5,7 @@ import Blank from './Blank/index.svelte';
 import Cards from './Cards/index.svelte';
 import Cta from './Cta/index.svelte';
 import Gallery from './Gallery/index.svelte';
+import Grid from './Grid/index.svelte';
 import Headline from './Headline/index.svelte';
 import Hero from './Hero/index.svelte';
 import HeroFade from './HeroFade/index.svelte';
@@ -16,7 +17,6 @@ import Media from './Media/index.svelte';
 import Pricing from './Pricing/index.svelte';
 import SlidingCards from './SlidingCards/index.svelte';
 import Text from './Text/index.svelte';
-import Tools from './Tools/index.svelte';
 
 export const components = {
 	accordeon: Accordeon,
@@ -24,6 +24,7 @@ export const components = {
 	cards: Cards,
 	cta: Cta,
 	gallery: Gallery,
+	grid: Grid,
 	headline: Headline,
 	hero: Hero,
 	hero_fade: HeroFade,
@@ -34,6 +35,5 @@ export const components = {
 	media: Media,
 	pricing: Pricing,
 	sliding_cards: SlidingCards,
-	text: Text,
-	tools: Tools
+	text: Text
 };

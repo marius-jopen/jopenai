@@ -102,8 +102,144 @@ export type HeaderDocument<Lang extends string = string> = prismic.PrismicDocume
 	Lang
 >;
 
+type NewsArticleDocumentDataSlicesSlice =
+	| GridSlice
+	| BlankSlice
+	| TextSlice
+	| SlidingCardsSlice
+	| PricingSlice
+	| MediaSlice
+	| LeftRightSlice
+	| LeftRightSliderSlice
+	| LogosSlice
+	| HighlightsSlice
+	| HeroFadeSlice
+	| HeroSlice
+	| CtaSlice
+	| GallerySlice
+	| HeadlineSlice
+	| CardsSlice
+	| AccordeonSlice;
+
+/**
+ * Content for News Article documents
+ */
+interface NewsArticleDocumentData {
+	/**
+	 * Title field in *News Article*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Subtitle field in *News Article*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.subtitle
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	subtitle: prismic.KeyTextField;
+
+	/**
+	 * Date field in *News Article*
+	 *
+	 * - **Field Type**: Date
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.date
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#date
+	 */
+	date: prismic.DateField;
+
+	/**
+	 * Image field in *News Article*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video field in *News Article*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.video
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video: prismic.KeyTextField;
+
+	/**
+	 * Slice Zone field in *News Article*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<NewsArticleDocumentDataSlicesSlice> /**
+	 * Meta Title field in *News Article*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: news_article.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */;
+	meta_title: prismic.KeyTextField;
+
+	/**
+	 * Meta Description field in *News Article*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: news_article.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField;
+
+	/**
+	 * Meta Image field in *News Article*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news_article.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * News Article document from Prismic
+ *
+ * - **API ID**: `news_article`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type NewsArticleDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<NewsArticleDocumentData>,
+	'news_article',
+	Lang
+>;
+
 type PageDocumentDataSlicesSlice =
-	| ToolsSlice
+	| GridSlice
 	| LeftRightSliderSlice
 	| PricingSlice
 	| GallerySlice
@@ -194,7 +330,136 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
-export type AllDocumentTypes = FooterDocument | HeaderDocument | PageDocument;
+type ProjectDocumentDataSlicesSlice =
+	| BlankSlice
+	| CardsSlice
+	| HeadlineSlice
+	| LogosSlice
+	| SlidingCardsSlice
+	| PricingSlice
+	| TextSlice
+	| LeftRightSliderSlice
+	| LeftRightSlice
+	| HeroSlice
+	| GallerySlice
+	| AccordeonSlice
+	| MediaSlice
+	| HighlightsSlice
+	| HeroFadeSlice
+	| GridSlice;
+
+/**
+ * Content for Project documents
+ */
+interface ProjectDocumentData {
+	/**
+	 * Title field in *Project*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.title
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	title: prismic.KeyTextField;
+
+	/**
+	 * Subtitle field in *Project*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.subtitle
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	subtitle: prismic.KeyTextField;
+
+	/**
+	 * Image field in *Project*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+
+	/**
+	 * Video field in *Project*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.video
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	video: prismic.KeyTextField;
+
+	/**
+	 * Slice Zone field in *Project*
+	 *
+	 * - **Field Type**: Slice Zone
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.slices[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#slices
+	 */
+	slices: prismic.SliceZone<ProjectDocumentDataSlicesSlice> /**
+	 * Meta Title field in *Project*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A title of the page used for social media and search engines
+	 * - **API ID Path**: project.meta_title
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */;
+	meta_title: prismic.KeyTextField;
+
+	/**
+	 * Meta Description field in *Project*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: A brief summary of the page
+	 * - **API ID Path**: project.meta_description
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	meta_description: prismic.KeyTextField;
+
+	/**
+	 * Meta Image field in *Project*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.meta_image
+	 * - **Tab**: SEO & Metadata
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	meta_image: prismic.ImageField<never>;
+}
+
+/**
+ * Project document from Prismic
+ *
+ * - **API ID**: `project`
+ * - **Repeatable**: `true`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type ProjectDocument<Lang extends string = string> = prismic.PrismicDocumentWithUID<
+	Simplify<ProjectDocumentData>,
+	'project',
+	Lang
+>;
+
+export type AllDocumentTypes =
+	| FooterDocument
+	| HeaderDocument
+	| NewsArticleDocument
+	| PageDocument
+	| ProjectDocument;
 
 /**
  * Item in *Accordeon → Default → Primary → Items*
@@ -668,6 +933,73 @@ type GallerySliceVariation = GallerySliceDefault;
  * - **Documentation**: https://prismic.io/docs/slice
  */
 export type GallerySlice = prismic.SharedSlice<'gallery', GallerySliceVariation>;
+
+/**
+ * Item in *Grid → Default → Primary → Items*
+ */
+export interface GridSliceDefaultPrimaryItemsItem {
+	/**
+	 * Related field in *Grid → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: grid.default.primary.items[].related
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	related: prismic.ContentRelationshipField<'news_article' | 'project'>;
+}
+
+/**
+ * Primary content in *Grid → Default → Primary*
+ */
+export interface GridSliceDefaultPrimary {
+	/**
+	 * Headline field in *Grid → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: grid.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Items field in *Grid → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: grid.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<GridSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for Grid Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<GridSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Grid*
+ */
+type GridSliceVariation = GridSliceDefault;
+
+/**
+ * Grid Shared Slice
+ *
+ * - **API ID**: `grid`
+ * - **Description**: Grid
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type GridSlice = prismic.SharedSlice<'grid', GridSliceVariation>;
 
 /**
  * Primary content in *Headline → Default → Primary*
@@ -1921,33 +2253,6 @@ type TextSliceVariation = TextSliceDefault;
  */
 export type TextSlice = prismic.SharedSlice<'text', TextSliceVariation>;
 
-/**
- * Default variation for Tools Slice
- *
- * - **API ID**: `default`
- * - **Description**: Default
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ToolsSliceDefault = prismic.SharedSliceVariation<
-	'default',
-	Record<string, never>,
-	never
->;
-
-/**
- * Slice variation for *Tools*
- */
-type ToolsSliceVariation = ToolsSliceDefault;
-
-/**
- * Tools Shared Slice
- *
- * - **API ID**: `tools`
- * - **Description**: Tools
- * - **Documentation**: https://prismic.io/docs/slice
- */
-export type ToolsSlice = prismic.SharedSlice<'tools', ToolsSliceVariation>;
-
 declare module '@prismicio/client' {
 	interface CreateClient {
 		(
@@ -1974,9 +2279,15 @@ declare module '@prismicio/client' {
 			HeaderDocument,
 			HeaderDocumentData,
 			HeaderDocumentDataNavTopItem,
+			NewsArticleDocument,
+			NewsArticleDocumentData,
+			NewsArticleDocumentDataSlicesSlice,
 			PageDocument,
 			PageDocumentData,
 			PageDocumentDataSlicesSlice,
+			ProjectDocument,
+			ProjectDocumentData,
+			ProjectDocumentDataSlicesSlice,
 			AllDocumentTypes,
 			AccordeonSlice,
 			AccordeonSliceDefaultPrimaryItemsItem,
@@ -2001,6 +2312,11 @@ declare module '@prismicio/client' {
 			GallerySliceDefaultPrimary,
 			GallerySliceVariation,
 			GallerySliceDefault,
+			GridSlice,
+			GridSliceDefaultPrimaryItemsItem,
+			GridSliceDefaultPrimary,
+			GridSliceVariation,
+			GridSliceDefault,
 			HeadlineSlice,
 			HeadlineSliceDefaultPrimary,
 			HeadlineSliceVariation,
@@ -2052,10 +2368,7 @@ declare module '@prismicio/client' {
 			TextSlice,
 			TextSliceDefaultPrimary,
 			TextSliceVariation,
-			TextSliceDefault,
-			ToolsSlice,
-			ToolsSliceVariation,
-			ToolsSliceDefault
+			TextSliceDefault
 		};
 	}
 }

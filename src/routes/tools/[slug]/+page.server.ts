@@ -1,7 +1,6 @@
 import type { PageServerLoad } from './$types';
 import { LANGUAGE } from '$env/static/private';
 import { createClient } from '$lib/prismicio';
-
 function slugify(input: string): string {
   return (input || '')
     .toLowerCase()
