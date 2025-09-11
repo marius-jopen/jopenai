@@ -4,6 +4,10 @@
 	import { isFilled } from '@prismicio/client';
 
 	export let slice: Content.GridSlice;
+
+	function getRelatedData(item: any): any {
+		return (item as any)?.related?.data;
+	}
 </script>
 
 <section class="box pb-28" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
@@ -18,7 +22,7 @@
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up">
 		{#each slice.primary.items as item, index}
 			{#if isFilled.contentRelationship(item.related)}
-				{@const data = (item.related as any)?.data}
+				{@const data = getRelatedData(item)}
 				{@const title = data?.title}
 				{@const subtitle = data?.subtitle}
 				{@const image = data?.image}
