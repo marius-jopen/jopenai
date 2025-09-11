@@ -18,11 +18,11 @@
 	<div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up">
 		{#each slice.primary.items as item, index}
 			{#if isFilled.contentRelationship(item.related)}
-				{@const data: any = (item.related as any)?.data}
-				{@const title: string = data?.title}
-				{@const subtitle: string = data?.subtitle}
+				{@const data = (item.related as any)?.data}
+				{@const title = data?.title}
+				{@const subtitle = data?.subtitle}
 				{@const image = data?.image}
-				{@const video: string = data?.video}
+				{@const video = data?.video}
 				{@const hasImage = isFilled.image(image)}
 				{@const aspectRatio = 'aspect-[6/3]'}
 				{@const paddingClass = 'px-6 pt-6 pb-10'}
