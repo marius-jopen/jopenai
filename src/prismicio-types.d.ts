@@ -787,6 +787,16 @@ export interface CtaSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
 	button: prismic.LinkField;
+
+	/**
+	 * Image field in *Cta → Default → Primary*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: cta.default.primary.image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
 }
 
 /**
