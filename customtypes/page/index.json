@@ -27,6 +27,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"testimonials": {
+							"type": "SharedSlice"
+						},
 						"featured_projects": {
 							"type": "SharedSlice"
 						},
