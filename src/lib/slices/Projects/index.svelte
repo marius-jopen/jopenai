@@ -70,17 +70,17 @@
 	<section class="box-big pb-28" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
 		{#if availableTags.length > 0}
 			<!-- Tag filter buttons -->
-			<div class="flex flex-wrap gap-3 justify-center pb-6" data-aos="fade-up">
+			<div class="flex flex-wrap gap-3 justify-center pb-8" data-aos="fade-up">
 				<button
 					on:click={() => selectTag(null)}
-					class="px-4 py-2 rounded-full text-sm transition-colors duration-300 {selectedTag === null ? 'bg-[var(--quaternary-color)] text-[var(--text-tertiary-color)]' : 'bg-[var(--secondary-color)] text-[var(--text-primary-color)] hover:bg-[var(--tertiary-color)]'}"
+					class="px-4 pb-2 pt-1.5 rounded-full text-sm transition-colors duration-300 {selectedTag === null ? 'bg-[var(--quaternary-color)] text-[var(--text-tertiary-color)]' : 'bg-[var(--secondary-color)] text-[var(--text-primary-color)] hover:bg-[var(--tertiary-color)]'}"
 				>
 					All
 				</button>
 				{#each availableTags as tag}
 					<button
 						on:click={() => selectTag(tag)}
-						class="px-4 py-2 rounded-full text-sm transition-colors duration-300 {selectedTag === tag ? 'bg-[var(--quaternary-color)] text-[var(--text-tertiary-color)]' : 'bg-[var(--secondary-color)] text-[var(--text-primary-color)] hover:bg-[var(--tertiary-color)]'}"
+						class="px-4 pb-2 pt-1.5 rounded-full text-sm transition-colors duration-300 {selectedTag === tag ? 'bg-[var(--quaternary-color)] text-[var(--text-tertiary-color)]' : 'bg-[var(--secondary-color)] text-[var(--text-primary-color)] hover:bg-[var(--tertiary-color)]'}"
 					>
 						{tag}
 					</button>
@@ -89,6 +89,7 @@
 		{/if}
 
 		{#if filteredProjects.length > 0}
+			{@const isOddCount = filteredProjects.length % 2 !== 0}
 			<div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up">
 				{#each filteredProjects as project, index}
 					{@const title = project.data.title}
@@ -100,12 +101,13 @@
 					{@const paddingClass = 'px-6 pt-6 pb-10'}
 					{@const headingClass = 'mb-1 pb-2'}
 					{@const linkUrl = project.uid ? `/projects/${project.uid}` : '#'}
+					{@const isFirstAndOdd = isOddCount && index === 0}
 
 					<a 
 						href={linkUrl}
 						data-aos="fade-zoom-in" 
 						data-aos-delay={100 + index * 150} 
-						class="rounded-lg overflow-hidden h-full flex flex-col bg-[var(--secondary-color)]"
+						class="rounded-lg overflow-hidden h-full flex flex-col bg-[var(--secondary-color)] {isFirstAndOdd ? 'md:col-span-2' : ''}"
 					>
 						{#if hasImage}
 							<div class="w-full {aspectRatio} rounded-t-lg overflow-hidden flex-shrink-0">
