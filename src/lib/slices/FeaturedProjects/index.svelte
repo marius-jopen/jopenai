@@ -8,11 +8,11 @@
 
 	const items = slice.primary.items;
 
-	let padding = 13;
+	let padding = 7.5;
 
 	const calculateStyles = (index: number, itemsLength: number): string => {
-		const marginLeft = index === 0 ? padding + 'px' : '0';
-		const marginRight = index === itemsLength - 1 ? padding + 'px' : '0';
+		const marginLeft = index === 0 ? padding + 'vw' : '0';
+		const marginRight = index === itemsLength - 1 ? padding + 'vw' : '0';
 		return `margin-left: ${marginLeft}; margin-right: ${marginRight};`;
 	};
 
