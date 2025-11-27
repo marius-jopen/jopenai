@@ -31,6 +31,7 @@
 				{@const image = projectData?.image}
 				{@const video = projectData?.video}
 				{@const title = projectData?.title}
+				{@const subtitle = projectData?.subtitle}
 				<a href={linkUrl} class="w-[80vw] md:w-[85vw] relative rounded-lg overflow-hidden flex-shrink-0" style={calculateStyles(index, items.length)}>
 					<div>
 						{#if video}
@@ -39,10 +40,15 @@
 							<PrismicImage class="rounded-lg object-cover w-full aspect-[3/4] lg:aspect-[16/8]" field={image} />
 						{/if}
 
-						{#if title}
-							<h2 data-aos="fade" class="text-[var(--text-tertiary-color)] px-6 pb-3.5 absolute bottom-0 left-0 w-full lg:w-3/4 h-full flex items-end">
-								{title}
-							</h2>
+						{#if title || subtitle}
+							<div data-aos="fade" class="text-[var(--text-tertiary-color)] px-6 pb-3.5 absolute bottom-0 left-0 w-full lg:w-3/4 h-full flex flex-col items-start justify-end">
+								{#if title}
+									<h2 class="pb-0">{title}</h2>
+								{/if}
+								{#if subtitle}
+									<p class="text-sm mt-2 pl-1 mb-3.5">{subtitle}</p>
+								{/if}
+							</div>
 						{/if}
 					</div>
 				</a>
