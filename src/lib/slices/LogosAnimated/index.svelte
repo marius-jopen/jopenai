@@ -17,7 +17,8 @@
 	const visibleCount = 4; // Always show 4 logos
 
 	// Track the starting index for each visible logo position
-	let offsets = [0, 1, 2, 3];
+	// Initialize with first 4 logos, wrapping around if we have fewer than 4
+	let offsets = Array.from({ length: visibleCount }, (_, i) => i % Math.max(totalLogos, 1));
 	let intervalId: ReturnType<typeof setInterval>;
 	let timeoutIds: ReturnType<typeof setTimeout>[] = [];
 	let rotationKey = 0; // Key to force re-render for transitions
@@ -33,8 +34,9 @@
 		
 		// After fade out completes, change logo and fade in
 		setTimeout(() => {
-			// Increment this specific logo's offset, wrapping around to ensure continuous loop
-			const newOffset = (offsets[position] + visibleCount) % totalLogos;
+			// Increment this specific logo's offset by visibleCount, wrapping around to ensure continuous loop
+			// This works with any number of logos (7, 11, 13, etc.)
+			const newOffset = totalLogos > 0 ? (offsets[position] + visibleCount) % totalLogos : 0;
 			offsets[position] = newOffset;
 			rotationKey++; // Increment key to trigger re-render
 			offsets = [...offsets]; // Create new array reference to trigger reactivity
@@ -70,7 +72,8 @@
 	}
 
 	onMount(() => {
-		// Start rotation if we have logos
+		// Start rotation if we have at least as many logos as visible slots
+		// This works with any number of logos (7, 11, 13, etc.) as long as we have at least 4
 		if (totalLogos >= visibleCount) {
 			// Calculate total time for one complete rotation cycle
 			// This is the display time plus the stagger delays for all logos
