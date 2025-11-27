@@ -10,6 +10,7 @@ import Headline from './Headline/index.svelte';
 import Hero from './Hero/index.svelte';
 import HeroFade from './HeroFade/index.svelte';
 import Highlights from './Highlights/index.svelte';
+import LatestNews from './LatestNews/index.svelte';
 import LeftRight from './LeftRight/index.svelte';
 import LeftRightSlider from './LeftRightSlider/index.svelte';
 import Logos from './Logos/index.svelte';
@@ -29,6 +30,7 @@ export const components = {
 	hero: Hero,
 	hero_fade: HeroFade,
 	highlights: Highlights,
+	latest_news: LatestNews,
 	left_right: LeftRight,
 	left_right_slider: LeftRightSlider,
 	logos: Logos,

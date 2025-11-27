@@ -99,6 +99,11 @@
 			"slider": {
 				"__TYPE__": "BooleanContent",
 				"value": true
+			},
+			"items_per_row": {
+				"__TYPE__": "FieldContent",
+				"value": "58",
+				"type": "Number"
 			}
 		},
 		"items": []

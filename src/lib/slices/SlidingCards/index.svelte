@@ -15,20 +15,33 @@
 		const marginRight = index === itemsLength - 1 ? padding + 'vw' : '0';
 		return `margin-left: ${marginLeft}; margin-right: ${marginRight}; width: ${width}vw;`;
 	};
+
+	// Determine number of columns on md+ using the "Items per row" field (only used when slider is false)
+	const requestedCols = Number(slice.primary.items_per_row) || 3;
+	const clampedCols = Math.max(1, Math.min(requestedCols, 12));
+	// Enumerate possible classes so Tailwind JIT includes them
+	const mdGridColsClassMap: Record<number, string> = {
+		1: 'md:grid-cols-1',
+		2: 'md:grid-cols-2',
+		3: 'md:grid-cols-3',
+		4: 'md:grid-cols-4',
+		5: 'md:grid-cols-5',
+		6: 'md:grid-cols-6',
+		7: 'md:grid-cols-7',
+		8: 'md:grid-cols-8',
+		9: 'md:grid-cols-9',
+		10: 'md:grid-cols-10',
+		11: 'md:grid-cols-11',
+		12: 'md:grid-cols-12'
+	};
+	const mdGridColsClass = mdGridColsClassMap[clampedCols] || 'md:grid-cols-3';
 </script>
 
 {#if !slice.primary.deactivated}
 	<section class="pb-28" data-id={slice.primary.hash}>
-		<!-- {#if !slice.primary.headline?.length}
-			<div class="box text-center pb-4" data-aos="fade-up">
-				<h2>
-					{slice.primary.headline}
-				</h2>
-			</div>
-		{/if} -->
 
 		{#if slice.primary.slider == false}
-			<div data-aos="fade-up" class="grid grid-cols-1 md:grid-cols-3 gap-6 box-big">
+			<div data-aos="fade-up" class={`grid grid-cols-1 ${mdGridColsClass} gap-6 box-big`}>
 				{#each items as item, index}
 					<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="flex flex-col rounded-lg overflow-hidden h-full bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition group">
 						<div class="w-full h-[250px] overflow-hidden">

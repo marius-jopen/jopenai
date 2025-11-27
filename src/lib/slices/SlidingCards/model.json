@@ -44,6 +44,13 @@
             "default_value": false
           }
         },
+        "items_per_row": {
+          "type": "Number",
+          "config": {
+            "label": "Items per row",
+            "placeholder": ""
+          }
+        },
         "items": {
           "type": "Group",
           "config": {

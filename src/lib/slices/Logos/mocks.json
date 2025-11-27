@@ -48,6 +48,11 @@
 				"__TYPE__": "FieldContent",
 				"value": "proud",
 				"type": "Text"
+			},
+			"logos_in_a_row": {
+				"__TYPE__": "FieldContent",
+				"value": "58",
+				"type": "Number"
 			}
 		},
 		"items": []

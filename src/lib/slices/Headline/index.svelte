@@ -7,7 +7,7 @@
 </script>
 
 {#if !slice.primary.deactivated}
-	<section class="pb-12 " data-id={slice.primary.hash}>
+	<section class="pb-8 " data-id={slice.primary.hash}>
 		<div class="box">
 			<div class="mx-auto max-w-3xl text-center px-4 md:px-0" data-aos="fade" data-aos-delay={250}>
 				<PrismicRichText field={slice.primary.headline} />

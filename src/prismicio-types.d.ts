@@ -239,6 +239,7 @@ export type NewsArticleDocument<Lang extends string = string> = prismic.PrismicD
 >;
 
 type PageDocumentDataSlicesSlice =
+	| LatestNewsSlice
 	| GridSlice
 	| LeftRightSliderSlice
 	| PricingSlice
@@ -1430,6 +1431,33 @@ type HighlightsSliceVariation = HighlightsSliceDefault;
 export type HighlightsSlice = prismic.SharedSlice<'highlights', HighlightsSliceVariation>;
 
 /**
+ * Default variation for LatestNews Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LatestNewsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *LatestNews*
+ */
+type LatestNewsSliceVariation = LatestNewsSliceDefault;
+
+/**
+ * LatestNews Shared Slice
+ *
+ * - **API ID**: `latest_news`
+ * - **Description**: LatestNews
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LatestNewsSlice = prismic.SharedSlice<'latest_news', LatestNewsSliceVariation>;
+
+/**
  * Primary content in *LeftRight → Default → Primary*
  */
 export interface LeftRightSliceDefaultPrimary {
@@ -1744,6 +1772,16 @@ export interface LogosSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	headline: prismic.KeyTextField;
+
+	/**
+	 * Logos in a row field in *Logos → Default → Primary*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: logos.default.primary.logos_in_a_row
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	logos_in_a_row: prismic.NumberField;
 
 	/**
 	 * Items field in *Logos → Default → Primary*
@@ -2132,6 +2170,16 @@ export interface SlidingCardsSliceDefaultPrimary {
 	slider: prismic.BooleanField;
 
 	/**
+	 * Items per row field in *SlidingCards → Default → Primary*
+	 *
+	 * - **Field Type**: Number
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: sliding_cards.default.primary.items_per_row
+	 * - **Documentation**: https://prismic.io/docs/field#number
+	 */
+	items_per_row: prismic.NumberField;
+
+	/**
 	 * Items field in *SlidingCards → Default → Primary*
 	 *
 	 * - **Field Type**: Group
@@ -2336,6 +2384,9 @@ declare module '@prismicio/client' {
 			HighlightsSliceDefaultPrimary,
 			HighlightsSliceVariation,
 			HighlightsSliceDefault,
+			LatestNewsSlice,
+			LatestNewsSliceVariation,
+			LatestNewsSliceDefault,
 			LeftRightSlice,
 			LeftRightSliceDefaultPrimary,
 			LeftRightSliceVariation,
