@@ -10,15 +10,15 @@
 
 {#if !slice.primary.deactivated}
 	{#if hasImage}
-		<!-- Full-screen with image and white text -->
-		<section class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw] pb-28" data-id={slice.primary.hash}>
-			<div class="relative w-full pb-8 overflow-hidden">
+		<!-- Box layout with image and white text -->
+		<section class="box-big pb-28" data-id={slice.primary.hash}>
+			<div class="relative w-full rounded-2xl overflow-hidden">
 				<PrismicImage 
 					field={slice.primary.image} 
-					class="absolute inset-0 w-full h-full object-cover"
+					class="absolute inset-0 w-full h-full object-cover rounded-2xl"
 				/>
 				
-				<div class="relative z-10 w-full h-full flex items-center justify-center px-6 md:px-10 py-12 md:py-20">
+				<div class="relative z-10 w-full h-full flex items-center justify-center px-6 md:px-10 py-12 md:py-20 min-h-[300px] md:min-h-[350px] lg:min-h-[400px]">
 					<div class="mx-auto md:w-9/12 text-center">
 						{#if slice.primary.headline}
 							<h2 data-aos="fade" class="text-white pb-5">
