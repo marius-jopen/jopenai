@@ -12,7 +12,7 @@
 	{#if hasImage}
 		<!-- Box layout with image and white text -->
 		<section class="box-big pb-28" data-id={slice.primary.hash}>
-			<div class="relative w-full rounded-2xl overflow-hidden">
+			<div class="relative w-full rounded-lg overflow-hidden">
 				<PrismicImage 
 					field={slice.primary.image} 
 					class="absolute inset-0 w-full h-full object-cover rounded-2xl"

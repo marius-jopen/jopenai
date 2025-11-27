@@ -2232,6 +2232,36 @@ type PricingSliceVariation = PricingSliceDefault;
 export type PricingSlice = prismic.SharedSlice<'pricing', PricingSliceVariation>;
 
 /**
+ * Item in *Projects → Default → Primary → Items*
+ */
+export interface ProjectsSliceDefaultPrimaryItemsItem {
+	/**
+	 * Project field in *Projects → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projects.default.primary.items[].project
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	project: prismic.ContentRelationshipField<'project'>;
+}
+
+/**
+ * Primary content in *Projects → Default → Primary*
+ */
+export interface ProjectsSliceDefaultPrimary {
+	/**
+	 * Items field in *Projects → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: projects.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<ProjectsSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
  * Default variation for Projects Slice
  *
  * - **API ID**: `default`
@@ -2240,7 +2270,7 @@ export type PricingSlice = prismic.SharedSlice<'pricing', PricingSliceVariation>
  */
 export type ProjectsSliceDefault = prismic.SharedSliceVariation<
 	'default',
-	Record<string, never>,
+	Simplify<ProjectsSliceDefaultPrimary>,
 	never
 >;
 
@@ -2709,6 +2739,8 @@ declare module '@prismicio/client' {
 			PricingSliceVariation,
 			PricingSliceDefault,
 			ProjectsSlice,
+			ProjectsSliceDefaultPrimaryItemsItem,
+			ProjectsSliceDefaultPrimary,
 			ProjectsSliceVariation,
 			ProjectsSliceDefault,
 			SlidingCardsSlice,

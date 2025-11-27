@@ -10,10 +10,64 @@
 
 	export let slice: Content.ProjectsSlice;
 
+	// Control whether the first item should be double width when there's an odd number
+	const enableFirstItemDoubleWidth = true;
+
 	let projects: ProjectDocument[] = [];
 	let loading = true;
 	let selectedTag: string | null = null;
 	let availableTags: string[] = [];
+
+	// Get custom order from slice.primary.items
+	function getCustomOrder(): string[] {
+		const order: string[] = [];
+		if (slice.primary.items && Array.isArray(slice.primary.items)) {
+			slice.primary.items.forEach((item: any) => {
+				if (item?.project?.uid) {
+					order.push(item.project.uid);
+				}
+			});
+		}
+		return order;
+	}
+
+	// Sort projects according to custom order
+	function sortProjectsByCustomOrder(projectsToSort: ProjectDocument[]): ProjectDocument[] {
+		const customOrder = getCustomOrder();
+		if (customOrder.length === 0) {
+			return projectsToSort; // No custom order, return as-is
+		}
+
+		// Create a map for quick lookup
+		const projectMap = new Map<string, ProjectDocument>();
+		projectsToSort.forEach(project => {
+			if (project.uid) {
+				projectMap.set(project.uid, project);
+			}
+		});
+
+		// Sort according to custom order
+		const sorted: ProjectDocument[] = [];
+		const added = new Set<string>();
+
+		// First, add projects in the custom order
+		customOrder.forEach(uid => {
+			const project = projectMap.get(uid);
+			if (project) {
+				sorted.push(project);
+				added.add(uid);
+			}
+		});
+
+		// Then, add any remaining projects that weren't in the custom order
+		projectsToSort.forEach(project => {
+			if (project.uid && !added.has(project.uid)) {
+				sorted.push(project);
+			}
+		});
+
+		return sorted;
+	}
 
 	// Extract unique tags from all projects using Prismic document-level tags
 	function extractTags(projects: ProjectDocument[]): string[] {
@@ -29,13 +83,18 @@
 		return Array.from(tagSet).sort();
 	}
 
-	// Filter projects by selected tag
-	$: filteredProjects = selectedTag
-		? projects.filter(project => {
-			// Check if project has the selected tag in its Prismic document tags
-			return project.tags && selectedTag && project.tags.includes(selectedTag);
-		})
-		: projects;
+	// Filter projects by selected tag, then sort by custom order
+	$: filteredProjects = (() => {
+		const filtered = selectedTag
+			? projects.filter(project => {
+				// Check if project has the selected tag in its Prismic document tags
+				return project.tags && selectedTag && project.tags.includes(selectedTag);
+			})
+			: projects;
+		
+		// Always apply custom sorting
+		return sortProjectsByCustomOrder(filtered);
+	})();
 
 	function selectTag(tag: string | null) {
 		selectedTag = selectedTag === tag ? null : tag;
@@ -67,7 +126,7 @@
 </script>
 
 {#if !loading}
-	<section class="box-big pb-28" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+	<section class="box pb-28" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
 		{#if availableTags.length > 0}
 			<!-- Tag filter buttons -->
 			<div class="flex flex-wrap gap-3 justify-center pb-8" data-aos="fade-up">
@@ -101,7 +160,7 @@
 					{@const paddingClass = 'px-6 pt-6 pb-10'}
 					{@const headingClass = 'mb-1 pb-2'}
 					{@const linkUrl = project.uid ? `/projects/${project.uid}` : '#'}
-					{@const isFirstAndOdd = isOddCount && index === 0}
+					{@const isFirstAndOdd = enableFirstItemDoubleWidth && isOddCount && index === 0}
 
 					<a 
 						href={linkUrl}
