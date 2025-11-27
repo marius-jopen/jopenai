@@ -1156,6 +1156,17 @@ export interface HeroSliceDefaultPrimary {
 	hash: prismic.KeyTextField;
 
 	/**
+	 * Style field in *Hero → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: normal
+	 * - **API ID Path**: hero.default.primary.style
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	style: prismic.SelectField<'normal' | 'fullscreen', 'filled'>;
+
+	/**
 	 * Items field in *Hero → Default → Primary*
 	 *
 	 * - **Field Type**: Group
