@@ -27,6 +27,9 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"logos_animated": {
+							"type": "SharedSlice"
+						},
 						"testimonials": {
 							"type": "SharedSlice"
 						},

@@ -239,6 +239,7 @@ export type NewsArticleDocument<Lang extends string = string> = prismic.PrismicD
 >;
 
 type PageDocumentDataSlicesSlice =
+	| LogosAnimatedSlice
 	| TestimonialsSlice
 	| FeaturedProjectsSlice
 	| LatestNewsSlice
@@ -1916,6 +1917,73 @@ type LogosSliceVariation = LogosSliceDefault;
 export type LogosSlice = prismic.SharedSlice<'logos', LogosSliceVariation>;
 
 /**
+ * Item in *LogosAnimated → Default → Primary → Items*
+ */
+export interface LogosAnimatedSliceDefaultPrimaryItemsItem {
+	/**
+	 * Image field in *LogosAnimated → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: logos_animated.default.primary.items[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
+ * Primary content in *LogosAnimated → Default → Primary*
+ */
+export interface LogosAnimatedSliceDefaultPrimary {
+	/**
+	 * Headline field in *LogosAnimated → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: logos_animated.default.primary.headline
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	headline: prismic.KeyTextField;
+
+	/**
+	 * Items field in *LogosAnimated → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: logos_animated.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<LogosAnimatedSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for LogosAnimated Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LogosAnimatedSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<LogosAnimatedSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *LogosAnimated*
+ */
+type LogosAnimatedSliceVariation = LogosAnimatedSliceDefault;
+
+/**
+ * LogosAnimated Shared Slice
+ *
+ * - **API ID**: `logos_animated`
+ * - **Description**: LogosAnimated
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type LogosAnimatedSlice = prismic.SharedSlice<'logos_animated', LogosAnimatedSliceVariation>;
+
+/**
  * Item in *Media → Default → Primary → Items*
  */
 export interface MediaSliceDefaultPrimaryItemsItem {
@@ -2597,6 +2665,11 @@ declare module '@prismicio/client' {
 			LogosSliceDefaultPrimary,
 			LogosSliceVariation,
 			LogosSliceDefault,
+			LogosAnimatedSlice,
+			LogosAnimatedSliceDefaultPrimaryItemsItem,
+			LogosAnimatedSliceDefaultPrimary,
+			LogosAnimatedSliceVariation,
+			LogosAnimatedSliceDefault,
 			MediaSlice,
 			MediaSliceDefaultPrimaryItemsItem,
 			MediaSliceDefaultPrimary,

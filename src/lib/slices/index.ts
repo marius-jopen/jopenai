@@ -15,6 +15,7 @@ import LatestNews from './LatestNews/index.svelte';
 import LeftRight from './LeftRight/index.svelte';
 import LeftRightSlider from './LeftRightSlider/index.svelte';
 import Logos from './Logos/index.svelte';
+import LogosAnimated from './LogosAnimated/index.svelte';
 import Media from './Media/index.svelte';
 import Pricing from './Pricing/index.svelte';
 import SlidingCards from './SlidingCards/index.svelte';
@@ -37,6 +38,7 @@ export const components = {
 	left_right: LeftRight,
 	left_right_slider: LeftRightSlider,
 	logos: Logos,
+	logos_animated: LogosAnimated,
 	media: Media,
 	pricing: Pricing,
 	sliding_cards: SlidingCards,

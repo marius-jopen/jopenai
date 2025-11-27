@@ -83,7 +83,7 @@
 	}
 </script>
 
-<section class="pb-28 {isFullscreen ? 'featured-projects-fullscreen' : ''}" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+<section class="{isFullscreen ? 'pb-10' : 'pb-28'} {isFullscreen ? 'featured-projects-fullscreen' : ''}" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
 	{#if isFullscreen}
 		<!-- Fullscreen with fade transitions -->
 		<section class="relative w-screen left-1/2 right-1/2 -ml-[50vw] -mr-[50vw]">
@@ -118,7 +118,7 @@
 												<h2 class="pb-0">{title}</h2>
 											{/if}
 											{#if subtitle}
-												<p class="text-sm mt-2 pl-1 mb-3.5">{subtitle}</p>
+												<p class="text-base-mobile md:text-base mt-2 pl-1 mb-3.5">{subtitle}</p>
 											{/if}
 										</div>
 									{/if}
