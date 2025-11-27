@@ -12,6 +12,18 @@
       "description": "Default",
       "imageUrl": "",
       "primary": {
+        "style": {
+          "type": "Select",
+          "config": {
+            "label": "Style",
+            "placeholder": "",
+            "options": [
+              "normal",
+              "fullscreen"
+            ],
+            "default_value": "normal"
+          }
+        },
         "items": {
           "type": "Group",
           "config": {

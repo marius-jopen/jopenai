@@ -846,6 +846,17 @@ export interface FeaturedProjectsSliceDefaultPrimaryItemsItem {
  */
 export interface FeaturedProjectsSliceDefaultPrimary {
 	/**
+	 * Style field in *FeaturedProjects → Default → Primary*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: normal
+	 * - **API ID Path**: featured_projects.default.primary.style
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	style: prismic.SelectField<'normal' | 'fullscreen', 'filled'>;
+
+	/**
 	 * Items field in *FeaturedProjects → Default → Primary*
 	 *
 	 * - **Field Type**: Group
