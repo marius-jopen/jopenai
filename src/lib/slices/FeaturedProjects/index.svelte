@@ -19,6 +19,10 @@
 	function getProjectData(item: any): any {
 		return (item as any)?.project?.data;
 	}
+
+	function getProjectUid(item: any): string | null {
+		return (item as any)?.project?.uid || null;
+	}
 </script>
 
 <section class="pb-28" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
@@ -26,7 +30,7 @@
 		{#each items as item, index}
 			{#if isFilled.contentRelationship(item.project)}
 				{@const projectData = getProjectData(item)}
-				{@const projectUid = (item as any)?.project?.uid}
+				{@const projectUid = getProjectUid(item)}
 				{@const linkUrl = projectUid ? `/projects/${projectUid}` : '#'}
 				{@const image = projectData?.image}
 				{@const video = projectData?.video}
