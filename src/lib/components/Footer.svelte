@@ -4,7 +4,7 @@
     export let data;
 </script>
 
-<div class="box pt-4 pb-6 flex flex-col md:flex-row justify-between">
+<div class="box-big pt-4 pb-6 flex flex-col md:flex-row justify-between">
     <a href="/" class="text-sm font-bold pt-0.5 text-[var(--text-primary-color)] text-center md:text-left hover:text-[var(--text-primary-color)]">
         THE ROBOTS
     </a>
