@@ -239,6 +239,7 @@ export type NewsArticleDocument<Lang extends string = string> = prismic.PrismicD
 >;
 
 type PageDocumentDataSlicesSlice =
+	| ProjectsSlice
 	| LogosAnimatedSlice
 	| TestimonialsSlice
 	| FeaturedProjectsSlice
@@ -2231,6 +2232,33 @@ type PricingSliceVariation = PricingSliceDefault;
 export type PricingSlice = prismic.SharedSlice<'pricing', PricingSliceVariation>;
 
 /**
+ * Default variation for Projects Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Record<string, never>,
+	never
+>;
+
+/**
+ * Slice variation for *Projects*
+ */
+type ProjectsSliceVariation = ProjectsSliceDefault;
+
+/**
+ * Projects Shared Slice
+ *
+ * - **API ID**: `projects`
+ * - **Description**: Projects
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ProjectsSlice = prismic.SharedSlice<'projects', ProjectsSliceVariation>;
+
+/**
  * Item in *SlidingCards → Default → Primary → Items*
  */
 export interface SlidingCardsSliceDefaultPrimaryItemsItem {
@@ -2680,6 +2708,9 @@ declare module '@prismicio/client' {
 			PricingSliceDefaultPrimary,
 			PricingSliceVariation,
 			PricingSliceDefault,
+			ProjectsSlice,
+			ProjectsSliceVariation,
+			ProjectsSliceDefault,
 			SlidingCardsSlice,
 			SlidingCardsSliceDefaultPrimaryItemsItem,
 			SlidingCardsSliceDefaultPrimary,

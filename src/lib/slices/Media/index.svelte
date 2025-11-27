@@ -58,7 +58,7 @@
 </script>
 
 {#if !slice.primary.deactivated}
-	<section class="pb-16 md:pb-24 {styleClasses}" data-id={slice.primary.hash}>
+	<section class="pb-16 md:pb-12 {styleClasses}" data-id={slice.primary.hash}>
 		{#if style != 'logo'}
 			<div class="{style == 'box' ? 'md:px-8' : ''}" data-aos="fade-up">
 				<div class="{style == 'full' ? 'rounded-none' : 'rounded-lg overflow-hidden'} h-auto relative">

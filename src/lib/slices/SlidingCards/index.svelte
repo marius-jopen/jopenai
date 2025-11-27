@@ -2,6 +2,7 @@
 	import type { Content } from '@prismicio/client';
 	import Slider from '$lib/components/slider.svelte';
 	import { PrismicImage, PrismicRichText } from '@prismicio/svelte';
+	import { isFilled } from '@prismicio/client';
 
 	export let slice: Content.SlidingCardsSlice;
 
@@ -44,15 +45,17 @@
 			<div data-aos="fade-up" class={`grid grid-cols-1 ${mdGridColsClass} gap-6 box-big`}>
 				{#each items as item, index}
 					<a href="{item.link && item.link.url}" data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="flex flex-col rounded-lg overflow-hidden h-full bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition group">
-						<div class="w-full h-[250px] overflow-hidden">
-							{#if item.video}
-								<video src={item.video} poster={item.image.url} class="rounded-t-lg w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" autoplay muted loop playsinline />
-							{:else}
-								<PrismicImage class="rounded-t-lg w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" field={item.image} />
-							{/if}
-						</div>
+						{#if item.video || isFilled.image(item.image)}
+							<div class="w-full h-[250px] overflow-hidden">
+								{#if item.video}
+									<video src={item.video} poster={item.image.url} class="rounded-t-lg w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" autoplay muted loop playsinline />
+								{:else}
+									<PrismicImage class="rounded-t-lg w-full h-full object-cover transition-transform duration-300 group-hover:scale-105" field={item.image} />
+								{/if}
+							</div>
+						{/if}
 					
-						<div class="rounded-b-lg px-6 md:px-10 pt-6 md:pt-10 pb-8 md:pb-12 w-full flex-1 flex flex-col">
+						<div class="{item.video || isFilled.image(item.image) ? 'rounded-b-lg' : 'rounded-lg'} px-6 md:px-10 pt-6 md:pt-10 pb-8 md:pb-12 w-full flex-1 flex flex-col">
 							<div data-aos-delay={100 + index * 150}>
 								<PrismicRichText field={item.headline} />
 							</div>
