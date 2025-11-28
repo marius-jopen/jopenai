@@ -104,6 +104,72 @@ interface GeneralDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#group
 	 */
 	testimonial: prismic.GroupField<Simplify<GeneralDocumentDataTestimonialItem>>;
+
+	/**
+	 * Testimonial Headline field in *General*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.testimonial_headline
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	testimonial_headline: prismic.KeyTextField;
+
+	/**
+	 * Testimonial Subheadline field in *General*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.testimonial_subheadline
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	testimonial_subheadline: prismic.KeyTextField;
+
+	/**
+	 * CTA Header field in *General*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.cta_header
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	cta_header: prismic.KeyTextField;
+
+	/**
+	 * CTA Text field in *General*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.cta_text
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	cta_text: prismic.KeyTextField;
+
+	/**
+	 * CTA Link field in *General*
+	 *
+	 * - **Field Type**: Link
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.cta_link
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	cta_link: prismic.LinkField;
+
+	/**
+	 * CTA Image field in *General*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.cta_image
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	cta_image: prismic.ImageField<never>;
 }
 
 /**

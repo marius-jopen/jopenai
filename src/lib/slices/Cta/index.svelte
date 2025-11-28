@@ -1,40 +1,104 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
 	import type { Content } from '@prismicio/client';
 	import { PrismicText, PrismicImage } from '@prismicio/svelte';
 	import { isFilled } from '@prismicio/client';
 	import Button from '$lib/components/Button.svelte';
+	import { createClient } from '$lib/prismicio';
+	import { currentLang } from '$lib/stores/lang';
+	import { browser } from '$app/environment';
+
 	export let slice: Content.CtaSlice;
 
-	const hasImage = isFilled.image(slice.primary.image);
+	let globalCtaHeader: string | null = null;
+	let globalCtaText: string | null = null;
+	let globalCtaLink: any = null;
+	let globalCtaImage: any = null;
+	let loading = false;
+
+	// Use slice values if filled, otherwise use global values
+	$: headline = slice.primary.headline || globalCtaHeader || null;
+	$: text = isFilled.richText(slice.primary.text) ? slice.primary.text : (globalCtaText ? [{ type: 'paragraph', content: { text: globalCtaText } }] : null);
+	$: button = isFilled.link(slice.primary.button) ? slice.primary.button : globalCtaLink;
+	$: image = isFilled.image(slice.primary.image) ? slice.primary.image : globalCtaImage;
+	$: hasImage = isFilled.image(image);
+	// Only show if we have content and either: we have slice content (show immediately) OR we're done loading global content
+	$: hasSliceContent = slice.primary.headline || isFilled.link(slice.primary.button) || isFilled.richText(slice.primary.text) || isFilled.image(slice.primary.image);
+	$: hasContent = (headline || text || button || hasImage) && (hasSliceContent || (!loading && (globalCtaHeader || globalCtaText || globalCtaLink || globalCtaImage)));
+
+	onMount(async () => {
+		if (!browser) {
+			return;
+		}
+
+		// Only fetch if any slice field is empty (we might need global fallbacks)
+		const hasAllFields = slice.primary.headline && isFilled.link(slice.primary.button) && isFilled.richText(slice.primary.text) && isFilled.image(slice.primary.image);
+		if (hasAllFields) {
+			return;
+		}
+
+		loading = true;
+		try {
+			const lang = $currentLang || 'en-us';
+			const client = createClient();
+			
+			// Fetch general page
+			const generalPages = await client.getAllByType('general', { lang });
+			
+			if (generalPages.length > 0) {
+				const generalData = generalPages[0].data;
+				if (!slice.primary.headline && generalData.cta_header) {
+					globalCtaHeader = generalData.cta_header;
+				}
+				if (!isFilled.richText(slice.primary.text) && generalData.cta_text) {
+					globalCtaText = generalData.cta_text;
+				}
+				if (!isFilled.link(slice.primary.button) && generalData.cta_link) {
+					globalCtaLink = generalData.cta_link;
+				}
+				if (!isFilled.image(slice.primary.image) && generalData.cta_image) {
+					globalCtaImage = generalData.cta_image;
+				}
+			}
+		} catch (error) {
+			console.error('Error fetching global CTA data:', error);
+		} finally {
+			loading = false;
+		}
+	});
 </script>
 
-{#if !slice.primary.deactivated}
+{#if !slice.primary.deactivated && hasContent}
 	{#if hasImage}
 		<!-- Box layout with image and white text -->
 		<section class="box-big pb-28" data-id={slice.primary.hash}>
 			<div class="relative w-full rounded-lg overflow-hidden">
 				<PrismicImage 
-					field={slice.primary.image} 
+					field={image} 
 					class="absolute inset-0 w-full h-full object-cover rounded-2xl"
 				/>
 				
 				<div class="relative z-10 w-full h-full flex items-center justify-center px-6 md:px-10 py-12 md:py-20 min-h-[300px] md:min-h-[350px] lg:min-h-[400px]">
 					<div class="mx-auto md:w-9/12 text-center">
-						{#if slice.primary.headline}
+						{#if headline}
 							<h2 data-aos="fade" class="text-white pb-5">
-								{slice.primary.headline}
+								{headline}
 							</h2>
 						{/if}
 				
-						{#if slice.primary.text}
+						{#if text}
 							<div class="text-white pb-8 text-base-mobile md:text-base" data-aos="fade">
-								<PrismicText field={slice.primary.text} />
+								{#if isFilled.richText(slice.primary.text)}
+									<PrismicText field={slice.primary.text} />
+								{:else}
+									<p>{globalCtaText}</p>
+								{/if}
 							</div>
 						{/if}
 
-						{#if isFilled.link(slice.primary.button)}
+						{#if button}
 							<div class="flex justify-center" data-aos="fade">
-								<Button whiteBg={true} big={true} medium={false} data={slice.primary.button} />
+								<Button whiteBg={true} big={true} medium={false} data={button} />
 							</div>
 						{/if}
 					</div>
@@ -46,21 +110,25 @@
 		<section class="box pb-28" data-id={slice.primary.hash}>
 			<div class="bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg px-6 md:px-10 pt-16 pb-16 text-center">
 				<div class="mx-auto md:w-9/12">
-					{#if slice.primary.headline}
+					{#if headline}
 						<h2 data-aos="fade">
-							{slice.primary.headline}
+							{headline}
 						</h2>
 					{/if}
 			
-					{#if slice.primary.text}
+					{#if text}
 						<div class="text-[var(--text-secondary-color)] pb-8 text-base-mobile md:text-base" data-aos="fade">
-							<PrismicText field={slice.primary.text} />
+							{#if isFilled.richText(slice.primary.text)}
+								<PrismicText field={slice.primary.text} />
+							{:else}
+								<p>{globalCtaText}</p>
+							{/if}
 						</div>
 					{/if}
 
-					{#if isFilled.link(slice.primary.button)}
+					{#if button}
 						<div class="flex justify-center" data-aos="fade">
-							<Button onwhite big={true} medium={false} data={slice.primary.button} />
+							<Button onwhite big={true} medium={false} data={button} />
 						</div>
 					{/if}
 				</div>

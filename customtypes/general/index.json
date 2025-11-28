@@ -50,6 +50,53 @@
 						}
 					}
 				}
+			},
+			"testimonial_headline": {
+				"type": "Text",
+				"config": {
+					"label": "Testimonial Headline",
+					"placeholder": ""
+				}
+			},
+			"testimonial_subheadline": {
+				"type": "Text",
+				"config": {
+					"label": "Testimonial Subheadline",
+					"placeholder": ""
+				}
+			},
+			"cta_header": {
+				"type": "Text",
+				"config": {
+					"label": "CTA Header",
+					"placeholder": ""
+				}
+			},
+			"cta_text": {
+				"type": "Text",
+				"config": {
+					"label": "CTA Text",
+					"placeholder": ""
+				}
+			},
+			"cta_link": {
+				"type": "Link",
+				"config": {
+					"label": "CTA Link",
+					"placeholder": "",
+					"select": null,
+					"allowTargetBlank": true,
+					"allowText": true,
+					"repeat": false
+				}
+			},
+			"cta_image": {
+				"type": "Image",
+				"config": {
+					"label": "CTA Image",
+					"constraint": {},
+					"thumbnails": []
+				}
 			}
 		}
 	}
