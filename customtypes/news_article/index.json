@@ -48,6 +48,15 @@
 					"placeholder": ""
 				}
 			},
+			"layout": {
+				"type": "Select",
+				"config": {
+					"label": "Layout",
+					"placeholder": "",
+					"options": ["1", "2", "3"],
+					"default_value": "1"
+				}
+			},
 			"slices": {
 				"type": "Slices",
 				"fieldset": "Slice Zone",

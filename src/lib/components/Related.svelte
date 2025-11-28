@@ -37,7 +37,7 @@
 
 {#if relatedProjects.length > 0}
 	<section class="box-big pb-12" data-aos="fade-up">
-		<h2 class="pb-8 text-center">Related Projects</h2>
+		<h2 class="pb-8 text-center">{type === 'news_article' ? 'Related Articles' : 'Related Projects'}</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up">
 			{#each relatedProjects as project, index}
 				{@const title = project.data.title}

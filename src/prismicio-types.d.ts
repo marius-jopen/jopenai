@@ -333,6 +333,18 @@ interface NewsArticleDocumentData {
 	video: prismic.KeyTextField;
 
 	/**
+	 * Layout field in *News Article*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: 1
+	 * - **API ID Path**: news_article.layout
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	layout: prismic.SelectField<'1' | '2' | '3', 'filled'>;
+
+	/**
 	 * Slice Zone field in *News Article*
 	 *
 	 * - **Field Type**: Slice Zone

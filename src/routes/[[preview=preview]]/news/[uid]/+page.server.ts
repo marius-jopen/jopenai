@@ -19,10 +19,20 @@ export async function load({ params, fetch, cookies }) {
 			throw error(404, 'News article not found');
 		}
 
+		// Fetch all news articles separately, don't fail if this fails
+		let allNewsArticles = [];
+		try {
+			allNewsArticles = await client.getAllByType('news_article', { lang });
+		} catch (newsError) {
+			console.error('Error fetching all news articles:', newsError);
+			// Continue without related articles if fetch fails
+		}
+
 		return {
 			page,
 			header,
 			footer,
+			allNewsArticles,
 			lang,
 			title: (page.data as any)?.title || '',
 			meta_description: (page.data as any)?.meta_description,
