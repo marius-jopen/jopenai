@@ -34,9 +34,9 @@ export async function load({ params, fetch, cookies }) {
 			footer,
 			allProjects,
 			lang,
-			title: asText(page.data.title) || '',
+			title: (page.data as any)?.title || '',
 			meta_description: (page.data as any)?.meta_description,
-			meta_title: (page.data as any)?.meta_title || asText(page.data.title) || '',
+			meta_title: (page.data as any)?.meta_title || (page.data as any)?.title || '',
 			meta_image: (page.data as any)?.meta_image?.url
 		};
 	} catch (e) {
