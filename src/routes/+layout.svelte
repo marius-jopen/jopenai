@@ -46,23 +46,27 @@
 			console.log('Error in reactive hash scrolling:', error);
 		}
 	}
+
+	// Reactive page title
+	$: pageTitle = $page.data.meta_title || $page.data.title || 'Page';
+	$: fullTitle = `THE ROBOTS | ${pageTitle}`;
 </script>
 
 <svelte:head>
 	<title>
-		{$page.data.meta_title}
+		{fullTitle}
 	</title>
 	
 	{#if $page.data.meta_description}
 		<meta name="description" content={$page.data.meta_description} />
 	{/if}
 
-	{#if $page.data.meta_title}
-		<meta name="og:title" content={$page.data.meta_title} />
+	{#if $page.data.meta_title || $page.data.title}
+		<meta property="og:title" content="THE ROBOTS | {$page.data.meta_title || $page.data.title}" />
 	{/if}
 
 	{#if $page.data.meta_image}
-		<meta name="og:image" content={$page.data.meta_image} />
+		<meta property="og:image" content={$page.data.meta_image} />
 		<meta name="twitter:card" content="summary_large_image" />
 	{/if}
 </svelte:head>

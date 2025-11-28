@@ -1,6 +1,6 @@
 // @ts-nocheck
 import { error } from '@sveltejs/kit';
-// import { asText } from '@prismicio/client';
+import { asText } from '@prismicio/client';
 import { LANGUAGE } from '$env/static/private';
 import { createClient } from '$lib/prismicio';
 
@@ -34,9 +34,9 @@ export async function load({ params, fetch, cookies }) {
 			footer,
 			allNewsArticles,
 			lang,
-			title: (page.data as any)?.title || '',
+			title: asText(page.data.title) || '',
 			meta_description: (page.data as any)?.meta_description,
-			meta_title: (page.data as any)?.meta_title,
+			meta_title: (page.data as any)?.meta_title || asText(page.data.title) || '',
 			meta_image: (page.data as any)?.meta_image?.url
 		};
 	} catch (e) {
