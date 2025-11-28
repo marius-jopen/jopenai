@@ -21,7 +21,7 @@
 			{/if}
 
 			{#if slice.primary.button.url}
-				<div class="flex justify-center mt-8 md:mt-12" data-aos="fade" data-aos-delay={750} >
+				<div class="flex justify-center mt-8 md:mt-4" data-aos="fade" data-aos-delay={750} >
 					<Button big data={slice.primary.button} />
 				</div>
 			{/if}

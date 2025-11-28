@@ -84,7 +84,7 @@
 					{#each slice.primary.items as item, index}
 						<div class="pt-4 flex">
 							<div class="w-full">
-								<button class="w-full" on:click={() => toggle(index)} on:mouseenter={() => toggle(index)}>
+								<button class="w-full" on:click={() => toggle(index)}>
 									<h3 class="text-left w-full md:-mb-2">
 										{item.headline}
 									</h3>

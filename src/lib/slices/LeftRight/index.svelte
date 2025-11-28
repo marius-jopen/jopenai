@@ -7,7 +7,7 @@
 </script>
 
 {#if !slice.primary.deactivated}
-	<section class="pb-28" data-id={slice.primary.hash}>
+	<section class="pb-16" data-id={slice.primary.hash}>
 		<div class="{slice.primary.big ? 'box-big' : 'box'}" data-aos="fade-up">
 			<div class="rounded-lg overflow-hidden flex flex-col-reverse {slice.primary.switched ? 'md:flex-row-reverse' : 'md:flex-row'} w-full">
 				<div class="w-full md:w-1/2 bg-[var(--secondary-color)] px-6 md:px-10 flex flex-col justify-center py-10 md:py-12">

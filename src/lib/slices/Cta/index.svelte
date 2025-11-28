@@ -16,14 +16,17 @@
 	let globalCtaImage: any = null;
 	let loading = false;
 
-	// Use slice values if filled, otherwise use global values
-	$: headline = slice.primary.headline || globalCtaHeader || null;
-	$: text = isFilled.richText(slice.primary.text) ? slice.primary.text : (globalCtaText ? [{ type: 'paragraph', content: { text: globalCtaText } }] : null);
-	$: button = isFilled.link(slice.primary.button) ? slice.primary.button : globalCtaLink;
-	$: image = isFilled.image(slice.primary.image) ? slice.primary.image : globalCtaImage;
+	// If link is filled, use only slice fields. Otherwise, use global fields as fallback
+	$: hasManualLink = isFilled.link(slice.primary.button);
+	$: headline = hasManualLink ? (slice.primary.headline || null) : (slice.primary.headline || globalCtaHeader || null);
+	$: text = hasManualLink 
+		? (isFilled.richText(slice.primary.text) ? slice.primary.text : null)
+		: (isFilled.richText(slice.primary.text) ? slice.primary.text : (globalCtaText ? [{ type: 'paragraph', content: { text: globalCtaText } }] : null));
+	$: button = hasManualLink ? slice.primary.button : (slice.primary.button || globalCtaLink);
+	$: image = hasManualLink ? (isFilled.image(slice.primary.image) ? slice.primary.image : null) : (isFilled.image(slice.primary.image) ? slice.primary.image : globalCtaImage);
 	$: hasImage = isFilled.image(image);
-	// Only show if we have content and either: we have slice content (show immediately) OR we're done loading global content
-	$: hasSliceContent = slice.primary.headline || isFilled.link(slice.primary.button) || isFilled.richText(slice.primary.text) || isFilled.image(slice.primary.image);
+	// Only show if we have content and either: we have manual link (show immediately) OR we're done loading global content
+	$: hasSliceContent = hasManualLink;
 	$: hasContent = (headline || text || button || hasImage) && (hasSliceContent || (!loading && (globalCtaHeader || globalCtaText || globalCtaLink || globalCtaImage)));
 
 	onMount(async () => {
@@ -31,12 +34,12 @@
 			return;
 		}
 
-		// Only fetch if any slice field is empty (we might need global fallbacks)
-		const hasAllFields = slice.primary.headline && isFilled.link(slice.primary.button) && isFilled.richText(slice.primary.text) && isFilled.image(slice.primary.image);
-		if (hasAllFields) {
+		// If link is filled manually, don't fetch global data - use only slice fields
+		if (isFilled.link(slice.primary.button)) {
 			return;
 		}
 
+		// If no link, fetch all fields from global
 		loading = true;
 		try {
 			const lang = $currentLang || 'en-us';
@@ -47,16 +50,16 @@
 			
 			if (generalPages.length > 0) {
 				const generalData = generalPages[0].data;
-				if (!slice.primary.headline && generalData.cta_header) {
+				if (generalData.cta_header) {
 					globalCtaHeader = generalData.cta_header;
 				}
-				if (!isFilled.richText(slice.primary.text) && generalData.cta_text) {
+				if (generalData.cta_text) {
 					globalCtaText = generalData.cta_text;
 				}
-				if (!isFilled.link(slice.primary.button) && generalData.cta_link) {
+				if (generalData.cta_link) {
 					globalCtaLink = generalData.cta_link;
 				}
-				if (!isFilled.image(slice.primary.image) && generalData.cta_image) {
+				if (generalData.cta_image) {
 					globalCtaImage = generalData.cta_image;
 				}
 			}
