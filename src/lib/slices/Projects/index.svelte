@@ -126,7 +126,7 @@
 </script>
 
 {#if !loading}
-	<section class="box pb-28" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
+	<section class="box-big pb-28" data-slice-type={slice.slice_type} data-slice-variation={slice.variation}>
 		{#if availableTags.length > 0}
 			<!-- Tag filter buttons -->
 			<div class="flex flex-wrap gap-3 justify-center pb-8" data-aos="fade-up">
