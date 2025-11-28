@@ -21,6 +21,13 @@
 		const marginRight = index === itemsLength - 1 ? padding + 'px' : '0';
 		return `margin-left: ${marginLeft}; margin-right: ${marginRight};`;
 	};
+
+	function getLinkUrl(item: any): string {
+		if (isFilled.link(item.link)) {
+			return (item.link as any).url || '#';
+		}
+		return '#';
+	}
 </script>
 
 {#if !slice.primary.deactivated}
@@ -28,8 +35,7 @@
 		{#if hasMultipleItems}
 			<Slider>
 				{#each items as item, index}
-					{@const linkUrl = isFilled.link(item.link) ? (item.link as any).url : '#'}
-					<a href={linkUrl} class="{isFullscreen ? 'w-screen' : 'w-[80vw] md:w-[85vw]'} relative {isFullscreen ? '' : 'rounded-lg'} overflow-hidden flex-shrink-0" style={calculateStyles(index, items.length)}>
+					<a href={getLinkUrl(item)} class="{isFullscreen ? 'w-screen' : 'w-[80vw] md:w-[85vw]'} relative {isFullscreen ? '' : 'rounded-lg'} overflow-hidden flex-shrink-0" style={calculateStyles(index, items.length)}>
 						<div>
 							{#if item.video}
 								<video src={item.video} poster={item.image.url} class="{isFullscreen ? '' : 'rounded-lg'} object-cover w-full aspect-[3/4] lg:aspect-[16/8]" playsinline autoplay muted loop></video>
@@ -46,8 +52,7 @@
 			</Slider>
 		{:else}
 			{#each items as item}
-				{@const linkUrl = isFilled.link(item.link) ? (item.link as any).url : '#'}
-				<a href={linkUrl} class="w-full relative {isFullscreen ? '' : 'rounded-lg'} overflow-hidden block">
+				<a href={getLinkUrl(item)} class="w-full relative {isFullscreen ? '' : 'rounded-lg'} overflow-hidden block">
 					<div>
 						{#if item.video}
 							<video src={item.video} poster={item.image.url} class="{isFullscreen ? '' : 'rounded-lg'} object-cover w-full aspect-[3/4] lg:aspect-[16/8]" playsinline autoplay muted loop></video>
