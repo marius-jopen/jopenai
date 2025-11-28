@@ -41,6 +41,38 @@
 					"placeholder": ""
 				}
 			},
+			"layout": {
+				"type": "Select",
+				"config": {
+					"label": "Layout",
+					"placeholder": "",
+					"options": ["1", "2"],
+					"default_value": "1"
+				}
+			},
+			"infos": {
+				"type": "Group",
+				"config": {
+					"label": "Infos",
+					"repeat": true,
+					"fields": {
+						"label": {
+							"type": "Text",
+							"config": {
+								"label": "Label",
+								"placeholder": ""
+							}
+						},
+						"text": {
+							"type": "Text",
+							"config": {
+								"label": "Text",
+								"placeholder": ""
+							}
+						}
+					}
+				}
+			},
 			"slices": {
 				"type": "Slices",
 				"fieldset": "Slice Zone",

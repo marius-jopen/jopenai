@@ -335,6 +335,31 @@ export type PageDocument<Lang extends string = string> = prismic.PrismicDocument
 	Lang
 >;
 
+/**
+ * Item in *Project → Infos*
+ */
+export interface ProjectDocumentDataInfosItem {
+	/**
+	 * Label field in *Project → Infos*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.infos[].label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * Text field in *Project → Infos*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.infos[].text
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	text: prismic.KeyTextField;
+}
+
 type ProjectDocumentDataSlicesSlice =
 	| BlankSlice
 	| CardsSlice
@@ -400,6 +425,29 @@ interface ProjectDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#key-text
 	 */
 	video: prismic.KeyTextField;
+
+	/**
+	 * Layout field in *Project*
+	 *
+	 * - **Field Type**: Select
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: 1
+	 * - **API ID Path**: project.layout
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#select
+	 */
+	layout: prismic.SelectField<'1' | '2', 'filled'>;
+
+	/**
+	 * Infos field in *Project*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: project.infos[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	infos: prismic.GroupField<Simplify<ProjectDocumentDataInfosItem>>;
 
 	/**
 	 * Slice Zone field in *Project*
@@ -2652,6 +2700,7 @@ declare module '@prismicio/client' {
 			PageDocumentDataSlicesSlice,
 			ProjectDocument,
 			ProjectDocumentData,
+			ProjectDocumentDataInfosItem,
 			ProjectDocumentDataSlicesSlice,
 			AllDocumentTypes,
 			AccordeonSlice,
