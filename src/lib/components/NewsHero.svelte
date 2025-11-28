@@ -1,10 +1,15 @@
 <script lang="ts">
+	import { onMount } from 'svelte';
+	import { browser } from '$app/environment';
+
 	export let image;
 	export let video;
 	export let title;
 	export let subtitle;
 	export let date;
 	export let layout = "1";
+
+	let isMobile = false;
 
 	// Format date for display
 	const formatDate = (dateString: string | null | undefined): string => {
@@ -20,6 +25,20 @@
 			return dateString;
 		}
 	};
+
+	// Use layout 1 on mobile, otherwise use the provided layout
+	$: effectiveLayout = isMobile ? "1" : layout;
+
+	onMount(() => {
+		if (browser) {
+			isMobile = window.innerWidth < 768; // md breakpoint
+			const handleResize = () => {
+				isMobile = window.innerWidth < 768;
+			};
+			window.addEventListener('resize', handleResize);
+			return () => window.removeEventListener('resize', handleResize);
+		}
+	});
 </script>
 
 <section class="pb-4 pt-0" data-aos="fade-up">
@@ -32,11 +51,11 @@
 					<img src={image.url} alt={title} class="rounded-lg w-full h-full object-cover aspect-[6/3]" />
 				{/if}
 
-				{#if layout === "3"}
+				{#if effectiveLayout === "3"}
 					<div class="absolute inset-0 bg-black/20 rounded-lg"></div>
 				{/if}
 
-				{#if layout === "2" && (title || subtitle)}
+				{#if effectiveLayout === "2" && (title || subtitle)}
 					<div data-aos="fade" class="text-[var(--text-tertiary-color)] px-6 pb-3.5 absolute bottom-0 left-0 w-full lg:w-3/4 h-full flex flex-col items-start justify-end">
 						{#if date}
 							<div class="text-sm mb-3">{formatDate(date)}</div>
@@ -49,7 +68,7 @@
 						{/if}
 					</div>
 				{/if}
-				{#if layout === "3" && (title || subtitle)}
+				{#if effectiveLayout === "3" && (title || subtitle)}
 					<div data-aos="fade" class="mx-auto w-3/4 text-[var(--text-tertiary-color)] px-6 absolute inset-0 h-full flex flex-col items-center justify-center text-center">
 						{#if date}
 							<div class="text-sm mb-3">{formatDate(date)}</div>
@@ -66,7 +85,7 @@
 		{/if}
 	</div>
 
-	{#if layout === "1"}
+	{#if effectiveLayout === "1"}
 		<!-- Layout 1: Title and subtitle below image -->
 		<div class="box pt-4 text-center">
 			{#if date}
