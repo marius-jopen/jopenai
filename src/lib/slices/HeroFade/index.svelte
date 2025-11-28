@@ -37,7 +37,7 @@
 <svelte:window bind:innerWidth />
 
 {#if !slice.primary.deactivated}
-	<section data-aos="fade-up" class="pb-28 pt-0" data-id={slice.primary.hash}>
+	<section data-aos="fade-up" class="pb-16 pt-0" data-id={slice.primary.hash}>
 		<Splide 
 			bind:this={splide} 
 			options={splideOptions}
