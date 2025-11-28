@@ -44,7 +44,7 @@
 <section class="pb-4 pt-0" data-aos="fade-up">
 	<div class="px-3 md:px-8 w-full">
 		{#if image?.url}
-			<div class="w-full aspect-[6/3] overflow-hidden rounded-lg mb-6 border border-[var(--text-quaternary-color)] relative">
+			<div class="w-full aspect-[6/3] overflow-hidden rounded-lg mb-6 relative">
 				{#if video}
 					<video src={video} poster={image.url} class="rounded-lg w-full h-full object-cover aspect-[6/3]" autoplay muted loop playsinline></video>
 				{:else}
