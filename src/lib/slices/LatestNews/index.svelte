@@ -100,8 +100,8 @@
 					{@const headline = titleToRichText(article.data.title)}
 					{@const text = subtitleToRichText(article.data.subtitle)}
 					{@const linkUrl = `/news/${article.uid}`}
-					<a href={linkUrl} data-aos="fade-zoom-in" data-aos-delay={200 + index * 250} style={calculateStyles(index, newsArticles.length)} class="item flex bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg overflow-hidden group">
-						<div class="flex flex-col-reverse md:flex-row flex-row-reverse w-full justify-between">
+					<a href={linkUrl} data-aos="fade-zoom-in" data-aos-delay={200 + index * 250} style={calculateStyles(index, newsArticles.length)} class="item flex flex-col bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition rounded-lg overflow-hidden group">
+						<div class="flex flex-col-reverse md:flex-row w-full justify-between">
 							<div class="w-full md:w-1/2 px-6 md:px-10 flex flex-col justify-start py-10 md:py-12 h-full">
 								{#if article.data.date}
 									<div class="text-sm text-[var(--text-secondary-color)] mb-3" data-aos="fade" data-aos-delay={50}>
@@ -121,7 +121,7 @@
 								{/if}
 							</div>
 						
-							<div class="w-full md:w-1/2 overflow-hidden relative">
+							<div class="w-full md:w-1/2 overflow-hidden relative image-container">
 								{#if article.data.video}
 									<video src={article.data.video} poster={article.data.image?.url} class="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" playsinline autoplay muted loop></video>
 								{:else if article.data.image}
@@ -163,7 +163,15 @@
 		object-fit: cover;
 	}
 
-	.item .w-full.md\:w-1\/2.overflow-hidden {
-		min-height: 300px;
+	.item .image-container {
+		min-height: 250px;
+		aspect-ratio: 4/3;
+	}
+
+	@media (min-width: 768px) {
+		.item .image-container {
+			min-height: auto;
+			aspect-ratio: auto;
+		}
 	}
 </style>

@@ -16,6 +16,7 @@
 	$: hasSliceItems = sliceItems.length > 0;
 	$: items = hasSliceItems ? sliceItems : globalLogos;
 	$: hasSliceContent = sliceItems.length > 0;
+	// Ensure logos show once global data is loaded, even if loading was true initially
 	$: shouldShow = items.length > 0 && (hasSliceContent || (!loading && globalLogos.length > 0));
 
 	// Determine number of columns on md+ using the new "Logos in a row" field

@@ -27,6 +27,7 @@
 	$: hasImage = isFilled.image(image);
 	// Only show if we have content and either: we have manual link (show immediately) OR we're done loading global content
 	$: hasSliceContent = hasManualLink;
+	// Ensure content shows once global data is loaded, even if loading was true initially
 	$: hasContent = (headline || text || button || hasImage) && (hasSliceContent || (!loading && (globalCtaHeader || globalCtaText || globalCtaLink || globalCtaImage)));
 
 	onMount(async () => {

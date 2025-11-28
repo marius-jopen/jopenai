@@ -17,6 +17,7 @@
 	$: items = hasSliceItems ? sliceItems : globalLogos;
 	$: totalLogos = items.length;
 	$: hasSliceContent = sliceItems.length > 0;
+	// Ensure logos show once global data is loaded, even if loading was true initially
 	$: shouldShow = items.length > 0 && (hasSliceContent || (!loading && globalLogos.length > 0));
 
 	// Configurable timing variables
