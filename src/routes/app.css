@@ -89,3 +89,15 @@ h4 {
 .text-box ul li {
     @apply list-disc ml-4 pl-1;
 }
+
+/* Disable all animations and transitions on mobile */
+@media (max-width: 767px) {
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0s !important;
+        animation-delay: 0s !important;
+        transition-duration: 0s !important;
+        transition-delay: 0s !important;
+    }
+}

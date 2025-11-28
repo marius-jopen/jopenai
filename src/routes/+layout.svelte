@@ -9,12 +9,16 @@
 	import { browser } from '$app/environment';
 
 	onMount(() => {
-		AOS.init({
-			duration: 900,
-			once: false,
-			offset: 50
-		});
-		console.log('Layout mounted, AOS initialized');
+		if (browser) {
+			const isMobile = window.innerWidth < 768; // md breakpoint
+			AOS.init({
+				duration: 900,
+				once: false,
+				offset: 50,
+				disable: isMobile ? 'mobile' : false
+			});
+			console.log('Layout mounted, AOS initialized', { isMobile });
+		}
 	});
 
 	// Reactive hash scrolling - much cleaner Svelte approach!
