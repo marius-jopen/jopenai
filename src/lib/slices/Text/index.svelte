@@ -6,7 +6,7 @@
 </script>
 
 {#if !slice.primary.deactivated}
-	<section class="pb-28 box" data-id={slice.primary.hash}>
+	<section class="pb-12 box" data-id={slice.primary.hash}>
 		{#if slice.primary.headline}
 			<div class="text-center pb-4" data-aos="fade-up">
 				<h2>

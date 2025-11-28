@@ -97,6 +97,23 @@
 					"constraint": {},
 					"thumbnails": []
 				}
+			},
+			"logos": {
+				"type": "Group",
+				"config": {
+					"label": "Logos",
+					"repeat": true,
+					"fields": {
+						"image": {
+							"type": "Image",
+							"config": {
+								"label": "Image",
+								"constraint": {},
+								"thumbnails": []
+							}
+						}
+					}
+				}
 			}
 		}
 	}

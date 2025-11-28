@@ -91,6 +91,21 @@ export interface GeneralDocumentDataTestimonialItem {
 }
 
 /**
+ * Item in *General → Logos*
+ */
+export interface GeneralDocumentDataLogosItem {
+	/**
+	 * Image field in *General → Logos*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.logos[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
  * Content for General documents
  */
 interface GeneralDocumentData {
@@ -170,6 +185,17 @@ interface GeneralDocumentData {
 	 * - **Documentation**: https://prismic.io/docs/field#image
 	 */
 	cta_image: prismic.ImageField<never>;
+
+	/**
+	 * Logos field in *General*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.logos[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	logos: prismic.GroupField<Simplify<GeneralDocumentDataLogosItem>>;
 }
 
 /**
@@ -1912,6 +1938,17 @@ export interface LeftRightSliceDefaultPrimary {
 	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
 	 */
 	link: prismic.LinkField;
+
+	/**
+	 * Big field in *LeftRight → Default → Primary*
+	 *
+	 * - **Field Type**: Boolean
+	 * - **Placeholder**: *None*
+	 * - **Default Value**: false
+	 * - **API ID Path**: left_right.default.primary.big
+	 * - **Documentation**: https://prismic.io/docs/field#boolean
+	 */
+	big: prismic.BooleanField;
 }
 
 /**
@@ -2975,6 +3012,7 @@ declare module '@prismicio/client' {
 			GeneralDocument,
 			GeneralDocumentData,
 			GeneralDocumentDataTestimonialItem,
+			GeneralDocumentDataLogosItem,
 			HeaderDocument,
 			HeaderDocumentData,
 			HeaderDocumentDataNavTopItem,

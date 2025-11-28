@@ -80,6 +80,15 @@
             "allowText": true,
             "repeat": false
           }
+        },
+        "big": {
+          "type": "Boolean",
+          "config": {
+            "label": "Big",
+            "placeholder_false": "false",
+            "placeholder_true": "true",
+            "default_value": false
+          }
         }
       },
       "items": {}
