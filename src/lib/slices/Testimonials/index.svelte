@@ -21,7 +21,7 @@
 	$: items = hasSliceItems ? sliceItems : globalTestimonials;
 	// Only show if we have items AND either: we have slice items (show immediately) OR we're done loading global testimonials
 	$: shouldShow = items.length > 0 && (hasSliceItems || (!loading && globalTestimonials.length > 0));
-	// Only show headline/subheadline when using global testimonials
+	// Only show headline/subheadline when using global testimonials (when slice has no items)
 	$: showGlobalHeadlines = !hasSliceItems && (globalHeadline || globalSubheadline);
 
 	let padding = 15;

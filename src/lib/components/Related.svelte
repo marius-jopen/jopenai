@@ -5,19 +5,25 @@
 	export let projects: any[] = [];
 	export let currentUid: string | null = null;
 	export let type = 'project'; // 'project' or 'news_article'
+	export let count = 2; // Number of related projects to show
 
-	// Filter out current project and get 4 random projects
+	// Filter out current project and get random projects
 	$: relatedProjects = (() => {
 		if (!projects || projects.length === 0) return [];
 		
-		// Filter out current project
+		// Filter out current project - ensure we're comparing UIDs correctly
 		const filtered = currentUid 
-			? projects.filter(p => p.uid !== currentUid)
+			? projects.filter(p => {
+				// Prismic documents have uid directly on the document object
+				const projectUid = String(p.uid || '').trim();
+				const currentUidStr = String(currentUid || '').trim();
+				return projectUid !== currentUidStr && projectUid !== '';
+			})
 			: projects;
 		
-		// Shuffle and take 4
+		// Shuffle and take the specified number
 		const shuffled = [...filtered].sort(() => Math.random() - 0.5);
-		return shuffled.slice(0, 4);
+		return shuffled.slice(0, count);
 	})();
 
 	function getLinkUrl(project: any) {
@@ -30,7 +36,7 @@
 </script>
 
 {#if relatedProjects.length > 0}
-	<section class="box-big pb-28" data-aos="fade-up">
+	<section class="box-big pb-12" data-aos="fade-up">
 		<h2 class="pb-8 text-center">Related Projects</h2>
 		<div class="grid grid-cols-1 md:grid-cols-2 gap-6" data-aos="fade-up">
 			{#each relatedProjects as project, index}

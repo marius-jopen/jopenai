@@ -28,7 +28,10 @@
 />
 <ProjectInfo infos={data.page.data.infos} />
 <SliceZone slices={data.page.data.slices} {components} />
-<Testimonials />
+
+<div class="pt-12">
+	<Testimonials />
+</div>
 {#if data.allProjects && data.allProjects.length > 0}
 	<Related projects={data.allProjects} currentUid={data.page.uid} type="project" />
 {/if}
