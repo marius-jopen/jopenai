@@ -19,10 +19,20 @@ export async function load({ params, fetch, cookies }) {
 			throw error(404, 'Project not found');
 		}
 
+		// Fetch all projects separately, don't fail if this fails
+		let allProjects = [];
+		try {
+			allProjects = await client.getAllByType('project', { lang });
+		} catch (projectsError) {
+			console.error('Error fetching all projects:', projectsError);
+			// Continue without related projects if fetch fails
+		}
+
 		return {
 			page,
 			header,
 			footer,
+			allProjects,
 			lang,
 			title: (page.data as any)?.title || '',
 			meta_description: (page.data as any)?.meta_description,

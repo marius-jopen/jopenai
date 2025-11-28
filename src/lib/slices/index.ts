@@ -4,6 +4,7 @@ import Accordeon from './Accordeon/index.svelte';
 import Blank from './Blank/index.svelte';
 import Cards from './Cards/index.svelte';
 import Cta from './Cta/index.svelte';
+import Explanation from './Explanation/index.svelte';
 import FeaturedProjects from './FeaturedProjects/index.svelte';
 import Gallery from './Gallery/index.svelte';
 import Grid from './Grid/index.svelte';
@@ -28,6 +29,7 @@ export const components = {
 	blank: Blank,
 	cards: Cards,
 	cta: Cta,
+	explanation: Explanation,
 	featured_projects: FeaturedProjects,
 	gallery: Gallery,
 	grid: Grid,

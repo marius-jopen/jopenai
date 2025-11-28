@@ -1,0 +1,56 @@
+{
+	"format": "custom",
+	"id": "general",
+	"label": "General",
+	"repeatable": false,
+	"status": true,
+	"json": {
+		"Main": {
+			"testimonial": {
+				"type": "Group",
+				"config": {
+					"label": "Testimonial",
+					"repeat": true,
+					"fields": {
+						"position": {
+							"type": "Text",
+							"config": {
+								"label": "Position",
+								"placeholder": ""
+							}
+						},
+						"name": {
+							"type": "Text",
+							"config": {
+								"label": "Name",
+								"placeholder": ""
+							}
+						},
+						"company": {
+							"type": "Text",
+							"config": {
+								"label": "Company",
+								"placeholder": ""
+							}
+						},
+						"quote": {
+							"type": "Text",
+							"config": {
+								"label": "Quote",
+								"placeholder": ""
+							}
+						},
+						"image": {
+							"type": "Image",
+							"config": {
+								"label": "Image",
+								"constraint": {},
+								"thumbnails": []
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

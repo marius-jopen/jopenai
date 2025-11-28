@@ -23,8 +23,8 @@
 </script>
 
 {#if infos && infos.length > 0}
-	<section class="pb-14" data-aos="fade-up">
-		<div data-aos="fade-up" class={`grid grid-cols-1 ${mdGridColsClass} gap-6 box-big`}>
+	<section class="pb-12" data-aos="fade-up">
+		<div data-aos="fade-up" class={`grid grid-cols-1 ${mdGridColsClass} gap-4 box-big`}>
 			{#each infos as item, index}
 				<div data-aos="fade-zoom-in" data-aos-delay={100 + index * 150} class="flex flex-col rounded-lg overflow-hidden h-full bg-[var(--secondary-color)] hover:bg-[var(--tertiary-color)] color-transition">
 					<div class="rounded-lg px-6 md:px-10 pt-6 md:pt-10 pb-8 md:pb-12 w-full flex-1 flex flex-col">

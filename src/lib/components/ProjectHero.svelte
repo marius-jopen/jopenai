@@ -6,7 +6,7 @@
 	export let layout = "1";
 </script>
 
-<section class="pb-8 pt-0" data-aos="fade-up">
+<section class="pb-4 pt-0" data-aos="fade-up">
 	<div class="px-3 md:px-8 w-full">
 		{#if image?.url}
 			<div class="w-full aspect-[6/3] overflow-hidden rounded-lg mb-6 border border-[var(--text-quaternary-color)] relative">

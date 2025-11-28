@@ -36,6 +36,92 @@ export type FooterDocument<Lang extends string = string> = prismic.PrismicDocume
 >;
 
 /**
+ * Item in *General → Testimonial*
+ */
+export interface GeneralDocumentDataTestimonialItem {
+	/**
+	 * Position field in *General → Testimonial*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.testimonial[].position
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	position: prismic.KeyTextField;
+
+	/**
+	 * Name field in *General → Testimonial*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.testimonial[].name
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	name: prismic.KeyTextField;
+
+	/**
+	 * Company field in *General → Testimonial*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.testimonial[].company
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	company: prismic.KeyTextField;
+
+	/**
+	 * Quote field in *General → Testimonial*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.testimonial[].quote
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	quote: prismic.KeyTextField;
+
+	/**
+	 * Image field in *General → Testimonial*
+	 *
+	 * - **Field Type**: Image
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.testimonial[].image
+	 * - **Documentation**: https://prismic.io/docs/field#image
+	 */
+	image: prismic.ImageField<never>;
+}
+
+/**
+ * Content for General documents
+ */
+interface GeneralDocumentData {
+	/**
+	 * Testimonial field in *General*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: general.testimonial[]
+	 * - **Tab**: Main
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	testimonial: prismic.GroupField<Simplify<GeneralDocumentDataTestimonialItem>>;
+}
+
+/**
+ * General document from Prismic
+ *
+ * - **API ID**: `general`
+ * - **Repeatable**: `false`
+ * - **Documentation**: https://prismic.io/docs/custom-types
+ *
+ * @typeParam Lang - Language API ID of the document.
+ */
+export type GeneralDocument<Lang extends string = string> = prismic.PrismicDocumentWithoutUID<
+	Simplify<GeneralDocumentData>,
+	'general',
+	Lang
+>;
+
+/**
  * Item in *Header → Nav Top*
  */
 export interface HeaderDocumentDataNavTopItem {
@@ -239,6 +325,7 @@ export type NewsArticleDocument<Lang extends string = string> = prismic.PrismicD
 >;
 
 type PageDocumentDataSlicesSlice =
+	| ExplanationSlice
 	| ProjectsSlice
 	| LogosAnimatedSlice
 	| TestimonialsSlice
@@ -361,6 +448,13 @@ export interface ProjectDocumentDataInfosItem {
 }
 
 type ProjectDocumentDataSlicesSlice =
+	| ExplanationSlice
+	| TestimonialsSlice
+	| FeaturedProjectsSlice
+	| LogosAnimatedSlice
+	| ProjectsSlice
+	| LatestNewsSlice
+	| CtaSlice
 	| BlankSlice
 	| CardsSlice
 	| HeadlineSlice
@@ -509,6 +603,7 @@ export type ProjectDocument<Lang extends string = string> = prismic.PrismicDocum
 
 export type AllDocumentTypes =
 	| FooterDocument
+	| GeneralDocument
 	| HeaderDocument
 	| NewsArticleDocument
 	| PageDocument
@@ -877,6 +972,58 @@ type CtaSliceVariation = CtaSliceDefault;
 export type CtaSlice = prismic.SharedSlice<'cta', CtaSliceVariation>;
 
 /**
+ * Primary content in *Explanation → Default → Primary*
+ */
+export interface ExplanationSliceDefaultPrimary {
+	/**
+	 * Label field in *Explanation → Default → Primary*
+	 *
+	 * - **Field Type**: Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: explanation.default.primary.label
+	 * - **Documentation**: https://prismic.io/docs/field#key-text
+	 */
+	label: prismic.KeyTextField;
+
+	/**
+	 * Text field in *Explanation → Default → Primary*
+	 *
+	 * - **Field Type**: Rich Text
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: explanation.default.primary.text
+	 * - **Documentation**: https://prismic.io/docs/field#rich-text-title
+	 */
+	text: prismic.RichTextField;
+}
+
+/**
+ * Default variation for Explanation Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ExplanationSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<ExplanationSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *Explanation*
+ */
+type ExplanationSliceVariation = ExplanationSliceDefault;
+
+/**
+ * Explanation Shared Slice
+ *
+ * - **API ID**: `explanation`
+ * - **Description**: Explanation
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type ExplanationSlice = prismic.SharedSlice<'explanation', ExplanationSliceVariation>;
+
+/**
  * Item in *FeaturedProjects → Default → Primary → Items*
  */
 export interface FeaturedProjectsSliceDefaultPrimaryItemsItem {
@@ -1017,7 +1164,7 @@ export interface GallerySliceDefaultPrimary {
 	 * - **API ID Path**: gallery.default.primary.columns
 	 * - **Documentation**: https://prismic.io/docs/field#select
 	 */
-	columns: prismic.SelectField<'2' | '3' | '4', 'filled'>;
+	columns: prismic.SelectField<'2' | '3' | '4' | '1', 'filled'>;
 
 	/**
 	 * Size field in *Gallery → Default → Primary*
@@ -2689,6 +2836,9 @@ declare module '@prismicio/client' {
 		export type {
 			FooterDocument,
 			FooterDocumentData,
+			GeneralDocument,
+			GeneralDocumentData,
+			GeneralDocumentDataTestimonialItem,
 			HeaderDocument,
 			HeaderDocumentData,
 			HeaderDocumentDataNavTopItem,
@@ -2721,6 +2871,10 @@ declare module '@prismicio/client' {
 			CtaSliceDefaultPrimary,
 			CtaSliceVariation,
 			CtaSliceDefault,
+			ExplanationSlice,
+			ExplanationSliceDefaultPrimary,
+			ExplanationSliceVariation,
+			ExplanationSliceDefault,
 			FeaturedProjectsSlice,
 			FeaturedProjectsSliceDefaultPrimaryItemsItem,
 			FeaturedProjectsSliceDefaultPrimary,

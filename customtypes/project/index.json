@@ -78,6 +78,27 @@
 				"fieldset": "Slice Zone",
 				"config": {
 					"choices": {
+						"explanation": {
+							"type": "SharedSlice"
+						},
+						"testimonials": {
+							"type": "SharedSlice"
+						},
+						"featured_projects": {
+							"type": "SharedSlice"
+						},
+						"logos_animated": {
+							"type": "SharedSlice"
+						},
+						"projects": {
+							"type": "SharedSlice"
+						},
+						"latest_news": {
+							"type": "SharedSlice"
+						},
+						"cta": {
+							"type": "SharedSlice"
+						},
 						"blank": {
 							"type": "SharedSlice"
 						},

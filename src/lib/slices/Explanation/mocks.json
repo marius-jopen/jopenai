@@ -1,0 +1,25 @@
+[
+	{
+		"__TYPE__": "SharedSliceContent",
+		"variation": "default",
+		"primary": {
+			"label": {
+				"__TYPE__": "FieldContent",
+				"value": "aboard",
+				"type": "Text"
+			},
+			"text": {
+				"__TYPE__": "StructuredTextContent",
+				"value": [
+					{
+						"type": "paragraph",
+						"content": {
+							"text": "Labore ex ut veniam deserunt tempor duis labore sint commodo dolore minim velit Lorem do anim. Voluptate ea dolor aliqua ut veniam laboris aliquip dolore velit exercitation et nostrud incididunt aliqua. In ullamco dolor ipsum proident mollit sit adipisicing consectetur nulla."
+						}
+					}
+				]
+			}
+		},
+		"items": []
+	}
+]

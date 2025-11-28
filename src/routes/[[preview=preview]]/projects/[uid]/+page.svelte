@@ -6,6 +6,7 @@
 	import FloatingButton from '$lib/components/FloatingButton.svelte';
 	import ProjectHero from '$lib/components/ProjectHero.svelte';
 	import ProjectInfo from '$lib/components/ProjectInfo.svelte';
+	import Related from '$lib/components/Related.svelte';
 	import { components } from '$lib/slices';
 	import { currentLang } from '$lib/stores/lang';
 	// import FloatingLanguage from '$lib/components/FloatingLanguage.svelte';
@@ -25,6 +26,9 @@
 />
 <ProjectInfo infos={data.page.data.infos} />
 <SliceZone slices={data.page.data.slices} {components} />
+{#if data.allProjects && data.allProjects.length > 0}
+	<Related projects={data.allProjects} currentUid={data.page.uid} type="project" />
+{/if}
 <Footer {data} />
 <FloatingButton {data} />
 <!-- <FloatingLanguage {data} /> -->

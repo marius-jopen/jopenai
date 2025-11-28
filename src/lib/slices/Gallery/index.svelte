@@ -4,7 +4,8 @@
 
 	export let slice: Content.GallerySlice;
 
-	const columns = slice.primary.columns || 2;
+	// Convert to number in case it comes as a string from Prismic
+	const columns = Number(slice.primary.columns) || 2;
 	$: gridClass = (() => {
 		switch (columns) {
 			case 1:
@@ -22,7 +23,7 @@
 </script>
 
 {#if !slice.primary.deactivated}
-	<section class="pb-4 md:pb-24">
+	<section class="pb-4 md:pb-8">
 		<div class="{slice.primary.size ? 'px-3 md:px-8' : 'box'} grid gap-6 {gridClass}">
 			{#each slice.primary.items as item}
 				<div data-aos="fade-up">
