@@ -7,6 +7,8 @@
 	import ProjectHero from '$lib/components/ProjectHero.svelte';
 	import ProjectInfo from '$lib/components/ProjectInfo.svelte';
 	import Related from '$lib/components/Related.svelte';
+	import Testimonials from '$lib/components/Testimonials.svelte';
+	import Cta from '$lib/components/Cta.svelte';
 	import { components } from '$lib/slices';
 	import { currentLang } from '$lib/stores/lang';
 	// import FloatingLanguage from '$lib/components/FloatingLanguage.svelte';
@@ -26,9 +28,11 @@
 />
 <ProjectInfo infos={data.page.data.infos} />
 <SliceZone slices={data.page.data.slices} {components} />
+<Testimonials />
 {#if data.allProjects && data.allProjects.length > 0}
 	<Related projects={data.allProjects} currentUid={data.page.uid} type="project" />
 {/if}
+<Cta />
 <Footer {data} />
 <FloatingButton {data} />
 <!-- <FloatingLanguage {data} /> -->
