@@ -53,9 +53,9 @@
 						{/if}
 
 						<div class="text-[var(--text-tertiary-color)] pb-7 text-center absolute top-0 left-0 w-full h-full flex items-center mt-8 flex justify-center">
-							<h1 data-aos="fade" class="px-6 md:px-10 md:px-20 ">
+							<h2 data-aos="fade" class="px-6 md:px-10 md:px-20 ">
 								{item.text}
-							</h1>
+							</h2>
 						</div>
 					</div>
 				</SplideSlide>

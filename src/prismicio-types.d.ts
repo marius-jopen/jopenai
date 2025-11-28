@@ -391,6 +391,7 @@ export type NewsArticleDocument<Lang extends string = string> = prismic.PrismicD
 >;
 
 type PageDocumentDataSlicesSlice =
+	| NewsSlice
 	| ExplanationSlice
 	| ProjectsSlice
 	| LogosAnimatedSlice
@@ -2375,6 +2376,63 @@ type MediaSliceVariation = MediaSliceDefault;
 export type MediaSlice = prismic.SharedSlice<'media', MediaSliceVariation>;
 
 /**
+ * Item in *News → Default → Primary → Items*
+ */
+export interface NewsSliceDefaultPrimaryItemsItem {
+	/**
+	 * Item field in *News → Default → Primary → Items*
+	 *
+	 * - **Field Type**: Content Relationship
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news.default.primary.items[].item
+	 * - **Documentation**: https://prismic.io/docs/field#link-content-relationship
+	 */
+	item: prismic.ContentRelationshipField<'news_article'>;
+}
+
+/**
+ * Primary content in *News → Default → Primary*
+ */
+export interface NewsSliceDefaultPrimary {
+	/**
+	 * Items field in *News → Default → Primary*
+	 *
+	 * - **Field Type**: Group
+	 * - **Placeholder**: *None*
+	 * - **API ID Path**: news.default.primary.items[]
+	 * - **Documentation**: https://prismic.io/docs/field#group
+	 */
+	items: prismic.GroupField<Simplify<NewsSliceDefaultPrimaryItemsItem>>;
+}
+
+/**
+ * Default variation for News Slice
+ *
+ * - **API ID**: `default`
+ * - **Description**: Default
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsSliceDefault = prismic.SharedSliceVariation<
+	'default',
+	Simplify<NewsSliceDefaultPrimary>,
+	never
+>;
+
+/**
+ * Slice variation for *News*
+ */
+type NewsSliceVariation = NewsSliceDefault;
+
+/**
+ * News Shared Slice
+ *
+ * - **API ID**: `news`
+ * - **Description**: News
+ * - **Documentation**: https://prismic.io/docs/slice
+ */
+export type NewsSlice = prismic.SharedSlice<'news', NewsSliceVariation>;
+
+/**
  * Item in *Pricing → Default → Primary → Items*
  */
 export interface PricingSliceDefaultPrimaryItemsItem {
@@ -3002,6 +3060,11 @@ declare module '@prismicio/client' {
 			MediaSliceDefaultPrimary,
 			MediaSliceVariation,
 			MediaSliceDefault,
+			NewsSlice,
+			NewsSliceDefaultPrimaryItemsItem,
+			NewsSliceDefaultPrimary,
+			NewsSliceVariation,
+			NewsSliceDefault,
 			PricingSlice,
 			PricingSliceDefaultPrimaryItemsItem,
 			PricingSliceDefaultPrimary,

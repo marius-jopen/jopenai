@@ -1,5 +1,6 @@
 <script lang="ts">
 	import type { Content } from '@prismicio/client';
+	import { isFilled } from '@prismicio/client';
 	import Slider from '$lib/components/slider.svelte';
 	import { PrismicImage } from '@prismicio/svelte';
 
@@ -8,6 +9,7 @@
 	const items = slice.primary.items;
 	const style = slice.primary.style || 'normal';
 	const isFullscreen = style === 'fullscreen';
+	const hasMultipleItems = items.length > 1;
 
 	let padding = 13;
 
@@ -23,9 +25,29 @@
 
 {#if !slice.primary.deactivated}
 	<section class="pb-28 {isFullscreen ? 'hero-fullscreen' : ''}" data-id={slice.primary.hash}>
-		<Slider>
-			{#each items as item, index}
-				<a href="{item.link && item.link.url}" class="{isFullscreen ? 'w-screen' : 'w-[80vw] md:w-[85vw]'} relative {isFullscreen ? '' : 'rounded-lg'} overflow-hidden flex-shrink-0" style={calculateStyles(index, items.length)}>
+		{#if hasMultipleItems}
+			<Slider>
+				{#each items as item, index}
+					{@const linkUrl = isFilled.link(item.link) ? (item.link as any).url : '#'}
+					<a href={linkUrl} class="{isFullscreen ? 'w-screen' : 'w-[80vw] md:w-[85vw]'} relative {isFullscreen ? '' : 'rounded-lg'} overflow-hidden flex-shrink-0" style={calculateStyles(index, items.length)}>
+						<div>
+							{#if item.video}
+								<video src={item.video} poster={item.image.url} class="{isFullscreen ? '' : 'rounded-lg'} object-cover w-full aspect-[3/4] lg:aspect-[16/8]" playsinline autoplay muted loop></video>
+							{:else}
+								<PrismicImage class="{isFullscreen ? '' : 'rounded-lg'} object-cover w-full aspect-[3/4] lg:aspect-[16/8]" field={item.image} />
+							{/if}
+
+							<h2 data-aos="fade" class="text-[var(--text-tertiary-color)] px-6 pb-3.5 absolute bottom-0 left-0 w-full lg:w-3/4 h-full flex items-end">
+								{item.text}
+							</h2>
+						</div>
+					</a>
+				{/each}
+			</Slider>
+		{:else}
+			{#each items as item}
+				{@const linkUrl = isFilled.link(item.link) ? (item.link as any).url : '#'}
+				<a href={linkUrl} class="w-full relative {isFullscreen ? '' : 'rounded-lg'} overflow-hidden block">
 					<div>
 						{#if item.video}
 							<video src={item.video} poster={item.image.url} class="{isFullscreen ? '' : 'rounded-lg'} object-cover w-full aspect-[3/4] lg:aspect-[16/8]" playsinline autoplay muted loop></video>
@@ -39,7 +61,7 @@
 					</div>
 				</a>
 			{/each}
-		</Slider>
+		{/if}
 	</section>
 {/if}
 
